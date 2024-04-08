@@ -1,6 +1,7 @@
 public enum TypeUnit
 {
-    Worker,
+    Farmer,
     Warrior,
+    Enemy,
     Food
 }
