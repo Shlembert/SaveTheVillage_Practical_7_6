@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     private int _grainCount;
 
     public List<GameObject> Farmers { get => _farmers; set => _farmers = value; }
-    public List<GameObject> Werriors { get => _warriors; set => _warriors = value; }
+    public List<GameObject> Warriors { get => _warriors; set => _warriors = value; }
     public List<GameObject> Enemies { get => _enemies; set => _enemies = value; }
     public List<GameObject> FarmerPoints { get => _farmerPoints; set => _farmerPoints = value; }
     public List<GameObject> WarriorsPoints { get => _warriorsPoints; set => _warriorsPoints = value; }
@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour
     public Transform Storage { get => storage; set => storage = value; }
 
     public int GrainCount { get => _grainCount; set => _grainCount = value; }
+
+    private void Start() { StartGame();}
 
     public void StartGame()
     {
@@ -35,21 +37,6 @@ public class GameController : MonoBehaviour
         InitListPoints(_warriorsPoints, outpost);
         InitListPoints(_enemiesPoints, lair);
         SetDisplayCount();
-    }
-
-    public void CreateUnit(GameObject loh, TypeUnit typeUnit)
-    {
-        switch (typeUnit)
-        {
-            case TypeUnit.Farmer: _farmers.Add(loh);
-                break;
-            case TypeUnit.Warrior: _warriors.Add(loh);
-                break;
-            case TypeUnit.Enemy: _enemies.Add(loh);
-                break;
-            default:
-                break;
-        }
     }
 
     private void InitListPoints(List<GameObject> list, Transform parentPoints)
