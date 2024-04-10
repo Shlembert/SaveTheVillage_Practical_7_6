@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
 
     private List<GameObject> _farmers, _warriors, _enemies, _farmerPoints, _warriorsPoints, _enemiesPoints;
     private int _grainCount;
+    private bool _isPause, _isGame;
 
     public List<GameObject> Farmers { get => _farmers; set => _farmers = value; }
     public List<GameObject> Warriors { get => _warriors; set => _warriors = value; }
@@ -21,6 +22,8 @@ public class GameController : MonoBehaviour
     public Transform Storage { get => storage; set => storage = value; }
 
     public int GrainCount { get => _grainCount; set => _grainCount = value; }
+    public bool IsPause { get => _isPause; set => _isPause = value; }
+    public bool IsGame { get => _isGame; set => _isGame = value; }
 
     private void Start() { StartGame();}
 
@@ -33,10 +36,16 @@ public class GameController : MonoBehaviour
         _warriorsPoints = new List<GameObject>();
         _enemiesPoints = new List<GameObject>();
         _grainCount = 10;
+        _isGame = true;
         InitListPoints(_farmerPoints, gardien);
         InitListPoints(_warriorsPoints, outpost);
         InitListPoints(_enemiesPoints, lair);
         SetDisplayCount();
+    }
+
+    private void OnDisable()
+    {
+        _isGame = false;
     }
 
     private void InitListPoints(List<GameObject> list, Transform parentPoints)
@@ -46,6 +55,7 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < parentPoints.childCount; i++)
         {
             Transform childTransform = parentPoints.GetChild(i);
+            childTransform.gameObject.SetActive(true);
             list.Add(childTransform.gameObject);
         }
     }

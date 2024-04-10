@@ -1,12 +1,16 @@
 using Cysharp.Threading.Tasks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private GameController gameController;
     [SerializeField] private UnitFactory unitFactory;
     [SerializeField] private TypeUnit type;
+    [SerializeField] private TMP_Text readiness;
+    [SerializeField] private Image filled;
     [SerializeField] private float cooldown;
     [SerializeField] private int price;
 
@@ -24,13 +28,12 @@ public class ButtonController : MonoBehaviour, IPointerDownHandler
         }
         else
         {
-            Debug.Log("No Grain!");
+            readiness.text = "Не хватает еды!";
         }
     }
 
     private async void Cooldown()
     {
-        Debug.Log($"Click! {type}");
         _isReady = false;
         await StartTimer(cooldown);
         _isReady = true;
@@ -42,11 +45,24 @@ public class ButtonController : MonoBehaviour, IPointerDownHandler
 
         while (currentTime < duration)
         {
+            // Обновляем readiness и filled в процентах
+            UpdateReadiness();
+            filled.fillAmount = currentTime / duration;
+
+            // Ждем один кадр
             await UniTask.Yield();
+
+            // Обновляем время
             currentTime += Time.deltaTime;
-            //  Debug.Log($"{currentTime} | {duration}");
         }
 
-        Debug.Log("Timer finished!");
+        // Время истекло
+        readiness.text = "Готов!";
+    }
+
+    private void UpdateReadiness()
+    {
+        float percentReady = _isReady ? 100f : filled.fillAmount * 100f;
+        readiness.text = $"{percentReady:0}%";
     }
 }

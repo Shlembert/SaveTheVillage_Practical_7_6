@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ public class FarmerController : MonoBehaviour
     [SerializeField] private float workingTime;
     [SerializeField] private int profit;
 
-    private Transform _transform;
+    private Transform _transform, _storage;
     private GameController _gameController;
     private GameObject _point;
 
@@ -23,6 +22,7 @@ public class FarmerController : MonoBehaviour
     {
         _gameController = gameController;
         _transform = transform;
+        _storage = gameController.Storage;
         _isLaden = false;
         _isWorking = false;
         await StatusCheck();
@@ -36,9 +36,14 @@ public class FarmerController : MonoBehaviour
             {
                 // Если есть активные точки, двигаемся к ним
                 Vector2 targetPosition = GetActivePointPosition();
+                _point.SetActive(false);
+
                 await MoveToTarget(targetPosition);
                 _isWorking = true;
                 Debug.Log("Work!");
+                await StartTimer(workingTime);
+                _isWorking = false;
+                await MoveToStorage();
             }
             else
             {
@@ -47,6 +52,27 @@ public class FarmerController : MonoBehaviour
                 await MoveToTarget(targetPosition);
             }
         }
+    }
+
+    private async UniTask MoveToStorage()
+    {
+        _isLaden = true;
+        _point.SetActive(true);
+
+        while (_gameController.IsGame && Vector2.Distance(_transform.position, _storage.position) > 0.1f)
+        {
+            // Вычисляем направление движения к цели
+            Vector2 direction = ((Vector2)_storage.position - (Vector2)_transform.position).normalized;
+            // Двигаемся в направлении к цели
+            _transform.position += (Vector3)(direction * speed * Time.deltaTime);
+
+            await UniTask.Yield();
+        }
+        Debug.Log("Push to storage");
+        _gameController.StockUp(profit);
+        _isLaden = false;
+
+        await StatusCheck();
     }
 
     private bool HasActivePoints()
@@ -63,16 +89,29 @@ public class FarmerController : MonoBehaviour
 
     private Vector2 GetRandomPositionAroundCurrent()
     {
-        Vector3 randomViewportPosition = new Vector3(Random.value, Random.value, 0);
-        Vector3 randomWorldPosition = Camera.main.ViewportToWorldPoint(randomViewportPosition);
+        if (!_gameController.IsGame) return Vector2.zero;
 
-        // Ограничиваем координаты в пределах экрана
-        float halfWidth = _transform.localScale.x / 2;
-        float halfHeight = _transform.localScale.y / 2;
-        randomWorldPosition.x = Mathf.Clamp(randomWorldPosition.x, halfWidth, Screen.width - halfWidth);
-        randomWorldPosition.y = Mathf.Clamp(randomWorldPosition.y, halfHeight, Screen.height - halfHeight);
+        Camera mainCamera = Camera.main;
+        Vector3 currentPosition = _transform.position;
 
-        return randomWorldPosition;
+        // Определяем границы области для перемещения юнита
+        float minX = currentPosition.x - 3f;
+        float maxX = currentPosition.x + 3f;
+        float minY = currentPosition.y - 3f;
+        float maxY = currentPosition.y + 3f;
+
+        // Получаем экранные координаты границ области
+        Vector3 minScreenPoint = mainCamera.WorldToScreenPoint(new Vector3(minX, minY, currentPosition.z));
+        Vector3 maxScreenPoint = mainCamera.WorldToScreenPoint(new Vector3(maxX, maxY, currentPosition.z));
+
+        // Ограничиваем экранные координаты в пределах экрана
+        float clampedX = Mathf.Clamp(Random.Range(minScreenPoint.x, maxScreenPoint.x), 0f, Screen.width);
+        float clampedY = Mathf.Clamp(Random.Range(minScreenPoint.y, maxScreenPoint.y), 0f, Screen.height);
+
+        // Преобразуем обратно экранные координаты в мировые
+        Vector3 clampedWorldPoint = mainCamera.ScreenToWorldPoint(new Vector3(clampedX, clampedY, currentPosition.z));
+
+        return new Vector2(clampedWorldPoint.x, clampedWorldPoint.y);
     }
 
     private Vector2 GetActivePointPosition()
@@ -86,7 +125,6 @@ public class FarmerController : MonoBehaviour
             if (point.activeInHierarchy)
             {
                 activePoints.Add(point.transform);
-                _point = point;
             }
         }
 
@@ -94,6 +132,7 @@ public class FarmerController : MonoBehaviour
         if (activePoints.Count > 0)
         {
             int randomIndex = Random.Range(0, activePoints.Count);
+            _point = activePoints[randomIndex].gameObject;
             return activePoints[randomIndex].position;
         }
         else
@@ -104,21 +143,13 @@ public class FarmerController : MonoBehaviour
 
     private async UniTask MoveToTarget(Vector2 targetPosition)
     {
-        // Пока расстояние между текущей позицией и целевой позицией больше заданного значения,
-        // продолжаем двигаться к целевой позиции
-        while (Vector2.Distance(_transform.position, targetPosition) > 0.1f)
+        while (_gameController.IsGame && Vector2.Distance(_transform.position, targetPosition) > 0.1f)
         {
-            // Вычисляем направление движения к цели
             Vector2 direction = (targetPosition - (Vector2)_transform.position).normalized;
-
-            // Двигаемся в направлении к цели
             _transform.position += (Vector3)(direction * speed * Time.deltaTime);
 
             await UniTask.Yield();
         }
-
-        // Когда достигли цели, выключаем точку, если она была активной
-        if (_point) _point.SetActive(false);
     }
 
     public async UniTask StartTimer(float duration)
@@ -129,9 +160,6 @@ public class FarmerController : MonoBehaviour
         {
             await UniTask.Yield();
             currentTime += Time.deltaTime;
-            //  Debug.Log($"{currentTime} | {duration}");
         }
-
-        Debug.Log("Timer finished!");
     }
 }

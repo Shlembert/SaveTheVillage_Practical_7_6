@@ -4,14 +4,17 @@ using UnityEngine;
 public class UnitFactory : MonoBehaviour
 {
     [SerializeField] private GameController gameController;
+    [SerializeField] private UIController uiController;
     [SerializeField] private TypeUnit unitType;
     [SerializeField] private GameObject prefab;
 
     private Transform _transform;
+    private int _count;
 
     private void Start()
     {
         _transform = transform;
+        _count = 0;
     }
 
     public void SpawnUnit()
@@ -31,13 +34,14 @@ public class UnitFactory : MonoBehaviour
             }
         }
 
-        Debug.Log("Instantiate");
         GameObject go = Instantiate(prefab, LoyaltyCheck(), Quaternion.identity);
 
         goList.Add(go);
-
+        _count++;
         go.transform.parent = _transform;
         go.GetComponent<FarmerController>().ActiveUnit(gameController);
+        gameController.Farmers.Add(go);
+        uiController.DisplayTopCount(_count, unitType);
     }
 
     private List<GameObject> SetList()

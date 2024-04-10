@@ -17,9 +17,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text warriorsCount;
     [SerializeField] private TMP_Text foodCount;
     [SerializeField] private TMP_Text enemyesCount;
-    [SerializeField] private TMP_Text readinessFarmer;
-    [SerializeField] private TMP_Text readinessWarrior;
-    [SerializeField] private TMP_Text readinessEnemy;
     [Space]
     [SerializeField] private TMP_Text farmerCreate;
     [SerializeField] private TMP_Text farmerDead;
@@ -30,10 +27,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text assaultCount;
     [SerializeField] private TMP_Text foodStorage;
     [SerializeField] private TMP_Text foodLost;
-    [Space]
-    [SerializeField] private Image farmerFilled;
-    [SerializeField] private Image warriorFilled;
-    [SerializeField] private Image enemyFilled;
 
     public void DisplayTopCount(int value, TypeUnit typeUnit)
     {
@@ -52,11 +45,12 @@ public class UIController : MonoBehaviour
         }
 
         currentTMP.text = value.ToString();
-        AnimChangeCount(currentTMP.transform);
+       // AnimChangeCount(currentTMP.transform);
     }
 
     private void AnimChangeCount(Transform textTransform)
     {
+       
         textTransform.DOKill();
         textTransform.DOScale(textTransform.localScale * 2, 0.3f).SetEase(Ease.InBack).From();
     }
