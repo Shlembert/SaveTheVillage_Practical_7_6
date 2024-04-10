@@ -37,7 +37,7 @@ public class UnitFactory : MonoBehaviour
         goList.Add(go);
 
         go.transform.parent = _transform;
-        go.GetComponent<UnitController>().ActiveUnit(gameController);
+        go.GetComponent<FarmerController>().ActiveUnit(gameController);
     }
 
     private List<GameObject> SetList()
