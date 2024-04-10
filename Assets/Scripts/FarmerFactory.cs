@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitFactory : MonoBehaviour
+public class FarmerFactory : MonoBehaviour
 {
     [SerializeField] private GameController gameController;
     [SerializeField] private UIController uiController;
@@ -19,7 +19,7 @@ public class UnitFactory : MonoBehaviour
 
     public void SpawnUnit()
     {
-        List<GameObject> goList = SetList();
+        List<GameObject> goList = gameController.Farmers; 
 
         if (goList != null && goList.Count > 0)
         {
@@ -28,13 +28,14 @@ public class UnitFactory : MonoBehaviour
                 if (!goList[i].activeInHierarchy)
                 {
                     goList[i].SetActive(true);
-                    goList[i].transform.position = LoyaltyCheck();
+                    goList[i].transform.position = gameController.Spawn.position;
+                    goList[i].GetComponent<FarmerController>().ActiveUnit(gameController);
                     return;
                 }
             }
         }
 
-        GameObject go = Instantiate(prefab, LoyaltyCheck(), Quaternion.identity);
+        GameObject go = Instantiate(prefab, gameController.Spawn.position, Quaternion.identity);
 
         goList.Add(go);
         _count++;
@@ -42,26 +43,5 @@ public class UnitFactory : MonoBehaviour
         go.GetComponent<FarmerController>().ActiveUnit(gameController);
         gameController.Farmers.Add(go);
         uiController.DisplayTopCount(_count, unitType);
-    }
-
-    private List<GameObject> SetList()
-    {
-        switch (unitType)
-        {
-            case TypeUnit.Farmer: return gameController.Farmers;
-            case TypeUnit.Warrior: return gameController.Warriors;
-            case TypeUnit.Enemy: return gameController.Enemies;
-        }
-        return null;
-    }
-
-    private Vector2 LoyaltyCheck()
-    {
-        if (unitType != TypeUnit.Enemy) return gameController.Spawn.position;
-        else
-        {
-            int random = Random.Range(0, gameController.EnemiesPoints.Count);
-            return gameController.EnemiesPoints[random].transform.position;
-        }
     }
 }

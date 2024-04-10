@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ButtonController : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private GameController gameController;
-    [SerializeField] private UnitFactory unitFactory;
+    [SerializeField] private FarmerFactory unitFactory;
     [SerializeField] private TypeUnit type;
     [SerializeField] private TMP_Text readiness;
     [SerializeField] private Image filled;
