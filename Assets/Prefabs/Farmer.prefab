@@ -98,6 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeUnit: 0
-  speed: 5
+  speed: 2
   workingTime: 10
   profit: 5

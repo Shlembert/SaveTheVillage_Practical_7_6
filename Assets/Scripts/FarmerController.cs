@@ -25,21 +25,57 @@ public class FarmerController : MonoBehaviour
         _transform = transform;
         _isLaden = false;
         _isWorking = false;
-       await StatusCheck();
+        await StatusCheck();
     }
 
     private async UniTask StatusCheck()
     {
-        if (!_isLaden && !_isWorking)
+        while (!_isLaden && !_isWorking)
         {
-            Vector2 targetPosition = FindingFarm();
-
-            // Двигаемся к цели
-            await MoveToTarget(targetPosition);
+            if (HasActivePoints())
+            {
+                // Если есть активные точки, двигаемся к ним
+                Vector2 targetPosition = GetActivePointPosition();
+                await MoveToTarget(targetPosition);
+                _isWorking = true;
+                Debug.Log("Work!");
+            }
+            else
+            {
+                // Если нет активных точек, двигаемся к случайной точке
+                Vector2 targetPosition = GetRandomPositionAroundCurrent();
+                await MoveToTarget(targetPosition);
+            }
         }
     }
 
-    private Vector2 FindingFarm()
+    private bool HasActivePoints()
+    {
+        foreach (var point in _gameController.FarmerPoints)
+        {
+            if (point.activeInHierarchy)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Vector2 GetRandomPositionAroundCurrent()
+    {
+        Vector3 randomViewportPosition = new Vector3(Random.value, Random.value, 0);
+        Vector3 randomWorldPosition = Camera.main.ViewportToWorldPoint(randomViewportPosition);
+
+        // Ограничиваем координаты в пределах экрана
+        float halfWidth = _transform.localScale.x / 2;
+        float halfHeight = _transform.localScale.y / 2;
+        randomWorldPosition.x = Mathf.Clamp(randomWorldPosition.x, halfWidth, Screen.width - halfWidth);
+        randomWorldPosition.y = Mathf.Clamp(randomWorldPosition.y, halfHeight, Screen.height - halfHeight);
+
+        return randomWorldPosition;
+    }
+
+    private Vector2 GetActivePointPosition()
     {
         // Создаем список активных точек
         List<Transform> activePoints = new List<Transform>();
@@ -62,10 +98,7 @@ public class FarmerController : MonoBehaviour
         }
         else
         {
-            // Если нет активных точек, выбираем случайную позицию в радиусе 3 метров от текущей позиции
-            float x = Random.Range(_transform.position.x - 3f, _transform.position.x + 3f);
-            float y = Random.Range(_transform.position.y - 3f, _transform.position.y + 3f);
-            return new Vector2(x, y);
+            return _transform.position;
         }
     }
 
@@ -85,7 +118,7 @@ public class FarmerController : MonoBehaviour
         }
 
         // Когда достигли цели, выключаем точку, если она была активной
-       if(_point) _point.SetActive(false);
+        if (_point) _point.SetActive(false);
     }
 
     public async UniTask StartTimer(float duration)
