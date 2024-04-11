@@ -208,5 +208,7 @@ public class FarmerController : MonoBehaviour
         {
             _point.SetActive(true);
         }
+
+        _gameController.RemoveFarmer(this.gameObject);
     }
 }

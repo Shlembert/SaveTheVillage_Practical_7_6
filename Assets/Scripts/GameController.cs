@@ -64,6 +64,13 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void AddFarmer(GameObject farmer) { _farmers.Add(farmer);}
+    public void RemoveFarmer(GameObject farmer) { _farmers.Remove(farmer);}
+    public void AddWarrior(GameObject warrior) { _warriors.Add(warrior);}
+    public void RemoveWarrior(GameObject warrior) { _warriors.Remove(warrior);}
+    public void AddEnemy(GameObject enemy) { _enemies.Add(enemy);}
+    public void RemoveEnemy(GameObject enemy) {_enemies.Remove(enemy);}
+
     private void SetDisplayCount()
     {
         uIController.DisplayTopCount(GetActiveUnits(_farmers), TypeUnit.Farmer);

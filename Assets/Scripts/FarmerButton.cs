@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonController : MonoBehaviour, IPointerDownHandler
+public class FarmerButton : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private GameController gameController;
     [SerializeField] private FarmerFactory unitFactory;
