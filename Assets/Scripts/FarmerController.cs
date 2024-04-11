@@ -114,29 +114,34 @@ public class FarmerController : MonoBehaviour
     private Vector2 GetRandomPositionAroundCurrent()
     {
         if (!_gameController.IsGame) return Vector2.zero;
-       
-        Camera mainCamera = Camera.main;
-        Vector3 currentPosition = _transform.position;
+
+        // Получаем размеры спрайта в мировых координатах
+        Vector3 spriteSize = _gameController.BoundsFarmer.bounds.size;
 
         // Определяем границы области для перемещения юнита
-        float minX = currentPosition.x - 1f;
-        float maxX = currentPosition.x + 1f;
-        float minY = currentPosition.y - 1f;
-        float maxY = currentPosition.y + 1f;
+        float minX = _transform.position.x - 2f;
+        float maxX = _transform.position.x + 2f;
+        float minY = _transform.position.y - 2f;
+        float maxY = _transform.position.y + 2f;
 
-        // Получаем экранные координаты границ области
-        Vector3 minScreenPoint = mainCamera.WorldToScreenPoint(new Vector3(minX, minY, currentPosition.z));
-        Vector3 maxScreenPoint = mainCamera.WorldToScreenPoint(new Vector3(maxX, maxY, currentPosition.z));
+        // Генерируем случайные координаты в пределах 1F от текущей позиции юнита
+        float randomX = UnityEngine.Random.Range(minX, maxX);
+        float randomY = UnityEngine.Random.Range(minY, maxY);
 
-        // Ограничиваем экранные координаты в пределах экрана
-        float clampedX = Mathf.Clamp(UnityEngine.Random.Range(minScreenPoint.x, maxScreenPoint.x), 0f, Screen.width);
-        float clampedY = Mathf.Clamp(UnityEngine.Random.Range(minScreenPoint.y, maxScreenPoint.y), 0f, Screen.height);
+        // Ограничиваем случайные координаты в пределах размеров спрайта
+        float clampedX = Mathf.Clamp(randomX, _gameController.BoundsFarmer.bounds.min.x,
+                                              _gameController.BoundsFarmer.bounds.max.x);
+        float clampedY = Mathf.Clamp(randomY, _gameController.BoundsFarmer.bounds.min.y,
+                                              _gameController.BoundsFarmer.bounds.max.y);
 
-        // Преобразуем обратно экранные координаты в мировые
-        Vector3 clampedWorldPoint = mainCamera.ScreenToWorldPoint(new Vector3(clampedX, clampedY, currentPosition.z));
+        // Создаем вектор с полученными случайными координатами
+        Vector2 randomPosition = new Vector2(clampedX, clampedY);
+
+        // Возвращаем случайные координаты в пределах размеров спрайта
         _animator.SetTrigger("Free");
         _currentSpeed = speed * 0.2f;
-        return new Vector2(clampedWorldPoint.x, clampedWorldPoint.y);
+
+        return randomPosition;
     }
 
     private Vector2 GetActivePointPosition()

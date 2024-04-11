@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private UIController uIController;
     [SerializeField] private Transform gardien, outpost, lair, spawn, storage;
+    [SerializeField] private SpriteRenderer boundsFarmer;
 
     private List<GameObject> _farmers, _warriors, _enemies, _farmerPoints, _warriorsPoints, _enemiesPoints;
     private int _grainCount;
@@ -21,9 +22,12 @@ public class GameController : MonoBehaviour
     public Transform Spawn { get => spawn; set => spawn = value; }
     public Transform Storage { get => storage; set => storage = value; }
 
+    public SpriteRenderer BoundsFarmer { get => boundsFarmer; set => boundsFarmer = value; }
+
     public int GrainCount { get => _grainCount; set => _grainCount = value; }
     public bool IsPause { get => _isPause; set => _isPause = value; }
     public bool IsGame { get => _isGame; set => _isGame = value; }
+   
 
     private void Start() { StartGame();}
 
