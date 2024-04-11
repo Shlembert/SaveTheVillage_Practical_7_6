@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour
         _farmerPoints = new List<GameObject>();
         _warriorsPoints = new List<GameObject>();
         _enemiesPoints = new List<GameObject>();
-        _grainCount = 10;
+        _grainCount = 20;
         _isGame = true;
         InitListPoints(_farmerPoints, gardien);
         InitListPoints(_warriorsPoints, outpost);
@@ -64,19 +64,14 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void AddFarmer(GameObject farmer) { _farmers.Add(farmer);}
-    public void RemoveFarmer(GameObject farmer) { _farmers.Remove(farmer);}
-    public void AddWarrior(GameObject warrior) { _warriors.Add(warrior);}
-    public void RemoveWarrior(GameObject warrior) { _warriors.Remove(warrior);}
-    public void AddEnemy(GameObject enemy) { _enemies.Add(enemy);}
-    public void RemoveEnemy(GameObject enemy) {_enemies.Remove(enemy);}
-
-    private void SetDisplayCount()
+    public void SetDisplayCount()
     {
         uIController.DisplayTopCount(GetActiveUnits(_farmers), TypeUnit.Farmer);
         uIController.DisplayTopCount(GetActiveUnits(_warriors), TypeUnit.Warrior);
         uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
     }
+
+
 
     public void StockUp(int food)
     {

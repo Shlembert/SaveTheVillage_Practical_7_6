@@ -15,7 +15,6 @@ public class EnemyController : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private bool _isLife;
-    private GameObject _meat;
 
     private CancellationTokenSource _cancellationTokenSource;
 
@@ -103,14 +102,12 @@ public class EnemyController : MonoBehaviour
         {
             // Ќайден воин, возвращаем его позицию
             int randomIndex = UnityEngine.Random.Range(0, warriors.Count);
-            _meat = warriors[randomIndex];
             return warriors[randomIndex].transform.position;
         }
         else if (farmers.Count > 0)
         {
             // Ќайден фермер, возвращаем его позицию
             int randomIndex = UnityEngine.Random.Range(0, farmers.Count);
-            _meat = farmers[randomIndex];
             return farmers[randomIndex].transform.position;
         }
         else
@@ -128,8 +125,9 @@ public class EnemyController : MonoBehaviour
             _transform.position += (Vector3)(direction * speed * Time.deltaTime);
 
             await UniTask.Yield(cancellationToken);
+
+            FindTargetPosition();
         }
-        if(_meat)_meat.SetActive(false);
     }
 
     public async UniTask StartTimer(float duration, CancellationToken cancellationToken)
@@ -143,6 +141,19 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        FarmerController farmer = collision.gameObject.GetComponent<FarmerController>();
+        if (farmer != null)
+        {
+            farmer.gameObject.SetActive(false);
+            _gameController.Farmers.Remove(farmer.gameObject);
+            _gameController.SetDisplayCount();
+            this.gameObject.SetActive(false);
+        }
+    }
+
+
     private void OnDisable()
     {
         if (_cancellationTokenSource != null && !_cancellationTokenSource.Token.IsCancellationRequested)
@@ -150,6 +161,6 @@ public class EnemyController : MonoBehaviour
             _cancellationTokenSource.Cancel();
         }
         _isLife = false;
-        _gameController.RemoveEnemy(this.gameObject);
+        _gameController.Enemies.Remove(this.gameObject);
     }
 }

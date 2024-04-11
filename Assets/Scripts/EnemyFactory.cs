@@ -28,7 +28,7 @@ public class EnemyFactory : MonoBehaviour
 
     private void SpawnUnit()
     {
-        List<GameObject> goList = gameController.Farmers;
+        List<GameObject> goList = gameController.Enemies;
 
         if (goList != null && goList.Count > 0)
         {
@@ -50,13 +50,12 @@ public class EnemyFactory : MonoBehaviour
         _count++;
         go.transform.parent = _transform;
         go.GetComponent<EnemyController>().ActiveUnit(gameController);
-        gameController.AddEnemy(go);
-        //uiController.DisplayTopCount(_count, unitType);
     }
 
     private Vector2 SetRandomPosition()
     {
         int randomIndex = Random.Range(0, gameController.EnemiesPoints.Count);
+
         return gameController.EnemiesPoints[randomIndex].transform.position;
     }
 }

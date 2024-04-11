@@ -22,8 +22,6 @@ public class FarmerController : MonoBehaviour
 
     private CancellationTokenSource _cancellationTokenSource;
 
-    public GameController GameController { get => _gameController; set => _gameController = value; }
-
     public async void ActiveUnit(GameController gameController)
     {
         _gameController = gameController;
@@ -93,7 +91,7 @@ public class FarmerController : MonoBehaviour
         _gameController.StockUp(profit);
         await UniTask.Delay(2000);
         _spriteRenderer.enabled = true;
-        
+        await MoveToTarget(new Vector2(_transform.position.x + 3f, _transform.position.y), cancellationToken);
         _isLaden = false;
 
         await StatusCheck(cancellationToken);
@@ -209,6 +207,6 @@ public class FarmerController : MonoBehaviour
             _point.SetActive(true);
         }
 
-        _gameController.RemoveFarmer(this.gameObject);
+       // _gameController.RemoveFarmer(this.gameObject);
     }
 }

@@ -43,7 +43,7 @@ public class FarmerFactory : MonoBehaviour
         go.GetComponent<FarmerController>().ActiveUnit(gameController);
        
         uiController.DisplayTopCount(_count, unitType);
-        gameController.AddFarmer(go);
+        //gameController.AddFarmer(go);
         return;
     }
 }
