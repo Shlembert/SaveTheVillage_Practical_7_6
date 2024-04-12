@@ -4,18 +4,17 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class WarriorController : MonoBehaviour
 {
     [SerializeField] private TypeUnit typeUnit;
     [SerializeField] private float speed;
     [SerializeField] private int profit;
     [SerializeField] private Collider2D col;
 
-    private Transform _transform, _storage;
+    private Transform _transform;
     private GameController _gameController;
     private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
-    private bool _isLife, _hungry;
+    private bool _isLife;
 
     private CancellationTokenSource _cancellationTokenSource;
 
@@ -26,10 +25,8 @@ public class EnemyController : MonoBehaviour
         _gameController = gameController;
         _transform = transform;
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _storage = gameController.Storage;
         _isLife = true;
-        _hungry = true;
+        col.enabled = true;
 
         _cancellationTokenSource = new CancellationTokenSource();
         try
@@ -42,42 +39,14 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private async UniTask MoveToStorage(CancellationToken cancellationToken)
-    {
-        while (_gameController.IsGame && Vector2.Distance(_transform.position, _storage.position) > 0.1f)
-        {
-            // ¬ычисл€ем направление движени€ к цели
-            Vector2 direction = ((Vector2)_storage.position - (Vector2)_transform.position).normalized;
-            // ƒвигаемс€ в направлении к цели
-            _transform.position += (Vector3)(direction * speed * Time.deltaTime);
-
-            await UniTask.Yield(cancellationToken);
-        }
-
-        // «ашли в хранилище
-        await StealingGrain(cancellationToken);
-    }
-
-    private async UniTask StealingGrain(CancellationToken cancellationToken)
-    {
-        _spriteRenderer.enabled = false;
-        _gameController.StockDown(profit);
-        await UniTask.Delay(2000);
-        _spriteRenderer.enabled = true;
-        // ƒвигаем с мешком на выход
-        await MoveToHome(cancellationToken);
-    }
-
     private async UniTask MoveToHome(CancellationToken cancellationToken)
     {
-        int randomIndex = UnityEngine.Random.Range(0, _gameController.EnemiesPoints.Count);
-        Transform home = _gameController.EnemiesPoints[randomIndex].transform;
+        int randomIndex = UnityEngine.Random.Range(0, _gameController.WarriorsPoints.Count);
+        Transform home = _gameController.WarriorsPoints[randomIndex].transform;
 
         await MoveToTarget(home, cancellationToken);
 
-        _isLife = false;
-        _hungry = true;
-        this.gameObject.SetActive(false);
+        col.enabled = true;
     }
 
     private async UniTask SearchTarget(CancellationToken cancellationToken)
@@ -92,10 +61,10 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                await MoveToStorage(cancellationToken);
+                await MoveToHome(cancellationToken);
             }
 
-            if (!_hungry) await MoveToHome(cancellationToken);
+            if (profit <= 0) await MoveToHome(cancellationToken);
 
             await UniTask.Yield(cancellationToken); // ƒобавим задержку между проверками
         }
@@ -107,32 +76,24 @@ public class EnemyController : MonoBehaviour
 
         foreach (GameObject unit in units)
         {
-            if(unit.activeInHierarchy) result.Add(unit);
+            if (unit.activeInHierarchy) result.Add(unit);
         }
         return result;
     }
 
     private Transform FindTargetPosition()
     {
-        List<GameObject> activeFarmers = GetActiveUnit(_gameController.Farmers);
+        List<GameObject> activeEnemies = GetActiveUnit(_gameController.Enemies);
 
-        if (_hungry)
+        if (activeEnemies.Count > 0)
         {
-            if (activeFarmers.Count > 0)
-            {
-                // Ќайден фермер, возвращаем его позицию
-                int randomIndex = UnityEngine.Random.Range(0, activeFarmers.Count);
-                return activeFarmers[randomIndex].transform;
-            }
-            else
-            {
-                // —писки воинов и фермеров пусты, возвращаем позицию хранилища
-                return _transform;
-            }
+            // Ќайден фермер, возвращаем его позицию
+            int randomIndex = UnityEngine.Random.Range(0, activeEnemies.Count);
+            return activeEnemies[randomIndex].transform;
         }
         else
         {
-            // —хватили фермера, тактически отступаем в логово
+            // —писки воинов и фермеров пусты, возвращаем позицию хранилища
             return _transform;
         }
     }
@@ -143,8 +104,8 @@ public class EnemyController : MonoBehaviour
         {
             Vector2 direction = (target.position - _transform.position).normalized;
 
-           _transform.position += (Vector3)(direction * speed * Time.deltaTime);
-            
+            _transform.position += (Vector3)(direction * speed * Time.deltaTime);
+
             await UniTask.Yield(cancellationToken);
         }
     }
@@ -162,13 +123,13 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        FarmerController farmer = collision.gameObject.GetComponent<FarmerController>();
-        if (farmer != null)
+        EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+
+        if (enemy != null)
         {
-            farmer.gameObject.SetActive(false);
-            _gameController.SetDisplayCount();
-            col.enabled = false;
-            _hungry = false;
+            enemy.gameObject.SetActive(false);
+            profit--;
+            if (profit <= 0) this.gameObject.SetActive(false);
         }
     }
 

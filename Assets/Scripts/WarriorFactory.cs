@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FarmerFactory : MonoBehaviour
+public class WarriorFactory : MonoBehaviour
 {
     [SerializeField] private GameController gameController;
     [SerializeField] private UIController uiController;
@@ -19,7 +19,7 @@ public class FarmerFactory : MonoBehaviour
 
     public void SpawnUnit()
     {
-        List<GameObject> goList = gameController.Farmers; 
+        List<GameObject> goList = gameController.Warriors;
 
         if (goList != null && goList.Count > 0)
         {
@@ -29,7 +29,7 @@ public class FarmerFactory : MonoBehaviour
                 {
                     goList[i].SetActive(true);
                     goList[i].transform.position = gameController.Spawn.position;
-                    goList[i].GetComponent<FarmerController>().ActiveUnit(gameController);
+                    goList[i].GetComponent<WarriorController>().ActiveUnit(gameController);
                     return;
                 }
             }
@@ -40,8 +40,8 @@ public class FarmerFactory : MonoBehaviour
         goList.Add(go);
         _count++;
         go.transform.parent = _transform;
-        go.GetComponent<FarmerController>().ActiveUnit(gameController);
-       
+        go.GetComponent<WarriorController>().ActiveUnit(gameController);
+
         uiController.DisplayTopCount(1, unitType);
         return;
     }
