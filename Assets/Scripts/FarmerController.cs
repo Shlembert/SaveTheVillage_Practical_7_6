@@ -77,6 +77,9 @@ public class FarmerController : MonoBehaviour
         _point.SetActive(true);
         _animator.SetTrigger("Stor");
 
+        await MoveToTarget(_gameController.PointStorage.position, cancellationToken);
+
+        _animator.SetTrigger("Stor");
         while (_gameController.IsGame && Vector2.Distance(_transform.position, _storage.position) > 0.1f)
         {
             // ¬ычисл€ем направление движени€ к цели
@@ -88,10 +91,16 @@ public class FarmerController : MonoBehaviour
         }
         // Push to storage
         _spriteRenderer.enabled = false;
+        _gameController.Farmers.Remove(this.gameObject);
         _gameController.StockUp(profit);
+
         await UniTask.Delay(2000);
+
         _spriteRenderer.enabled = true;
-        await MoveToTarget(new Vector2(_transform.position.x + 3f, _transform.position.y), cancellationToken);
+        _gameController.Farmers.Add(this.gameObject);
+
+        _animator.SetTrigger("Walk");
+        await MoveToTarget(new Vector2(_transform.position.x + 4f, _transform.position.y), cancellationToken);
         _isLaden = false;
 
         await StatusCheck(cancellationToken);
@@ -206,7 +215,5 @@ public class FarmerController : MonoBehaviour
         {
             _point.SetActive(true);
         }
-
-       // _gameController.RemoveFarmer(this.gameObject);
     }
 }

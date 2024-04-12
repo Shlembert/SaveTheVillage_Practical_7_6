@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeUnit: 2
-  speed: 1.2
+  speed: 0.8
   profit: 1
+  col: {fileID: 8285919676111331855}
 --- !u!58 &8285919676111331855
 CircleCollider2D:
   m_ObjectHideFlags: 0

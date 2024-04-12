@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,11 +19,14 @@ public class EnemyFactory : MonoBehaviour
         _count = 0;
     }
 
-    public void SetCountSpawnUnit()
+    public async void SetCountSpawnUnit()
     {
+        ShuffleSpawnPoints();
+
         for (int i = 0; i < number; i++)
         {
             SpawnUnit();
+            await UniTask.Delay(1000);
         }
     }
 
@@ -50,6 +54,18 @@ public class EnemyFactory : MonoBehaviour
         _count++;
         go.transform.parent = _transform;
         go.GetComponent<EnemyController>().ActiveUnit(gameController);
+    }
+
+    private void ShuffleSpawnPoints()
+    {
+        // Используем алгоритм тасования Фишера-Йетса для перемешивания списка
+        for (int i = 0; i < gameController.EnemiesPoints.Count - 1; i++)
+        {
+            int randomIndex = Random.Range(i, gameController.EnemiesPoints.Count);
+            GameObject temp = gameController.EnemiesPoints[randomIndex];
+            gameController.EnemiesPoints[randomIndex] = gameController.EnemiesPoints[i];
+            gameController.EnemiesPoints[i] = temp;
+        }
     }
 
     private Vector2 SetRandomPosition()
