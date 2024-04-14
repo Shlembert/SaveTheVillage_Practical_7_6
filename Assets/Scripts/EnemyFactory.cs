@@ -22,12 +22,15 @@ public class EnemyFactory : MonoBehaviour
     public async void SetCountSpawnUnit()
     {
         ShuffleSpawnPoints();
+        SetActiveTarget(gameController.FarmerTargets, gameController.Farmers);
 
         for (int i = 0; i < number; i++)
         {
             SpawnUnit();
             await UniTask.Delay(1000);
         }
+
+        SetActiveTarget(gameController.EnemiesTargets, gameController.Enemies);
     }
 
     private void SpawnUnit()
@@ -42,18 +45,26 @@ public class EnemyFactory : MonoBehaviour
                 {
                     goList[i].SetActive(true);
                     goList[i].transform.position = SetRandomPosition();
-                    goList[i].GetComponent<EnemyController>().ActiveUnit(gameController);
+                    goList[i].GetComponent<EnemyController>().ActiveUnit(gameController, uiController);
                     return;
                 }
             }
         }
 
         GameObject go = Instantiate(prefab, SetRandomPosition(), Quaternion.identity);
-
+        go.name = _count.ToString();
         goList.Add(go);
         _count++;
         go.transform.parent = _transform;
-        go.GetComponent<EnemyController>().ActiveUnit(gameController);
+        go.GetComponent<EnemyController>().ActiveUnit(gameController, uiController);
+    }
+
+    private void SetActiveTarget(List<GameObject> targets, List<GameObject> units)
+    {
+        foreach (GameObject element in units)
+        {
+            if (element.activeInHierarchy) targets.Add(element);
+        }
     }
 
     private void ShuffleSpawnPoints()

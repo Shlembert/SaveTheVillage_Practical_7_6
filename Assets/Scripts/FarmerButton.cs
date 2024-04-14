@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class FarmerButton : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private GameController gameController;
+    [SerializeField] private UIController uIController;
     [SerializeField] private FarmerFactory unitFactory;
     [SerializeField] private TypeUnit type;
     [SerializeField] private TMP_Text readiness;
@@ -22,6 +23,8 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
 
         if (price <= gameController.GrainCount)
         {
+            gameController.FarmerCount++;
+            uIController.DisplayTopCount(gameController.FarmerCount, type);
             gameController.StockDown(price);
             unitFactory.SpawnUnit();
             Cooldown();

@@ -29,20 +29,19 @@ public class WarriorFactory : MonoBehaviour
                 {
                     goList[i].SetActive(true);
                     goList[i].transform.position = gameController.Spawn.position;
-                    goList[i].GetComponent<WarriorController>().ActiveUnit(gameController);
+                    goList[i].GetComponent<WarriorController>().ActiveUnit(gameController, uiController);
                     return;
                 }
             }
         }
 
         GameObject go = Instantiate(prefab, gameController.Spawn.position, Quaternion.identity);
-
+        go.name = _count.ToString();
         goList.Add(go);
         _count++;
         go.transform.parent = _transform;
-        go.GetComponent<WarriorController>().ActiveUnit(gameController);
+        go.GetComponent<WarriorController>().ActiveUnit(gameController, uiController);
 
-        uiController.DisplayTopCount(1, unitType);
         return;
     }
 }

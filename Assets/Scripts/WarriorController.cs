@@ -13,21 +13,27 @@ public class WarriorController : MonoBehaviour
 
     private Transform _transform;
     private GameController _gameController;
+    private UIController _uIController;
     private Animator _animator;
     private bool _isLife;
+    private int _currentProfit;
+    private float _currentSpeed;
 
     private CancellationTokenSource _cancellationTokenSource;
 
     public GameController GameController { get => _gameController; set => _gameController = value; }
 
-    public async void ActiveUnit(GameController gameController)
+    public async void ActiveUnit(GameController gameController, UIController uIController)
     {
         _gameController = gameController;
+        _uIController = uIController;
+        _currentProfit = profit;
+        _currentSpeed = speed;
         _transform = transform;
         _animator = GetComponent<Animator>();
         _isLife = true;
         col.enabled = true;
-
+        
         _cancellationTokenSource = new CancellationTokenSource();
         try
         {
@@ -64,7 +70,7 @@ public class WarriorController : MonoBehaviour
                 await MoveToHome(cancellationToken);
             }
 
-            if (profit <= 0) await MoveToHome(cancellationToken);
+            if (_currentProfit <= 0) await MoveToHome(cancellationToken);
 
             await UniTask.Yield(cancellationToken); // Добавим задержку между проверками
         }
@@ -87,26 +93,56 @@ public class WarriorController : MonoBehaviour
 
         if (activeEnemies.Count > 0)
         {
-            // Найден фермер, возвращаем его позицию
+            // Найден враг, возвращаем его позицию
+            _currentSpeed = speed;
             int randomIndex = UnityEngine.Random.Range(0, activeEnemies.Count);
             return activeEnemies[randomIndex].transform;
         }
         else
         {
-            // Списки воинов и фермеров пусты, возвращаем позицию хранилища
+            // Списки врагов пусты, возвращаем патруля
+            _currentSpeed = speed / 2;
             return _transform;
         }
     }
 
     private async UniTask MoveToTarget(Transform target, CancellationToken cancellationToken)
     {
+
         while (_gameController.IsGame && Vector2.Distance(_transform.position, target.position) > 0.1f)
         {
             Vector2 direction = (target.position - _transform.position).normalized;
-
-            _transform.position += (Vector3)(direction * speed * Time.deltaTime);
-
+            _transform.position += (Vector3)(direction * _currentSpeed * Time.deltaTime);
+            GetDirection(direction);
             await UniTask.Yield(cancellationToken);
+        }
+    }
+
+    private void GetDirection(Vector3 movement)
+    {
+        // Нормализуем вектор движения
+        Vector3 normalizedMovement = movement.normalized;
+
+        // Проверяем, в каком направлении движется объект
+        if (normalizedMovement.x > 0.5)
+        {
+            _animator.SetTrigger("MoveRight");
+        }
+        else if (normalizedMovement.x < -0.5)
+        {
+            _animator.SetTrigger("MoveLeft");
+        }
+        else if (normalizedMovement.y > 0.5)
+        {
+            _animator.SetTrigger("MoveUp");
+        }
+        else if (normalizedMovement.y < -0.5)
+        {
+            _animator.SetTrigger("MoveDown");
+        }
+        else
+        {
+            _animator.SetTrigger("Idle");
         }
     }
 
@@ -121,15 +157,19 @@ public class WarriorController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
 
         if (enemy != null)
         {
             enemy.gameObject.SetActive(false);
-            profit--;
-            if (profit <= 0) this.gameObject.SetActive(false);
+            _currentProfit--;
+            if (_currentProfit <= 0) 
+            {
+                _uIController.DisplayTopCount(_gameController.WarriorCount, typeUnit);
+                gameObject.SetActive(false); 
+            }
         }
     }
 

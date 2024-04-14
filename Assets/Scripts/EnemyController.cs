@@ -11,25 +11,28 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int profit;
     [SerializeField] private Collider2D col;
 
+    private GameObject _target;
     private Transform _transform, _storage;
     private GameController _gameController;
+    private UIController _uIController;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private bool _isLife, _hungry;
 
     private CancellationTokenSource _cancellationTokenSource;
 
-    public GameController GameController { get => _gameController; set => _gameController = value; }
+    public bool Hungry { get => _hungry; set => _hungry = value; }
 
-    public async void ActiveUnit(GameController gameController)
+    public async void ActiveUnit(GameController gameController, UIController uIController)
     {
         _gameController = gameController;
+        _uIController = uIController;
         _transform = transform;
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _storage = gameController.Storage;
         _isLife = true;
-        _hungry = true;
+        Hungry = true;
 
         _cancellationTokenSource = new CancellationTokenSource();
         try
@@ -76,8 +79,8 @@ public class EnemyController : MonoBehaviour
         await MoveToTarget(home, cancellationToken);
 
         _isLife = false;
-        _hungry = true;
-        this.gameObject.SetActive(false);
+        Hungry = true;
+        gameObject.SetActive(false);
     }
 
     private async UniTask SearchTarget(CancellationToken cancellationToken)
@@ -88,6 +91,7 @@ public class EnemyController : MonoBehaviour
 
             if (targetPosition.position != _transform.position)
             {
+                Debug.Log($"Enemy {gameObject.name}: Target pos: {targetPosition.name} || Target farmer: {_target.name}");
                 await MoveToTarget(targetPosition, cancellationToken);
             }
             else
@@ -95,38 +99,29 @@ public class EnemyController : MonoBehaviour
                 await MoveToStorage(cancellationToken);
             }
 
-            if (!_hungry) await MoveToHome(cancellationToken);
+            if (!Hungry) await MoveToHome(cancellationToken);
 
             await UniTask.Yield(cancellationToken); // ƒобавим задержку между проверками
         }
     }
 
-    private List<GameObject> GetActiveUnit(List<GameObject> units)
-    {
-        List<GameObject> result = new List<GameObject>();
-
-        foreach (GameObject unit in units)
-        {
-            if(unit.activeInHierarchy) result.Add(unit);
-        }
-        return result;
-    }
-
     private Transform FindTargetPosition()
     {
-        List<GameObject> activeFarmers = GetActiveUnit(_gameController.Farmers);
+        List<GameObject> activeFarmers = _gameController.FarmerTargets;
 
-        if (_hungry)
+        if (Hungry)
         {
             if (activeFarmers.Count > 0)
             {
                 // Ќайден фермер, возвращаем его позицию
                 int randomIndex = UnityEngine.Random.Range(0, activeFarmers.Count);
-                return activeFarmers[randomIndex].transform;
+                _target = activeFarmers[randomIndex];
+                _gameController.FarmerTargets.Remove(_target);
+                return _target.transform;
             }
             else
             {
-                // —писки воинов и фермеров пусты, возвращаем позицию хранилища
+                // —писки фермеров пусты, возвращаем позицию хранилища
                 return _transform;
             }
         }
@@ -144,7 +139,7 @@ public class EnemyController : MonoBehaviour
             Vector2 direction = (target.position - _transform.position).normalized;
 
            _transform.position += (Vector3)(direction * speed * Time.deltaTime);
-            
+
             await UniTask.Yield(cancellationToken);
         }
     }
@@ -160,15 +155,17 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        FarmerController farmer = collision.gameObject.GetComponent<FarmerController>();
-        if (farmer != null)
+        if (collision.gameObject == _target)
         {
-            farmer.gameObject.SetActive(false);
+            Debug.Log($" Enemy {gameObject.name} Collision Farmer {collision.gameObject.name}");
+            collision.gameObject.gameObject.SetActive(false);
+            _gameController.FarmerCount--;
+            _uIController.DisplayTopCount(_gameController.FarmerCount, TypeUnit.Farmer);
             _gameController.SetDisplayCount();
             col.enabled = false;
-            _hungry = false;
+            Hungry = false;
         }
     }
 

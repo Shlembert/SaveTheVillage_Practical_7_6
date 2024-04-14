@@ -13,6 +13,7 @@ public class FarmerController : MonoBehaviour
 
     private Transform _transform, _storage;
     private GameController _gameController;
+    private UIController _uiController;
     private GameObject _point;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -22,9 +23,10 @@ public class FarmerController : MonoBehaviour
 
     private CancellationTokenSource _cancellationTokenSource;
 
-    public async void ActiveUnit(GameController gameController)
+    public async void ActiveUnit(GameController gameController, UIController uIController)
     {
         _gameController = gameController;
+        _uiController = uIController;
         _transform = transform;
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();

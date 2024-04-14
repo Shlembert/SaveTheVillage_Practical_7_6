@@ -29,20 +29,18 @@ public class FarmerFactory : MonoBehaviour
                 {
                     goList[i].SetActive(true);
                     goList[i].transform.position = gameController.Spawn.position;
-                    goList[i].GetComponent<FarmerController>().ActiveUnit(gameController);
+                    goList[i].GetComponent<FarmerController>().ActiveUnit(gameController, uiController);
                     return;
                 }
             }
         }
 
         GameObject go = Instantiate(prefab, gameController.Spawn.position, Quaternion.identity);
-
+        go.name = _count.ToString();
         goList.Add(go);
         _count++;
         go.transform.parent = _transform;
-        go.GetComponent<FarmerController>().ActiveUnit(gameController);
-       
-        uiController.DisplayTopCount(1, unitType);
+        go.GetComponent<FarmerController>().ActiveUnit(gameController, uiController);
         return;
     }
 }

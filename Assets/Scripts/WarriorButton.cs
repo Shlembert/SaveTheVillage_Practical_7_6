@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class WarriorButton : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private GameController gameController;
+    [SerializeField] private UIController uIController;
     [SerializeField] private WarriorFactory unitFactory;
     [SerializeField] private TypeUnit type;
     [SerializeField] private TMP_Text readiness;
@@ -22,6 +23,8 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
 
         if (price <= gameController.GrainCount)
         {
+            gameController.WarriorCount++;
+            uIController.DisplayTopCount(gameController.WarriorCount, type);
             gameController.StockDown(price);
             unitFactory.SpawnUnit();
             Cooldown();
