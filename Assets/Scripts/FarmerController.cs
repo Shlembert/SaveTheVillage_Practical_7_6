@@ -13,7 +13,6 @@ public class FarmerController : MonoBehaviour
 
     private Transform _transform, _storage;
     private GameController _gameController;
-    private UIController _uiController;
     private GameObject _point;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -26,7 +25,6 @@ public class FarmerController : MonoBehaviour
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
         _gameController = gameController;
-        _uiController = uIController;
         _transform = transform;
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -55,11 +53,10 @@ public class FarmerController : MonoBehaviour
                 // Если есть активные точки, двигаемся к ним
                 Vector2 targetPosition = GetActivePointPosition();
                 _point.SetActive(false);
-                
+
                 await MoveToTarget(targetPosition, cancellationToken);
                 _isWorking = true;
                 //Work!
-                _animator.SetTrigger("Job");
                 await StartTimer(workingTime, cancellationToken);
                 _isWorking = false;
                 await MoveToStorage(cancellationToken);
@@ -77,31 +74,20 @@ public class FarmerController : MonoBehaviour
     {
         _isLaden = true;
         _point.SetActive(true);
-        _animator.SetTrigger("Stor");
 
         await MoveToTarget(_gameController.PointStorage.position, cancellationToken);
+        await MoveToTarget(_storage.position, cancellationToken);
 
-        _animator.SetTrigger("Stor");
-        while (_gameController.IsGame && Vector2.Distance(_transform.position, _storage.position) > 0.1f)
-        {
-            // Вычисляем направление движения к цели
-            Vector2 direction = ((Vector2)_storage.position - (Vector2)_transform.position).normalized;
-            // Двигаемся в направлении к цели
-            _transform.position += (Vector3)(direction * speed * Time.deltaTime);
-
-            await UniTask.Yield(cancellationToken);
-        }
         // Push to storage
         _spriteRenderer.enabled = false;
-        _gameController.Farmers.Remove(this.gameObject);
+        _gameController.Farmers.Remove(gameObject);
         _gameController.StockUp(profit);
 
         await UniTask.Delay(2000);
 
         _spriteRenderer.enabled = true;
-        _gameController.Farmers.Add(this.gameObject);
+        _gameController.Farmers.Add(gameObject);
 
-        _animator.SetTrigger("Walk");
         await MoveToTarget(new Vector2(_transform.position.x + 4f, _transform.position.y), cancellationToken);
         _isLaden = false;
 
@@ -147,7 +133,6 @@ public class FarmerController : MonoBehaviour
         Vector2 randomPosition = new Vector2(clampedX, clampedY);
 
         // Возвращаем случайные координаты в пределах размеров спрайта
-        _animator.SetTrigger("Free");
         _currentSpeed = speed * 0.2f;
 
         return randomPosition;
@@ -157,7 +142,7 @@ public class FarmerController : MonoBehaviour
     {
         // Создаем список активных точек
         List<Transform> activePoints = new List<Transform>();
-        
+
         // Проходим по всем точкам и добавляем активные точки в список
         foreach (var point in _gameController.FarmerPoints)
         {
@@ -171,14 +156,12 @@ public class FarmerController : MonoBehaviour
         if (activePoints.Count > 0)
         {
             int randomIndex = UnityEngine.Random.Range(0, activePoints.Count);
-            _animator.SetTrigger("Walk");
             _currentSpeed = speed;
             _point = activePoints[randomIndex].gameObject;
             return activePoints[randomIndex].position;
         }
         else
         {
-            _animator.SetTrigger("Free");
             _currentSpeed = speed * 0.2f;
             return _transform.position;
         }
@@ -190,10 +173,56 @@ public class FarmerController : MonoBehaviour
         {
             Vector2 direction = (targetPosition - (Vector2)_transform.position).normalized;
             _transform.position += (Vector3)(direction * _currentSpeed * Time.deltaTime);
-
+            GetDirection(direction);
+            // SetAnimationDirection(direction);
             await UniTask.Yield(cancellationToken);
         }
     }
+
+    //private void SetAnimationDirection(Vector3 movement)
+    //{
+    //    // Проверяем, в каком направлении движется объект
+    //    _animator.SetBool("MoveRight", movement.x > 0 && Mathf.Abs(movement.x) > 0.1f);
+    //    _animator.SetBool("MoveLeft", movement.x < 0 && Mathf.Abs(movement.x) > 0.1f);
+    //    _animator.SetBool("MoveUp", movement.y > 0 && Mathf.Abs(movement.y) > 0.1f);
+    //    _animator.SetBool("MoveDown", movement.y < 0 && Mathf.Abs(movement.y) > 0.1f);
+    //}
+    //private void GetDirection(Vector3 movement)
+    //{
+    //    // Устанавливаем параметры направления движения
+    //    _animator.SetFloat("Horizontal", movement.x);
+    //    _animator.SetFloat("Vertical", movement.y);
+    //}
+
+    private void GetDirection(Vector3 movement)
+    {
+        // Проверяем, в каком направлении движется объект
+        if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
+        {
+            // Движение горизонтально
+            if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f)
+            {
+                _animator.SetTrigger("MoveRight");
+            }
+            else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f)
+            {
+                _animator.SetTrigger("MoveLeft");
+            }
+        }
+        else
+        {
+            // Движение вертикально
+            if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f)
+            {
+                _animator.SetTrigger("MoveUp");
+            }
+            else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f)
+            {
+                _animator.SetTrigger("MoveDown");
+            }
+        }
+    }
+
 
     public async UniTask StartTimer(float duration, CancellationToken cancellationToken)
     {

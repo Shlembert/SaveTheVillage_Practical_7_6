@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6820518814096688607}
   - component: {fileID: 313008284515339863}
   - component: {fileID: 3962134201630274469}
-  - component: {fileID: 2089111260402404157}
+  - component: {fileID: 3531790309956236787}
   m_Layer: 4
   m_Name: Warrior
   m_TagString: Untagged
@@ -141,7 +141,8 @@ MonoBehaviour:
   speed: 1.2
   profit: 3
   col: {fileID: 313008284515339863}
---- !u!95 &2089111260402404157
+  _animator: {fileID: 3531790309956236787}
+--- !u!95 &3531790309956236787
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -151,7 +152,7 @@ Animator:
   m_GameObject: {fileID: 7606709151958934753}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2a3503e6999115741b97b2c2e38fcc2a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0e900dcec6a8bf74fb32497f227d5f97, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

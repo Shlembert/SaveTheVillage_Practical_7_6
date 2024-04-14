@@ -10,11 +10,12 @@ public class WarriorController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private int profit;
     [SerializeField] private Collider2D col;
+    [SerializeField] private Animator _animator;
 
     private Transform _transform;
     private GameController _gameController;
     private UIController _uIController;
-    private Animator _animator;
+    private Vector2 _previousDirection;
     private bool _isLife;
     private int _currentProfit;
     private float _currentSpeed;
@@ -30,10 +31,9 @@ public class WarriorController : MonoBehaviour
         _currentProfit = profit;
         _currentSpeed = speed;
         _transform = transform;
-        _animator = GetComponent<Animator>();
         _isLife = true;
         col.enabled = true;
-        
+
         _cancellationTokenSource = new CancellationTokenSource();
         try
         {
@@ -108,43 +108,48 @@ public class WarriorController : MonoBehaviour
 
     private async UniTask MoveToTarget(Transform target, CancellationToken cancellationToken)
     {
-
         while (_gameController.IsGame && Vector2.Distance(_transform.position, target.position) > 0.1f)
         {
-            Vector2 direction = (target.position - _transform.position).normalized;
-            _transform.position += (Vector3)(direction * _currentSpeed * Time.deltaTime);
+            Vector2 direction = (target.position - _transform.position);
+            _transform.position += (Vector3)(direction.normalized * _currentSpeed * Time.deltaTime);
             GetDirection(direction);
+
             await UniTask.Yield(cancellationToken);
         }
     }
 
     private void GetDirection(Vector3 movement)
     {
-        // Нормализуем вектор движения
-        Vector3 normalizedMovement = movement.normalized;
-
         // Проверяем, в каком направлении движется объект
-        if (normalizedMovement.x > 0.5)
+        if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
         {
-            _animator.SetTrigger("MoveRight");
-        }
-        else if (normalizedMovement.x < -0.5)
-        {
-            _animator.SetTrigger("MoveLeft");
-        }
-        else if (normalizedMovement.y > 0.5)
-        {
-            _animator.SetTrigger("MoveUp");
-        }
-        else if (normalizedMovement.y < -0.5)
-        {
-            _animator.SetTrigger("MoveDown");
+            // Движение горизонтально
+            if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f && _previousDirection.x <= 0)
+            {
+                _animator.SetTrigger("MoveRight");
+            }
+            else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f && _previousDirection.x >= 0)
+            {
+                _animator.SetTrigger("MoveLeft");
+            }
         }
         else
         {
-            _animator.SetTrigger("Idle");
+            // Движение вертикально
+            if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f && _previousDirection.y <= 0)
+            {
+                _animator.SetTrigger("MoveUp");
+            }
+            else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f && _previousDirection.y >= 0)
+            {
+                _animator.SetTrigger("MoveDown");
+            }
         }
+
+        // Обновляем предыдущее направление
+        _previousDirection = movement;
     }
+
 
     public async UniTask StartTimer(float duration, CancellationToken cancellationToken)
     {
@@ -165,10 +170,10 @@ public class WarriorController : MonoBehaviour
         {
             enemy.gameObject.SetActive(false);
             _currentProfit--;
-            if (_currentProfit <= 0) 
+            if (_currentProfit <= 0)
             {
                 _uIController.DisplayTopCount(_gameController.WarriorCount, typeUnit);
-                gameObject.SetActive(false); 
+                gameObject.SetActive(false);
             }
         }
     }

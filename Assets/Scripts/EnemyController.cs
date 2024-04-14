@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     private UIController _uIController;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
+    private Vector2 _previousDirection;
     private bool _isLife, _hungry;
 
     private CancellationTokenSource _cancellationTokenSource;
@@ -53,7 +54,7 @@ public class EnemyController : MonoBehaviour
             Vector2 direction = ((Vector2)_storage.position - (Vector2)_transform.position).normalized;
             // Двигаемся в направлении к цели
             _transform.position += (Vector3)(direction * speed * Time.deltaTime);
-
+            GetDirection(direction);
             await UniTask.Yield(cancellationToken);
         }
 
@@ -139,9 +140,41 @@ public class EnemyController : MonoBehaviour
             Vector2 direction = (target.position - _transform.position).normalized;
 
            _transform.position += (Vector3)(direction * speed * Time.deltaTime);
-
+            GetDirection(direction);
             await UniTask.Yield(cancellationToken);
         }
+    }
+
+    private void GetDirection(Vector3 movement)
+    {
+        // Проверяем, в каком направлении движется объект
+        if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
+        {
+            // Движение горизонтально
+            if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f && _previousDirection.x <= 0)
+            {
+                _animator.SetTrigger("MoveRight");
+            }
+            else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f && _previousDirection.x >= 0)
+            {
+                _animator.SetTrigger("MoveLeft");
+            }
+        }
+        else
+        {
+            // Движение вертикально
+            if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f && _previousDirection.y <= 0)
+            {
+                _animator.SetTrigger("MoveUp");
+            }
+            else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f && _previousDirection.y >= 0)
+            {
+                _animator.SetTrigger("MoveDown");
+            }
+        }
+
+        // Обновляем предыдущее направление
+        _previousDirection = movement;
     }
 
     public async UniTask StartTimer(float duration, CancellationToken cancellationToken)
