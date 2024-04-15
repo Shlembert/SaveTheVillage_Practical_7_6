@@ -49,9 +49,9 @@ public class WarriorController : MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, _gameController.WarriorsPoints.Count);
         Transform home = _gameController.WarriorsPoints[randomIndex].transform;
-        _animator.SetTrigger("MoveRight");
         await MoveToTarget(home, cancellationToken);
-
+        _animator.SetTrigger("Idle");
+        await UniTask.Delay(3000);
         col.enabled = true;
     }
 

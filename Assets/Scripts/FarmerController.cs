@@ -56,6 +56,7 @@ public class FarmerController : MonoBehaviour
                 await MoveToTarget(targetPosition, cancellationToken);
                 _isWorking = true;
                 //Work!
+                _animator.SetTrigger("Idle");
                 await StartTimer(workingTime, cancellationToken);
                 _isWorking = false;
                 await MoveToStorage(cancellationToken);
