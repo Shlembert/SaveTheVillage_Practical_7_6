@@ -17,7 +17,6 @@ public class EnemyController : MonoBehaviour
     private UIController _uIController;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-    private Vector2 _previousDirection;
     private bool _isLife, _hungry;
 
     private CancellationTokenSource _cancellationTokenSource;
@@ -48,27 +47,18 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask MoveToStorage(CancellationToken cancellationToken)
     {
-        while (_gameController.IsGame && Vector2.Distance(_transform.position, _storage.position) > 0.1f)
-        {
-            // Вычисляем направление движения к цели
-            Vector2 direction = ((Vector2)_storage.position - (Vector2)_transform.position).normalized;
-            // Двигаемся в направлении к цели
-            _transform.position += (Vector3)(direction * speed * Time.deltaTime);
-            GetDirection(direction);
-            await UniTask.Yield(cancellationToken);
-        }
-
+        await MoveToTarget(_storage, cancellationToken);
         // Зашли в хранилище
         await StealingGrain(cancellationToken);
     }
 
     private async UniTask StealingGrain(CancellationToken cancellationToken)
     {
+        col.enabled = false;
         _spriteRenderer.enabled = false;
         _gameController.StockDown(profit);
         await UniTask.Delay(2000);
         _spriteRenderer.enabled = true;
-        // Двигаем с мешком на выход
         await MoveToHome(cancellationToken);
     }
 
@@ -76,9 +66,9 @@ public class EnemyController : MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, _gameController.EnemiesPoints.Count);
         Transform home = _gameController.EnemiesPoints[randomIndex].transform;
-
+        _hungry = false;
         await MoveToTarget(home, cancellationToken);
-
+        
         _isLife = false;
         Hungry = true;
         gameObject.SetActive(false);
@@ -135,12 +125,15 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask MoveToTarget(Transform target, CancellationToken cancellationToken)
     {
+        Vector2 direction1 = (target.position - _transform.position);
+        GetDirection(direction1);
+
         while (_gameController.IsGame && Vector2.Distance(_transform.position, target.position) > 0.1f)
         {
             Vector2 direction = (target.position - _transform.position).normalized;
 
            _transform.position += (Vector3)(direction * speed * Time.deltaTime);
-            GetDirection(direction);
+            
             await UniTask.Yield(cancellationToken);
         }
     }
@@ -151,11 +144,11 @@ public class EnemyController : MonoBehaviour
         if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
         {
             // Движение горизонтально
-            if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f && _previousDirection.x <= 0)
+            if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f)
             {
                 _animator.SetTrigger("MoveRight");
             }
-            else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f && _previousDirection.x >= 0)
+            else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f)
             {
                 _animator.SetTrigger("MoveLeft");
             }
@@ -163,18 +156,15 @@ public class EnemyController : MonoBehaviour
         else
         {
             // Движение вертикально
-            if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f && _previousDirection.y <= 0)
+            if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f)
             {
                 _animator.SetTrigger("MoveUp");
             }
-            else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f && _previousDirection.y >= 0)
+            else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f)
             {
                 _animator.SetTrigger("MoveDown");
             }
         }
-
-        // Обновляем предыдущее направление
-        _previousDirection = movement;
     }
 
     public async UniTask StartTimer(float duration, CancellationToken cancellationToken)

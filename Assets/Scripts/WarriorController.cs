@@ -49,7 +49,7 @@ public class WarriorController : MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, _gameController.WarriorsPoints.Count);
         Transform home = _gameController.WarriorsPoints[randomIndex].transform;
-
+        _animator.SetTrigger("MoveRight");
         await MoveToTarget(home, cancellationToken);
 
         col.enabled = true;
@@ -108,11 +108,14 @@ public class WarriorController : MonoBehaviour
 
     private async UniTask MoveToTarget(Transform target, CancellationToken cancellationToken)
     {
+        Vector2 direction1 = (target.position - _transform.position).normalized;
+        GetDirection(direction1);
+
         while (_gameController.IsGame && Vector2.Distance(_transform.position, target.position) > 0.1f)
         {
-            Vector2 direction = (target.position - _transform.position);
+            Vector2 direction = (target.position - _transform.position).normalized;
             _transform.position += (Vector3)(direction.normalized * _currentSpeed * Time.deltaTime);
-            GetDirection(direction);
+            
 
             await UniTask.Yield(cancellationToken);
         }
@@ -124,11 +127,11 @@ public class WarriorController : MonoBehaviour
         if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
         {
             // Движение горизонтально
-            if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f && _previousDirection.x <= 0)
+            if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f)
             {
                 _animator.SetTrigger("MoveRight");
             }
-            else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f && _previousDirection.x >= 0)
+            else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f)
             {
                 _animator.SetTrigger("MoveLeft");
             }
@@ -136,18 +139,15 @@ public class WarriorController : MonoBehaviour
         else
         {
             // Движение вертикально
-            if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f && _previousDirection.y <= 0)
+            if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f)
             {
                 _animator.SetTrigger("MoveUp");
             }
-            else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f && _previousDirection.y >= 0)
+            else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f)
             {
                 _animator.SetTrigger("MoveDown");
             }
         }
-
-        // Обновляем предыдущее направление
-        _previousDirection = movement;
     }
 
 

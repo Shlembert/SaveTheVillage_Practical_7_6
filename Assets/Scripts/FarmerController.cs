@@ -53,7 +53,6 @@ public class FarmerController : MonoBehaviour
                 // Если есть активные точки, двигаемся к ним
                 Vector2 targetPosition = GetActivePointPosition();
                 _point.SetActive(false);
-
                 await MoveToTarget(targetPosition, cancellationToken);
                 _isWorking = true;
                 //Work!
@@ -65,6 +64,7 @@ public class FarmerController : MonoBehaviour
             {
                 // Если нет активных точек, двигаемся к случайной точке
                 Vector2 targetPosition = GetRandomPositionAroundCurrent();
+                GetDirection(targetPosition);
                 await MoveToTarget(targetPosition, cancellationToken);
             }
         }
@@ -74,7 +74,6 @@ public class FarmerController : MonoBehaviour
     {
         _isLaden = true;
         _point.SetActive(true);
-
         await MoveToTarget(_gameController.PointStorage.position, cancellationToken);
         await MoveToTarget(_storage.position, cancellationToken);
 
@@ -87,7 +86,6 @@ public class FarmerController : MonoBehaviour
 
         _spriteRenderer.enabled = true;
         _gameController.Farmers.Add(gameObject);
-
         await MoveToTarget(new Vector2(_transform.position.x + 4f, _transform.position.y), cancellationToken);
         _isLaden = false;
 
@@ -169,30 +167,16 @@ public class FarmerController : MonoBehaviour
 
     private async UniTask MoveToTarget(Vector2 targetPosition, CancellationToken cancellationToken)
     {
+        Vector2 direction1 = (targetPosition - (Vector2)_transform.position).normalized;
+        GetDirection(direction1);
+
         while (_gameController.IsGame && Vector2.Distance(_transform.position, targetPosition) > 0.1f)
         {
             Vector2 direction = (targetPosition - (Vector2)_transform.position).normalized;
             _transform.position += (Vector3)(direction * _currentSpeed * Time.deltaTime);
-            GetDirection(direction);
-            // SetAnimationDirection(direction);
             await UniTask.Yield(cancellationToken);
         }
     }
-
-    //private void SetAnimationDirection(Vector3 movement)
-    //{
-    //    // Проверяем, в каком направлении движется объект
-    //    _animator.SetBool("MoveRight", movement.x > 0 && Mathf.Abs(movement.x) > 0.1f);
-    //    _animator.SetBool("MoveLeft", movement.x < 0 && Mathf.Abs(movement.x) > 0.1f);
-    //    _animator.SetBool("MoveUp", movement.y > 0 && Mathf.Abs(movement.y) > 0.1f);
-    //    _animator.SetBool("MoveDown", movement.y < 0 && Mathf.Abs(movement.y) > 0.1f);
-    //}
-    //private void GetDirection(Vector3 movement)
-    //{
-    //    // Устанавливаем параметры направления движения
-    //    _animator.SetFloat("Horizontal", movement.x);
-    //    _animator.SetFloat("Vertical", movement.y);
-    //}
 
     private void GetDirection(Vector3 movement)
     {
