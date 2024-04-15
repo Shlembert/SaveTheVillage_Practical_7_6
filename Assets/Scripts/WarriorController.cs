@@ -177,10 +177,11 @@ public class WarriorController : MonoBehaviour
             _currentSpeed = 0f;
             float temp = enemy.Speed;
             enemy.Speed = 0;
+
             AnimationBattle();
             enemy.AnimationBattle();
-            await UniTask.Delay(1000);
-            enemy.gameObject.SetActive(false);
+
+            await UniTask.Delay(500);
             col.enabled = true;
             _currentSpeed = speed;
             enemy.Speed = temp;
@@ -193,6 +194,7 @@ public class WarriorController : MonoBehaviour
                 _uIController.DisplayTopCount(_gameController.WarriorCount, typeUnit);
                 gameObject.SetActive(false);
             }
+
         }
     }
 
