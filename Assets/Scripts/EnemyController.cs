@@ -22,6 +22,7 @@ public class EnemyController : MonoBehaviour
     private CancellationTokenSource _cancellationTokenSource;
 
     public bool Hungry { get => _hungry; set => _hungry = value; }
+    public float Speed { get => speed; set => speed = value; }
 
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
@@ -132,7 +133,7 @@ public class EnemyController : MonoBehaviour
         {
             Vector2 direction = (target.position - _transform.position).normalized;
 
-           _transform.position += (Vector3)(direction * speed * Time.deltaTime);
+           _transform.position += (Vector3)(direction * Speed * Time.deltaTime);
             
             await UniTask.Yield(cancellationToken);
         }
@@ -190,6 +191,11 @@ public class EnemyController : MonoBehaviour
             col.enabled = false;
             Hungry = false;
         }
+    }
+
+    public void AnimationBattle()
+    {
+        _animator.SetTrigger("Idle");
     }
 
     private void OnDisable()

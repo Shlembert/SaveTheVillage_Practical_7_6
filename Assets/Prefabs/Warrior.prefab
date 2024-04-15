@@ -142,6 +142,8 @@ MonoBehaviour:
   profit: 3
   col: {fileID: 313008284515339863}
   _animator: {fileID: 3531790309956236787}
+  _spriteRenderer: {fileID: 7606709151958934755}
+  _particleSystem: {fileID: 3939900289043747678, guid: 4beed3e14a54a2c4982c6921220049e4, type: 3}
 --- !u!95 &3531790309956236787
 Animator:
   serializedVersion: 5

@@ -11,11 +11,11 @@ public class WarriorController : MonoBehaviour
     [SerializeField] private int profit;
     [SerializeField] private Collider2D col;
     [SerializeField] private Animator _animator;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private Transform _transform;
     private GameController _gameController;
     private UIController _uIController;
-    private Vector2 _previousDirection;
     private bool _isLife;
     private int _currentProfit;
     private float _currentSpeed;
@@ -162,13 +162,31 @@ public class WarriorController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private  void OnTriggerEnter2D(Collider2D collision)
     {
-        EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+        Battle(collision);
+    }
+
+    private async void Battle(Collider2D collider)
+    {
+        EnemyController enemy = collider.gameObject.GetComponent<EnemyController>();
 
         if (enemy != null)
         {
+            col.enabled = false;
+            _currentSpeed = 0f;
+            float temp = enemy.Speed;
+            enemy.Speed = 0;
+            AnimationBattle();
+            enemy.AnimationBattle();
+            await UniTask.Delay(1000);
             enemy.gameObject.SetActive(false);
+            col.enabled = true;
+            _currentSpeed = speed;
+            enemy.Speed = temp;
+
+            enemy.gameObject.SetActive(false);
+
             _currentProfit--;
             if (_currentProfit <= 0)
             {
@@ -176,6 +194,11 @@ public class WarriorController : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    private void AnimationBattle()
+    {
+        _animator.SetTrigger("Idle");
     }
 
     private void OnDisable()
