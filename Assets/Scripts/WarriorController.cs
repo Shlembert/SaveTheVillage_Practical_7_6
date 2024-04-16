@@ -17,7 +17,7 @@ public class WarriorController : MonoBehaviour
     private GameController _gameController;
     private UIController _uIController;
     private bool _isLife, _isCombat;
-    private int _currentProfit;
+    private int _currentProfit, _indexLife;
     private float _currentSpeed;
     private List<GameObject> _lifeCount;
 
@@ -35,6 +35,7 @@ public class WarriorController : MonoBehaviour
         _currentSpeed = speed;
         _transform = transform;
         InitListPoints(_lifeCount, _transform);
+        _indexLife = 0;
         _isLife = true;
         _isCombat = false;
         col.enabled = true;
@@ -194,14 +195,22 @@ public class WarriorController : MonoBehaviour
             enemy.Speed = temp;
 
             enemy.gameObject.SetActive(false);
+            
             _currentProfit--;
 
             if (_currentProfit <= 0)
             {
                 _isLife = false;
+                _gameController.WarriorCount--;
+                _uIController.DisplayTopCount(_gameController.WarriorCount, typeUnit);
                 gameObject.SetActive(false);
             }
-            else _isCombat = false;
+            else 
+            {
+                _lifeCount[_indexLife].SetActive(false);
+                _indexLife++;
+                _isCombat = false;
+            }
         }
     }
 
@@ -218,7 +227,7 @@ public class WarriorController : MonoBehaviour
             _cancellationTokenSource.Cancel();
         }
 
-        _uIController.DisplayTopCount(_gameController.WarriorCount, typeUnit);
+       
         col.enabled = true;
     }
 }

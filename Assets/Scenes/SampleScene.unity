@@ -365,6 +365,7 @@ MonoBehaviour:
   storage: {fileID: 179382892}
   pointStorage: {fileID: 1874695782}
   boundsFarmer: {fileID: 696255040}
+  InvasionController: {fileID: 219476105}
 --- !u!4 &219476104
 Transform:
   m_ObjectHideFlags: 0
@@ -398,26 +399,27 @@ MonoBehaviour:
   gameController: {fileID: 219476103}
   uIController: {fileID: 1225573713}
   enemyFactory: {fileID: 1893759219}
+  waveIndicator: {fileID: 1039079224}
   waveSettings:
   - Cooldown: 30
     Count: 1
-  - Cooldown: 30
-    Count: 3
   - Cooldown: 60
     Count: 3
-  - Cooldown: 60
-    Count: 5
   - Cooldown: 30
     Count: 3
   - Cooldown: 60
     Count: 5
+  - Cooldown: 30
+    Count: 3
   - Cooldown: 60
     Count: 7
-  - Cooldown: 60
+  - Cooldown: 30
     Count: 5
-  - Cooldown: 90
+  - Cooldown: 15
+    Count: 3
+  - Cooldown: 60
     Count: 9
-  - Cooldown: 120
+  - Cooldown: 60
     Count: 15
 --- !u!1 &320279750
 GameObject:
@@ -2033,7 +2035,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -347, y: -61}
+  m_AnchoredPosition: {x: -308, y: -35}
   m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1039079225
