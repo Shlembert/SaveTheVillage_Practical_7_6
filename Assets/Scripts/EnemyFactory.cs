@@ -54,6 +54,7 @@ public class EnemyFactory : MonoBehaviour
         go.name = _count.ToString();
         goList.Add(go);
         _count++;
+        gameController.EnemyCount = _count;
         go.transform.parent = _transform;
         go.GetComponent<EnemyController>().ActiveUnit(gameController, uiController);
     }

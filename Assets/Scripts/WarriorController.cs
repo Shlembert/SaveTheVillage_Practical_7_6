@@ -16,10 +16,10 @@ public class WarriorController : MonoBehaviour
     private Transform _transform;
     private GameController _gameController;
     private UIController _uIController;
-    private bool _isLife,_isCombat;
+    private bool _isLife, _isCombat;
     private int _currentProfit;
     private float _currentSpeed;
-    private GameObject _target;
+    private List<GameObject> _lifeCount;
 
     private CancellationTokenSource _cancellationTokenSource;
 
@@ -27,11 +27,14 @@ public class WarriorController : MonoBehaviour
 
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
+        _lifeCount = new List<GameObject>();
+       
         _gameController = gameController;
         _uIController = uIController;
         _currentProfit = profit;
         _currentSpeed = speed;
         _transform = transform;
+        InitListPoints(_lifeCount, _transform);
         _isLife = true;
         _isCombat = false;
         col.enabled = true;
@@ -44,6 +47,18 @@ public class WarriorController : MonoBehaviour
         catch (OperationCanceledException)
         {
             // Обработка отмены операции
+        }
+    }
+
+    private void InitListPoints(List<GameObject> list, Transform parentPoints)
+    {
+        list.Clear();
+
+        for (int i = 0; i < parentPoints.childCount; i++)
+        {
+            Transform childTransform = parentPoints.GetChild(i);
+            childTransform.gameObject.SetActive(true);
+            list.Add(childTransform.gameObject);
         }
     }
 
@@ -64,7 +79,7 @@ public class WarriorController : MonoBehaviour
         {
             Transform targetPosition = FindTargetPosition();
 
-            if (targetPosition.position != _transform.position) 
+            if (targetPosition.position != _transform.position)
                 await MoveToTarget(targetPosition, cancellationToken);
             else await MoveToHome(cancellationToken);
 
@@ -93,12 +108,12 @@ public class WarriorController : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, activeEnemies.Count);
             EnemyController enemy = activeEnemies[randomIndex].GetComponent<EnemyController>();
 
-            if (enemy != null && enemy.Hungry && !enemy.WithLoot && !enemy.IsTarget) 
+            if (enemy != null && enemy.Hungry && !enemy.WithLoot && !enemy.IsTarget)
             {
                 enemy.IsTarget = true;
 
                 return enemy.transform;
-            } 
+            }
             else return _transform;
         }
         else
@@ -153,7 +168,7 @@ public class WarriorController : MonoBehaviour
         }
     }
 
-    private  void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Battle(collision);
     }

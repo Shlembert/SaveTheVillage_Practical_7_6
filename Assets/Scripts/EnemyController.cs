@@ -194,6 +194,7 @@ public class EnemyController : MonoBehaviour
         {
             _cancellationTokenSource.Cancel();
         }
+        _gameController.EnemyCount--;
         _isLife = false;
         col.enabled = true;
     }

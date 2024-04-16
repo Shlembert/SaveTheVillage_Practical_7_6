@@ -71,7 +71,7 @@ public class InvasionController : MonoBehaviour
         }
 
         // Время истекло
-        StopWave();
+       // StopWave();
         enemyFactory.SetCountSpawnUnit(waveSettings[_currentIndexWave].Count);
         if (_currentIndexWave < waveSettings.Count-1) _currentIndexWave++;
         else _currentIndexWave = 0;
