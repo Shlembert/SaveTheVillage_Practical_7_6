@@ -15,7 +15,7 @@ public class StorageAnimController : MonoBehaviour
 
     private void PlayAnimRotor()
     {
-        Debug.Log("Rotate");
+       // Debug.Log("Rotate");
         rotor.DOKill();
         rotor.DORotate(new Vector3(0f, 0f, -360f), duration, RotateMode.FastBeyond360)
             //.SetLoops(-1, LoopType.Restart)

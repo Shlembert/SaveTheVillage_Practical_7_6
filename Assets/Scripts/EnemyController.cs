@@ -17,12 +17,14 @@ public class EnemyController : MonoBehaviour
     private UIController _uIController;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-    private bool _isLife, _hungry;
+    private bool _isLife, _hungry, _withLoot, _isTarget;
 
     private CancellationTokenSource _cancellationTokenSource;
 
     public bool Hungry { get => _hungry; set => _hungry = value; }
     public float Speed { get => speed; set => speed = value; }
+    public bool WithLoot { get => _withLoot; set => _withLoot = value; }
+    public bool IsTarget { get => _isTarget; set => _isTarget = value; }
 
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
@@ -33,7 +35,9 @@ public class EnemyController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _storage = gameController.Storage;
         _isLife = true;
-        Hungry = true;
+        _hungry = true;
+        _withLoot = false;
+        _isTarget = false;
 
         _cancellationTokenSource = new CancellationTokenSource();
         try
@@ -48,9 +52,8 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask MoveToStorage(CancellationToken cancellationToken)
     {
-        await MoveToTarget(_storage, cancellationToken);
-        // Зашли в хранилище
-        await StealingGrain(cancellationToken);
+            await MoveToTarget(_storage, cancellationToken); // Идем к хранилищу
+            await StealingGrain(cancellationToken); // Зашли в хранилище
     }
 
     private async UniTask StealingGrain(CancellationToken cancellationToken)
@@ -58,8 +61,12 @@ public class EnemyController : MonoBehaviour
         col.enabled = false;
         _spriteRenderer.enabled = false;
         _gameController.StockDown(profit);
+
         await UniTask.Delay(2000);
+
+        _withLoot = true;
         _spriteRenderer.enabled = true;
+
         await MoveToHome(cancellationToken);
     }
 
@@ -67,9 +74,12 @@ public class EnemyController : MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, _gameController.EnemiesPoints.Count);
         Transform home = _gameController.EnemiesPoints[randomIndex].transform;
+
         _hungry = false;
+
         await MoveToTarget(home, cancellationToken);
-        
+        if (_gameController.Farmers.Count <= 0 && _gameController.GrainCount < 5) Debug.Log("Game Over");
+        _withLoot = false;
         _isLife = false;
         Hungry = true;
         gameObject.SetActive(false);
@@ -83,12 +93,12 @@ public class EnemyController : MonoBehaviour
 
             if (targetPosition.position != _transform.position)
             {
-                Debug.Log($"Enemy {gameObject.name}: Target pos: {targetPosition.name} || Target farmer: {_target.name}");
                 await MoveToTarget(targetPosition, cancellationToken);
             }
             else
             {
-                await MoveToStorage(cancellationToken);
+              if(_gameController.GrainCount > 0)  await MoveToStorage(cancellationToken);
+                else await MoveToHome(cancellationToken);
             }
 
             if (!Hungry) await MoveToHome(cancellationToken);
@@ -103,25 +113,16 @@ public class EnemyController : MonoBehaviour
 
         if (Hungry)
         {
-            if (activeFarmers.Count > 0)
+            if (activeFarmers.Count > 0) // Найден фермер, возвращаем его позицию
             {
-                // Найден фермер, возвращаем его позицию
                 int randomIndex = UnityEngine.Random.Range(0, activeFarmers.Count);
                 _target = activeFarmers[randomIndex];
                 _gameController.FarmerTargets.Remove(_target);
                 return _target.transform;
             }
-            else
-            {
-                // Списки фермеров пусты, возвращаем позицию хранилища
-                return _transform;
-            }
+            else return _transform; // Списки фермеров пусты, возвращаем позицию хранилища
         }
-        else
-        {
-            // Схватили фермера, тактически отступаем в логово
-            return _transform;
-        }
+        else return _transform; // Схватили фермера, тактически отступаем в логово
     }
 
     private async UniTask MoveToTarget(Transform target, CancellationToken cancellationToken)
@@ -133,8 +134,8 @@ public class EnemyController : MonoBehaviour
         {
             Vector2 direction = (target.position - _transform.position).normalized;
 
-           _transform.position += (Vector3)(direction * Speed * Time.deltaTime);
-            
+            _transform.position += (Vector3)(direction * Speed * Time.deltaTime);
+
             await UniTask.Yield(cancellationToken);
         }
     }
@@ -168,28 +169,16 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public async UniTask StartTimer(float duration, CancellationToken cancellationToken)
-    {
-        float currentTime = 0f;
-
-        while (currentTime < duration)
-        {
-            await UniTask.Yield(cancellationToken);
-            currentTime += Time.deltaTime;
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == _target)
         {
-            Debug.Log($" Enemy {gameObject.name} Collision Farmer {collision.gameObject.name}");
             collision.gameObject.gameObject.SetActive(false);
             _gameController.FarmerCount--;
             _uIController.DisplayTopCount(_gameController.FarmerCount, TypeUnit.Farmer);
             _gameController.SetDisplayCount();
             col.enabled = false;
-            Hungry = false;
+            _hungry = false;
         }
     }
 

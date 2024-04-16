@@ -8,7 +8,6 @@ public class EnemyFactory : MonoBehaviour
     [SerializeField] private UIController uiController;
     [SerializeField] private TypeUnit unitType;
     [SerializeField] private GameObject prefab;
-    [SerializeField] private int number;
 
     private Transform _transform;
     private int _count;
@@ -19,7 +18,7 @@ public class EnemyFactory : MonoBehaviour
         _count = 0;
     }
 
-    public async void SetCountSpawnUnit()
+    public async void SetCountSpawnUnit(int number)
     {
         ShuffleSpawnPoints();
         SetActiveTarget(gameController.FarmerTargets, gameController.Farmers);

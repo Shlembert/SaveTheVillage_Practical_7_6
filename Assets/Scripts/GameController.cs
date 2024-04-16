@@ -75,32 +75,36 @@ public class GameController : MonoBehaviour
 
     public void SetDisplayCount()
     {
-        uIController.DisplayTopCount(GetActiveUnits(_farmers), TypeUnit.Farmer);
-        uIController.DisplayTopCount(GetActiveUnits(_warriors), TypeUnit.Warrior);
+        uIController.DisplayTopCount(GetActiveUnitsCount(_farmers), TypeUnit.Farmer);
+        uIController.DisplayTopCount(GetActiveUnitsCount(_warriors), TypeUnit.Warrior);
         uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
     }
 
-
-
     public void StockUp(int food)
     {
-        _grainCount += food;
-        uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
+        if (_grainCount < 100)
+        {
+            _grainCount += food;
+            uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
+        }
     }
 
     public void StockDown(int food)
     {
-        _grainCount -= food;
-        uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
+        if (_grainCount > 0)
+        {
+            _grainCount -= food;
+            uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
+        }
     }
 
-    private int GetActiveUnits(List<GameObject> units)
+    private int GetActiveUnitsCount(List<GameObject> units)
     {
         int count = 0;
 
         foreach (var unit in units)
         {
-            if (unit.activeSelf) count++;
+            if (unit.activeInHierarchy) count++;
         }
 
         return count;
