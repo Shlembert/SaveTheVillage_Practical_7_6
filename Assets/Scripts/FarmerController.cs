@@ -61,8 +61,10 @@ public class FarmerController : MonoBehaviour
                 _animator.SetTrigger("Idle");
                 equips[4].SetActive(true);
                 await StartTimer(workingTime, cancellationToken);
+               
                 equips[4].SetActive(false);
                 _isWorking = false;
+                _isLaden = true;
                 await MoveToStorage(cancellationToken);
             }
             else
@@ -83,10 +85,11 @@ public class FarmerController : MonoBehaviour
         await MoveToTarget(_storage.position, cancellationToken);
 
         // Push to storage
+        foreach (var item in equips) item.SetActive(false);
         _spriteRenderer.enabled = false;
         _gameController.Farmers.Remove(gameObject);
         _gameController.StockUp(profit);
-
+        _isLaden = false;
         await UniTask.Delay(2000);
 
         _spriteRenderer.enabled = true;
@@ -191,10 +194,14 @@ public class FarmerController : MonoBehaviour
             // Движение горизонтально
             if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f)
             {
+                foreach (var item in equips) item.SetActive(false);
+                equips[3].SetActive(_isLaden);
                 _animator.SetTrigger("MoveRight");
             }
             else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f)
             {
+                foreach (var item in equips) item.SetActive(false);
+                equips[2].SetActive(_isLaden);
                 _animator.SetTrigger("MoveLeft");
             }
         }
@@ -203,10 +210,14 @@ public class FarmerController : MonoBehaviour
             // Движение вертикально
             if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f)
             {
+                foreach (var item in equips) item.SetActive(false);
+                equips[1].SetActive(_isLaden);
                 _animator.SetTrigger("MoveUp");
             }
             else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f)
             {
+                foreach (var item in equips) item.SetActive(false);
+                equips[0].SetActive(_isLaden);
                 _animator.SetTrigger("MoveDown");
             }
         }

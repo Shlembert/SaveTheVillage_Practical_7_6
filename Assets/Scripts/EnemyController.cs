@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private int profit;
     [SerializeField] private Collider2D col;
+    [SerializeField] private List<GameObject> equips;
 
     private GameObject _target;
     private Transform _transform, _storage;
@@ -18,6 +19,7 @@ public class EnemyController : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private bool _isLife, _hungry, _withLoot, _isTarget;
+    private bool _hasLootFarmer, _hasLootGrain;
 
     private CancellationTokenSource _cancellationTokenSource;
 
@@ -38,7 +40,11 @@ public class EnemyController : MonoBehaviour
         _hungry = true;
         _withLoot = false;
         _isTarget = false;
+        _hasLootFarmer = false;
+        _hasLootGrain = false;
 
+        foreach (var item in equips) item.SetActive(false);
+       
         _cancellationTokenSource = new CancellationTokenSource();
         try
         {
@@ -61,7 +67,7 @@ public class EnemyController : MonoBehaviour
         col.enabled = false;
         _spriteRenderer.enabled = false;
         _gameController.StockDown(profit);
-
+        _hasLootGrain = true;
         await UniTask.Delay(2000);
 
         _withLoot = true;
@@ -148,11 +154,17 @@ public class EnemyController : MonoBehaviour
             // Движение горизонтально
             if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f)
             {
+                foreach (var item in equips) item.SetActive(false);
+                equips[3].SetActive(_hasLootGrain);
+                equips[7].SetActive(_hasLootFarmer);
                 _animator.SetTrigger("MoveRight");
             }
             else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f)
             {
                 _animator.SetTrigger("MoveLeft");
+                foreach (var item in equips) item.SetActive(false);
+                equips[2].SetActive(_hasLootGrain);
+                equips[6].SetActive(_hasLootFarmer);
             }
         }
         else
@@ -160,10 +172,16 @@ public class EnemyController : MonoBehaviour
             // Движение вертикально
             if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f)
             {
+                foreach (var item in equips) item.SetActive(false);
+                equips[1].SetActive(_hasLootGrain);
+                equips[5].SetActive(_hasLootFarmer);
                 _animator.SetTrigger("MoveUp");
             }
             else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f)
             {
+                foreach (var item in equips) item.SetActive(false);
+                equips[0].SetActive(_hasLootGrain);
+                equips[4].SetActive(_hasLootFarmer);
                 _animator.SetTrigger("MoveDown");
             }
         }
@@ -174,6 +192,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject == _target)
         {
             collision.gameObject.gameObject.SetActive(false);
+            _hasLootFarmer = true;
             _gameController.FarmerCount--;
             _uIController.DisplayTopCount(_gameController.FarmerCount, TypeUnit.Farmer);
             _gameController.SetDisplayCount();
