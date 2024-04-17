@@ -10,7 +10,7 @@ public class FarmerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float workingTime;
     [SerializeField] private int profit;
-
+    [SerializeField] private List<GameObject> equips;
     private Transform _transform, _storage;
     private GameController _gameController;
     private GameObject _point;
@@ -33,6 +33,8 @@ public class FarmerController : MonoBehaviour
         _isLaden = false;
         _isWorking = false;
 
+        foreach (var item in equips) item.SetActive(false);
+       
         _cancellationTokenSource = new CancellationTokenSource();
         try
         {
@@ -57,8 +59,9 @@ public class FarmerController : MonoBehaviour
                 _isWorking = true;
                 //Work!
                 _animator.SetTrigger("Idle");
+                equips[4].SetActive(true);
                 await StartTimer(workingTime, cancellationToken);
-
+                equips[4].SetActive(false);
                 _isWorking = false;
                 await MoveToStorage(cancellationToken);
             }
