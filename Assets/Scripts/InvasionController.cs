@@ -45,6 +45,7 @@ public class InvasionController : MonoBehaviour
     {
         while (gameController.IsGame && _isReady)
         {
+            uIController.WaveNumber.text = (_currentIndexWave +1).ToString();
             await StartTimer(waveSettings[_currentIndexWave].Cooldown);
 
             await UniTask.Yield(cancellationToken); // Добавим задержку между проверками

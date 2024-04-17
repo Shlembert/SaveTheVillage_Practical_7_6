@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
         _hasLootGrain = false;
 
         foreach (var item in equips) item.SetActive(false);
-       
+
         _cancellationTokenSource = new CancellationTokenSource();
         try
         {
@@ -58,8 +58,22 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask MoveToStorage(CancellationToken cancellationToken)
     {
+        if (_gameController.GrainCount >= 5)
+        {
+            Debug.Log("Go Storage");
             await MoveToTarget(_storage, cancellationToken); // Идем к хранилищу
             await StealingGrain(cancellationToken); // Зашли в хранилище
+        }
+        else if (_gameController.FarmerCount >=0 && _gameController.GrainCount >= 4)
+        {
+            Debug.Log("Search Farmers");
+            await SearchTarget(cancellationToken);
+        }
+        else
+        {
+            Debug.Log("No Grain & No Farmers");
+            await MoveToHome(cancellationToken);
+        }
     }
 
     private async UniTask StealingGrain(CancellationToken cancellationToken)
@@ -67,9 +81,10 @@ public class EnemyController : MonoBehaviour
         col.enabled = false;
         _spriteRenderer.enabled = false;
         _gameController.StockDown(profit);
-        _hasLootGrain = true;
+       
         await UniTask.Delay(2000);
 
+        _hasLootGrain = true;
         _withLoot = true;
         _spriteRenderer.enabled = true;
 
@@ -84,7 +99,25 @@ public class EnemyController : MonoBehaviour
         _hungry = false;
 
         await MoveToTarget(home, cancellationToken);
-        if (_gameController.Farmers.Count <= 0 && _gameController.GrainCount < 5) Debug.Log("Game Over");
+
+        if (_gameController.EnemyCount == 1) _gameController.EnemyCount--;
+
+        Debug.Log
+            (
+            $"Report Enemy name {gameObject.name}:" +
+            $"\n Raid - {_gameController.EnemyCount}" +
+            $"\n Loot Farmer - {_hasLootFarmer}" +
+            $"\n Loot Grain - {_hasLootGrain}"+
+            $"\n Status - In Home"
+            );
+
+        if (_gameController.EnemyCount <= 1 && 
+            _gameController.Farmers.Count <= 4 && 
+            _gameController.FarmerCount <=0)
+        {
+            _gameController.IsGame = false;
+            Debug.Log("Game Over!");
+        }
         _withLoot = false;
         _isLife = false;
         Hungry = true;
@@ -103,7 +136,7 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-              if(_gameController.GrainCount > 0)  await MoveToStorage(cancellationToken);
+                if (_gameController.GrainCount > 0) await MoveToStorage(cancellationToken);
                 else await MoveToHome(cancellationToken);
             }
 

@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text warriorsCount;
     [SerializeField] private TMP_Text foodCount;
     [SerializeField] private TMP_Text enemyesCount;
+    [SerializeField] private TMP_Text waveNumber;
     [Space]
     [SerializeField] private TMP_Text farmerCreate;
     [SerializeField] private TMP_Text farmerDead;
@@ -31,6 +32,7 @@ public class UIController : MonoBehaviour
 
     public Image InvasionFilled { get => invasionFilled; set => invasionFilled = value; }
     public TMP_Text EnemyesCount { get => enemyesCount; set => enemyesCount = value; }
+    public TMP_Text WaveNumber { get => waveNumber; set => waveNumber = value; }
 
     public void DisplayTopCount(int value, TypeUnit typeUnit)
     {

@@ -82,11 +82,12 @@ public class GameController : MonoBehaviour
 
     public void StockUp(int food)
     {
-        if (_grainCount < 100)
+        if (_grainCount < 500)
         {
             _grainCount += food;
             uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
         }
+        else Debug.Log("You Win!");
     }
 
     public void StockDown(int food)

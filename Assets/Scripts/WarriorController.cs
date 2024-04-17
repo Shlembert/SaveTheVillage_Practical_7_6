@@ -17,7 +17,7 @@ public class WarriorController : MonoBehaviour
     private GameController _gameController;
     private UIController _uIController;
     private bool _isLife, _isCombat;
-    private int _currentProfit;
+    private int _currentProfit, _indexLife;
     private float _currentSpeed;
     private List<GameObject> _lifeCount;
 
@@ -32,6 +32,7 @@ public class WarriorController : MonoBehaviour
         _gameController = gameController;
         _uIController = uIController;
         _currentProfit = profit;
+        _indexLife = 0;
         _currentSpeed = speed;
         _transform = transform;
         InitListPoints(_lifeCount, _transform);
@@ -66,9 +67,10 @@ public class WarriorController : MonoBehaviour
     {
         int randomIndex = UnityEngine.Random.Range(0, _gameController.WarriorsPoints.Count);
         Transform home = _gameController.WarriorsPoints[randomIndex].transform;
+
         await MoveToTarget(home, cancellationToken);
         _animator.SetTrigger("Idle");
-        await UniTask.Delay(500);
+        await UniTask.Delay(10);
         _isCombat = false;
         col.enabled = true;
     }
@@ -188,20 +190,32 @@ public class WarriorController : MonoBehaviour
             AnimationBattle();
             enemy.AnimationBattle();
 
-            await UniTask.Delay(300);
+            await UniTask.Delay(100);
             col.enabled = true;
             _currentSpeed = speed;
             enemy.Speed = temp;
 
             enemy.gameObject.SetActive(false);
-            _currentProfit--;
+           
 
-            if (_currentProfit <= 0)
+            if (_currentProfit <= 1)
             {
                 _isLife = false;
+                _gameController.WarriorCount--;
                 gameObject.SetActive(false);
             }
-            else _isCombat = false;
+            else 
+            {
+                if (_indexLife <= 1) 
+                {
+                    _lifeCount[_indexLife].SetActive(false);
+                    _indexLife++;
+                } 
+                else _indexLife = 0;
+
+                _currentProfit--;
+                _isCombat = false;
+            }
         }
     }
 
