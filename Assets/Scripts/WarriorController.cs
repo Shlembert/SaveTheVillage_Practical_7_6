@@ -196,26 +196,30 @@ public class WarriorController : MonoBehaviour
             enemy.Speed = temp;
 
             enemy.gameObject.SetActive(false);
-           
+
 
             if (_currentProfit <= 1)
             {
+                Debug.Log("Last combat");
                 _isLife = false;
                 _gameController.WarriorCount--;
                 gameObject.SetActive(false);
             }
-            else 
+            else
             {
-                if (_indexLife <= 1) 
+                Debug.Log($"Combat{_indexLife} ");
+
+                if (_indexLife <= 1)
                 {
+                    Debug.Log("com");
                     _lifeCount[_indexLife].SetActive(false);
                     _indexLife++;
-                } 
-                else _indexLife = 0;
 
-                _currentProfit--;
-                _isCombat = false;
+                }
             }
+
+            _currentProfit--;
+            _isCombat = false;
         }
     }
 
