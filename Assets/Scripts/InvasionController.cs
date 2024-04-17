@@ -17,10 +17,7 @@ public class InvasionController : MonoBehaviour
     [SerializeField] private GameController gameController;
     [SerializeField] private UIController uIController;
     [SerializeField] private EnemyFactory enemyFactory;
-    [SerializeField] private Transform waveIndicator;
     [SerializeField] private List<WaveSetting> waveSettings;
-
-
 
     private CancellationTokenSource _cancellationTokenSource;
     private int _currentIndexWave;
@@ -36,7 +33,7 @@ public class InvasionController : MonoBehaviour
         _cancellationTokenSource = new CancellationTokenSource();
         try
         {
-            await Invasion(_cancellationTokenSource.Token);
+          await Invasion(_cancellationTokenSource.Token);
         }
         catch (OperationCanceledException)
         {
@@ -59,7 +56,7 @@ public class InvasionController : MonoBehaviour
         uIController.EnemyesCount.text = waveSettings[_currentIndexWave].Count.ToString();
 
         float currentTime = 0f;
-
+       
         while (currentTime < duration)
         {
             // Обновляем readiness и filled в процентах
@@ -74,11 +71,10 @@ public class InvasionController : MonoBehaviour
         }
 
         // Время истекло
-
+       // StopWave();
         enemyFactory.SetCountSpawnUnit(waveSettings[_currentIndexWave].Count);
-        if (_currentIndexWave < waveSettings.Count - 1) _currentIndexWave++;
+        if (_currentIndexWave < waveSettings.Count-1) _currentIndexWave++;
         else _currentIndexWave = 0;
-
     }
 
     private void UpdateReadiness()
@@ -87,18 +83,21 @@ public class InvasionController : MonoBehaviour
         // readiness.text = $"{percentReady:0}%";
     }
 
-
-    private void CancelToken()
+    public void ShowWave()
     {
-        // Отменяем токен, если он активен
-        if (_cancellationTokenSource != null && !_cancellationTokenSource.Token.IsCancellationRequested)
-        {
-            _cancellationTokenSource.Cancel();
-        }
+        _isReady = true;
+    }
+
+    private void StopWave() 
+    { 
+        _isReady = false;
     }
 
     private void OnDisable()
     {
-        CancelToken();
+        if (_cancellationTokenSource != null && !_cancellationTokenSource.Token.IsCancellationRequested)
+        {
+            _cancellationTokenSource.Cancel();
+        }
     }
 }

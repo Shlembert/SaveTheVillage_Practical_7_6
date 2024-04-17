@@ -6,7 +6,6 @@ public class GameController : MonoBehaviour
     [SerializeField] private UIController uIController;
     [SerializeField] private Transform gardien, outpost, lair, spawn, storage, pointStorage;
     [SerializeField] private SpriteRenderer boundsFarmer;
-    [SerializeField] private InvasionController InvasionController;
 
     private List<GameObject> _farmers, _warriors, _enemies, _farmerPoints, _warriorsPoints, _enemiesPoints, _farmerTargets, _enemiesTargets;
     private int _grainCount, _farmerCount, _warriorCount, _enemyCount;
