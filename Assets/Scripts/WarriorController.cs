@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Threading;
-using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class WarriorController : MonoBehaviour
@@ -17,20 +16,20 @@ public class WarriorController : MonoBehaviour
     private Transform _transform;
     private GameController _gameController;
     private UIController _uIController;
-    private bool _isLife, _isEnemyFound;
+    private bool _isLife/*, _isEnemyFound*/;
     private int _currentProfit, _indexLife;
     private float _currentSpeed;
     private List<GameObject> _lifeCount;
 
     private CancellationTokenSource _cancellationTokenSourceSearch;
-    private CancellationTokenSource _cancellationTokenSourcePatrol;
+   // private CancellationTokenSource _cancellationTokenSourcePatrol;
 
     public GameController GameController { get => _gameController; set => _gameController = value; }
 
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
         _lifeCount = new List<GameObject>();
-       
+
         _gameController = gameController;
         _uIController = uIController;
         _currentProfit = profit;
@@ -76,19 +75,9 @@ public class WarriorController : MonoBehaviour
         col.enabled = true;
         _animator.SetTrigger("Idle");
 
-      //  while (!_isEnemyFound)
-       // {
-            // Код для ожидания случайного времени
-            // Скучаем случайное время
-            int random = UnityEngine.Random.Range(5, 10) * 1000;
-            await UniTask.Delay(random, _isEnemyFound);
-
-            // Если враг обнаружен, прервать выполнение
-            //if (_isEnemyFound)
-            //{
-            //    return;
-            //}
-       // }
+        // Скучаем случайное время
+        int random = UnityEngine.Random.Range(5, 10) * 1000;
+        await UniTask.Delay(random);
     }
 
     private async UniTask SearchTarget(CancellationToken cancellationToken)
@@ -97,17 +86,14 @@ public class WarriorController : MonoBehaviour
         {
             Transform targetPosition = FindTargetPosition();
 
-            //if (_isEnemyFound) CancelToken(_cancellationTokenSourcePatrol);
-
             if (targetPosition.position != _transform.position)
             {
                 await MoveToTarget(targetPosition, cancellationToken);
             }
-            else 
+            else
             {
-                _cancellationTokenSourcePatrol = new CancellationTokenSource();
-                await MoveToPost(_cancellationTokenSourcePatrol.Token);
-            } 
+                await MoveToPost(cancellationToken);
+            }
 
             await UniTask.Yield(cancellationToken); // Добавим задержку между проверками
         }
@@ -134,10 +120,10 @@ public class WarriorController : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, activeEnemies.Count);
             EnemyController enemy = activeEnemies[randomIndex].GetComponent<EnemyController>();
 
-            if (enemy != null && enemy.Hungry && !enemy.WithLoot && !enemy.IsTarget)
+            if (enemy != null && enemy.Hungry && !enemy.WithLoot /*&& !enemy.IsTarget*/)
             {
                 enemy.IsTarget = true;
-                _isEnemyFound = true;
+               // _isEnemyFound = true;
                 return enemy.transform;
             }
             else return _transform;
@@ -193,7 +179,7 @@ public class WarriorController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {  Battle(collision);}
+    private void OnTriggerEnter2D(Collider2D collision) { Battle(collision); }
 
     private async void Battle(Collider2D collider)
     {
@@ -217,14 +203,14 @@ public class WarriorController : MonoBehaviour
             FinishBattle();
 
             enemy.Speed = temp;
-           
+
             enemy.gameObject.SetActive(false);
         }
     }
 
     private void StartBattle()
     {
-       _isEnemyFound = false;
+       // _isEnemyFound = false;
         col.enabled = false;
         _currentSpeed = 0f;
     }
@@ -247,8 +233,6 @@ public class WarriorController : MonoBehaviour
                 _lifeCount[_indexLife].SetActive(false);
                 _indexLife++;
             }
-           // _isCombat = false;
-           // GetDirection(FindTargetPosition().position);
         }
         else
         {
@@ -275,7 +259,6 @@ public class WarriorController : MonoBehaviour
     private void OnDisable()
     {
         CancelToken(_cancellationTokenSourceSearch);
-        CancelToken(_cancellationTokenSourcePatrol);
         _uIController.DisplayTopCount(_gameController.WarriorCount, typeUnit);
         col.enabled = true;
     }
