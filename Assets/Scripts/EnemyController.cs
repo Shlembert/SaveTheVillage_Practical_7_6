@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
             await MoveToTarget(_storage, cancellationToken); // Идем к хранилищу
             await StealingGrain(cancellationToken); // Зашли в хранилище
         }
-        else if (_gameController.FarmerCount >=0 && _gameController.GrainCount >= 4)
+        else if (_gameController.FarmerCount >= 0 && _gameController.GrainCount <= 4)
         {
             Debug.Log("Search Farmers");
             await SearchTarget(cancellationToken);
@@ -100,27 +100,32 @@ public class EnemyController : MonoBehaviour
 
         await MoveToTarget(home, cancellationToken);
 
-        if (_gameController.EnemyCount > 1) _gameController.EnemyCount--;
+        if (_gameController.EnemyCount <= 1)
+        {
+           // _gameController.FinishEnemyWave();
+
+            if (_gameController.GrainCount <= 4 && _gameController.FarmerCount <= 0)
+            {
+                _gameController.IsGame = false;
+                Debug.Log("Game Over!");
+            }
+        }
+
+        _gameController.EnemyCount--;
 
         Debug.Log
             (
-            $"Report Enemy name {gameObject.name}:" +
-            $"\n Raid - {_gameController.EnemyCount}" +
+            $"Report Enemy {gameObject.name}:" +
             $"\n Loot Farmer - {_hasLootFarmer}" +
-            $"\n Loot Grain - {_hasLootGrain}"+
+            $"\n Loot Grain - {_hasLootGrain}" +
             $"\n Status - In Home"
             );
 
-        if (_gameController.EnemyCount <= 1 && 
-            _gameController.Farmers.Count <= 4 && 
-            _gameController.FarmerCount <=0)
-        {
-            _gameController.IsGame = false;
-            Debug.Log("Game Over!");
-        }
+       
         _withLoot = false;
         _isLife = false;
         Hungry = true;
+        await UniTask.Delay(100);
         gameObject.SetActive(false);
     }
 
@@ -246,7 +251,9 @@ public class EnemyController : MonoBehaviour
         {
             _cancellationTokenSource.Cancel();
         }
-        _gameController.EnemyCount--;
+
+        if(_gameController.EnemyCount==0) _gameController.FinishEnemyWave();
+
         _isLife = false;
         col.enabled = true;
     }

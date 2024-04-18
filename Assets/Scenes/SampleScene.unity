@@ -358,6 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uIController: {fileID: 1225573713}
+  invasionController: {fileID: 219476105}
   gardien: {fileID: 495049927}
   outpost: {fileID: 187091973}
   lair: {fileID: 1064582048}
@@ -419,6 +420,10 @@ MonoBehaviour:
     Count: 12
   - Cooldown: 120
     Count: 18
+  indicator: {fileID: 1039079224}
+  duration: 1
+  moveRight: 12
+  moveLeft: 5.7
 --- !u!1 &320279750
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,7 +2176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -347, y: -61}
+  m_AnchoredPosition: {x: 340.99994, y: -61}
   m_SizeDelta: {x: 600, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1039079225

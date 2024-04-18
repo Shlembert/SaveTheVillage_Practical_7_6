@@ -190,11 +190,11 @@ public class WarriorController : MonoBehaviour
 
             CheckLife();
 
-            await UniTask.Delay(100);
+            await UniTask.Delay(500);
             col.enabled = true;
             _currentSpeed = speed;
             enemy.Speed = temp;
-
+            _gameController.EnemyCount--;
             enemy.gameObject.SetActive(false);
         }
     }

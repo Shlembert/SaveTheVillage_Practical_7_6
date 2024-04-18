@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -19,13 +20,15 @@ public class InvasionController : MonoBehaviour
     [SerializeField] private EnemyFactory enemyFactory;
     [SerializeField] private List<WaveSetting> waveSettings;
     [Space]
-    [SerializeField] private float duration;
-    [SerializeField] private float moveRight, moveLeft;
+    [SerializeField] private Transform indicator;
+    [SerializeField] private float duration, moveRight, moveLeft;
+
+    private Image _filled;
 
     private CancellationTokenSource _cancellationTokenSource;
+
     private int _currentIndexWave;
     private bool _isReady, _shouldStopWave;
-    private Image _filled;
 
     public async void StartInvasion()
     {
@@ -33,10 +36,11 @@ public class InvasionController : MonoBehaviour
         _currentIndexWave = 0;
         _filled = uIController.InvasionFilled;
 
-        _cancellationTokenSource = new CancellationTokenSource();
+        //_cancellationTokenSource = new CancellationTokenSource();
         try
         {
-            await Invasion(_cancellationTokenSource.Token);
+            await UniTask.Delay(3000);
+            ShowWave();
         }
         catch (OperationCanceledException)
         {
@@ -63,6 +67,7 @@ public class InvasionController : MonoBehaviour
     public async UniTask StartTimer(float duration, CancellationToken cancellationToken)
     {
         uIController.EnemyesCount.text = waveSettings[_currentIndexWave].Count.ToString();
+        uIController.WaveNumber.text = (_currentIndexWave + 1).ToString();
 
         float currentTime = 0f;
 
@@ -101,34 +106,40 @@ public class InvasionController : MonoBehaviour
     public void ShowWave()
     {
         // Сначала останавливаем предыдущий таймер, если он был запущен
-        StopWave();
+        StopTimer();
 
-        // Снова запускаем таймер для новой волны
-        _cancellationTokenSource = new CancellationTokenSource();
-        _isReady = true; // Устанавливаем флаг готовности
-        _shouldStopWave = false; // Сбрасываем флаг остановки таймера
+        indicator.DOMoveX(moveLeft, duration, false).SetEase(Ease.OutBack, 0.8f).OnComplete(() =>
+         {
+             // Снова запускаем таймер для новой волны
+             _cancellationTokenSource = new CancellationTokenSource();
+             _isReady = true; // Устанавливаем флаг готовности
+             _shouldStopWave = false; // Сбрасываем флаг остановки таймера
 
-        // Запускаем новую инвазию
-        _ = Invasion(_cancellationTokenSource.Token);
+             // Запускаем новую инвазию
+             _ = Invasion(_cancellationTokenSource.Token);
+         });
     }
 
     private void StopWave()
     {
         // Устанавливаем флаг остановки таймера
+        _filled.fillAmount = 0f;
         _shouldStopWave = true;
+        StopTimer();
+        indicator.DOMoveX(moveRight, duration, false).SetEase(Ease.InBack, 0.8f);
+    }
 
+    private void StopTimer()
+    {
+        _shouldStopWave = true;
         // Отменяем токен, если он активен
         if (_cancellationTokenSource != null && !_cancellationTokenSource.Token.IsCancellationRequested)
         {
             _cancellationTokenSource.Cancel();
         }
     }
-
     private void OnDisable()
     {
-        if (_cancellationTokenSource != null && !_cancellationTokenSource.Token.IsCancellationRequested)
-        {
-            _cancellationTokenSource.Cancel();
-        }
+        StopTimer();
     }
 }
