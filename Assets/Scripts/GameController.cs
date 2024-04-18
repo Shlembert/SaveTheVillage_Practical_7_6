@@ -4,6 +4,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] private UIController uIController;
+    [SerializeField] private InvasionController invasionController;
+
     [SerializeField] private Transform gardien, outpost, lair, spawn, storage, pointStorage;
     [SerializeField] private SpriteRenderer boundsFarmer;
 
@@ -109,5 +111,10 @@ public class GameController : MonoBehaviour
         }
 
         return count;
+    }
+
+    public void FinishEnemyWave()
+    {
+        invasionController.ShowWave();
     }
 }

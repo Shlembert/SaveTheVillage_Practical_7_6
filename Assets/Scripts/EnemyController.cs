@@ -100,7 +100,7 @@ public class EnemyController : MonoBehaviour
 
         await MoveToTarget(home, cancellationToken);
 
-        if (_gameController.EnemyCount == 1) _gameController.EnemyCount--;
+        if (_gameController.EnemyCount > 1) _gameController.EnemyCount--;
 
         Debug.Log
             (

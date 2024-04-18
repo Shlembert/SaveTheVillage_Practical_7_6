@@ -128,6 +128,7 @@ public class WarriorController : MonoBehaviour
     private async UniTask MoveToTarget(Transform target, CancellationToken cancellationToken)
     {
         Vector2 direction1 = (target.position - _transform.position).normalized;
+
         GetDirection(direction1);
 
         while (_gameController.IsGame && Vector2.Distance(_transform.position, target.position) > 0.1f)
@@ -170,10 +171,7 @@ public class WarriorController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Battle(collision);
-    }
+    private void OnTriggerEnter2D(Collider2D collision) {  Battle(collision);}
 
     private async void Battle(Collider2D collider)
     {
@@ -190,36 +188,39 @@ public class WarriorController : MonoBehaviour
             AnimationBattle();
             enemy.AnimationBattle();
 
+            CheckLife();
+
             await UniTask.Delay(100);
             col.enabled = true;
             _currentSpeed = speed;
             enemy.Speed = temp;
 
             enemy.gameObject.SetActive(false);
+        }
+    }
 
+    private void CheckLife()
+    {
+        if (_currentProfit >= 1)
+        {
+            Debug.Log($"Combat{_indexLife} ");
 
-            if (_currentProfit <= 1)
+            if (_indexLife <= 1)
             {
-                Debug.Log("Last combat");
-                _isLife = false;
-                _gameController.WarriorCount--;
-                gameObject.SetActive(false);
+                Debug.Log("com");
+                _lifeCount[_indexLife].SetActive(false);
+                _indexLife++;
             }
-            else
-            {
-                Debug.Log($"Combat{_indexLife} ");
-
-                if (_indexLife <= 1)
-                {
-                    Debug.Log("com");
-                    _lifeCount[_indexLife].SetActive(false);
-                    _indexLife++;
-
-                }
-            }
-
             _currentProfit--;
             _isCombat = false;
+            GetDirection(FindTargetPosition().position);
+        }
+        else
+        {
+            Debug.Log("Last combat");
+            _isLife = false;
+            _gameController.WarriorCount--;
+            gameObject.SetActive(false);
         }
     }
 

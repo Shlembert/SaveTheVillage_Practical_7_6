@@ -18,10 +18,13 @@ public class InvasionController : MonoBehaviour
     [SerializeField] private UIController uIController;
     [SerializeField] private EnemyFactory enemyFactory;
     [SerializeField] private List<WaveSetting> waveSettings;
+    [Space]
+    [SerializeField] private float duration;
+    [SerializeField] private float moveRight, moveLeft;
 
     private CancellationTokenSource _cancellationTokenSource;
     private int _currentIndexWave;
-    private bool _isReady;
+    private bool _isReady, _shouldStopWave;
     private Image _filled;
 
     public async void StartInvasion()
@@ -33,7 +36,7 @@ public class InvasionController : MonoBehaviour
         _cancellationTokenSource = new CancellationTokenSource();
         try
         {
-          await Invasion(_cancellationTokenSource.Token);
+            await Invasion(_cancellationTokenSource.Token);
         }
         catch (OperationCanceledException)
         {
@@ -45,19 +48,24 @@ public class InvasionController : MonoBehaviour
     {
         while (gameController.IsGame && _isReady)
         {
-            uIController.WaveNumber.text = (_currentIndexWave +1).ToString();
-            await StartTimer(waveSettings[_currentIndexWave].Cooldown);
+            await StartTimer(waveSettings[_currentIndexWave].Cooldown, cancellationToken);
 
-            await UniTask.Yield(cancellationToken); // Добавим задержку между проверками
+            // Если флаг остановки таймера установлен, выходим из цикла
+            if (_shouldStopWave)
+            {
+                break;
+            }
+
+            await UniTask.Yield(); // Добавим задержку между проверками
         }
     }
 
-    public async UniTask StartTimer(float duration)
+    public async UniTask StartTimer(float duration, CancellationToken cancellationToken)
     {
         uIController.EnemyesCount.text = waveSettings[_currentIndexWave].Count.ToString();
 
         float currentTime = 0f;
-       
+
         while (currentTime < duration)
         {
             // Обновляем readiness и filled в процентах
@@ -65,16 +73,22 @@ public class InvasionController : MonoBehaviour
             _filled.fillAmount = currentTime / duration;
 
             // Ждем один кадр
-            await UniTask.Yield();
+            await UniTask.Yield(cancellationToken);
+
+            // Если флаг остановки таймера установлен, выходим из цикла
+            if (_shouldStopWave)
+            {
+                break;
+            }
 
             // Обновляем время
             currentTime += Time.deltaTime;
         }
 
         // Время истекло
-       // StopWave();
+        StopWave();
         enemyFactory.SetCountSpawnUnit(waveSettings[_currentIndexWave].Count);
-        if (_currentIndexWave < waveSettings.Count-1) _currentIndexWave++;
+        if (_currentIndexWave < waveSettings.Count - 1) _currentIndexWave++;
         else _currentIndexWave = 0;
     }
 
@@ -86,12 +100,28 @@ public class InvasionController : MonoBehaviour
 
     public void ShowWave()
     {
-        _isReady = true;
+        // Сначала останавливаем предыдущий таймер, если он был запущен
+        StopWave();
+
+        // Снова запускаем таймер для новой волны
+        _cancellationTokenSource = new CancellationTokenSource();
+        _isReady = true; // Устанавливаем флаг готовности
+        _shouldStopWave = false; // Сбрасываем флаг остановки таймера
+
+        // Запускаем новую инвазию
+        _ = Invasion(_cancellationTokenSource.Token);
     }
 
-    private void StopWave() 
-    { 
-        _isReady = false;
+    private void StopWave()
+    {
+        // Устанавливаем флаг остановки таймера
+        _shouldStopWave = true;
+
+        // Отменяем токен, если он активен
+        if (_cancellationTokenSource != null && !_cancellationTokenSource.Token.IsCancellationRequested)
+        {
+            _cancellationTokenSource.Cancel();
+        }
     }
 
     private void OnDisable()
