@@ -359,6 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uIController: {fileID: 1225573713}
   invasionController: {fileID: 219476105}
+  grainCount: 25
   gardien: {fileID: 495049927}
   outpost: {fileID: 187091973}
   lair: {fileID: 1064582048}

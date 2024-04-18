@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class WarriorController : MonoBehaviour
@@ -16,12 +17,13 @@ public class WarriorController : MonoBehaviour
     private Transform _transform;
     private GameController _gameController;
     private UIController _uIController;
-    private bool _isLife, _isCombat;
+    private bool _isLife, _isEnemyFound;
     private int _currentProfit, _indexLife;
     private float _currentSpeed;
     private List<GameObject> _lifeCount;
 
-    private CancellationTokenSource _cancellationTokenSource;
+    private CancellationTokenSource _cancellationTokenSourceSearch;
+    private CancellationTokenSource _cancellationTokenSourcePatrol;
 
     public GameController GameController { get => _gameController; set => _gameController = value; }
 
@@ -37,13 +39,13 @@ public class WarriorController : MonoBehaviour
         _transform = transform;
         InitListPoints(_lifeCount, _transform);
         _isLife = true;
-        _isCombat = false;
         col.enabled = true;
 
-        _cancellationTokenSource = new CancellationTokenSource();
+        _cancellationTokenSourceSearch = new CancellationTokenSource();
+
         try
         {
-            await SearchTarget(_cancellationTokenSource.Token);
+            await SearchTarget(_cancellationTokenSourceSearch.Token);
         }
         catch (OperationCanceledException)
         {
@@ -63,16 +65,30 @@ public class WarriorController : MonoBehaviour
         }
     }
 
-    private async UniTask MoveToHome(CancellationToken cancellationToken)
+    private async UniTask MoveToPost(CancellationToken cancellationToken)
     {
         int randomIndex = UnityEngine.Random.Range(0, _gameController.WarriorsPoints.Count);
         Transform home = _gameController.WarriorsPoints[randomIndex].transform;
 
         await MoveToTarget(home, cancellationToken);
-        _animator.SetTrigger("Idle");
-        await UniTask.Delay(10);
-        _isCombat = false;
+
+        // Встали на пост
         col.enabled = true;
+        _animator.SetTrigger("Idle");
+
+      //  while (!_isEnemyFound)
+       // {
+            // Код для ожидания случайного времени
+            // Скучаем случайное время
+            int random = UnityEngine.Random.Range(5, 10) * 1000;
+            await UniTask.Delay(random, _isEnemyFound);
+
+            // Если враг обнаружен, прервать выполнение
+            //if (_isEnemyFound)
+            //{
+            //    return;
+            //}
+       // }
     }
 
     private async UniTask SearchTarget(CancellationToken cancellationToken)
@@ -81,9 +97,17 @@ public class WarriorController : MonoBehaviour
         {
             Transform targetPosition = FindTargetPosition();
 
+            //if (_isEnemyFound) CancelToken(_cancellationTokenSourcePatrol);
+
             if (targetPosition.position != _transform.position)
+            {
                 await MoveToTarget(targetPosition, cancellationToken);
-            else await MoveToHome(cancellationToken);
+            }
+            else 
+            {
+                _cancellationTokenSourcePatrol = new CancellationTokenSource();
+                await MoveToPost(_cancellationTokenSourcePatrol.Token);
+            } 
 
             await UniTask.Yield(cancellationToken); // Добавим задержку между проверками
         }
@@ -113,7 +137,7 @@ public class WarriorController : MonoBehaviour
             if (enemy != null && enemy.Hungry && !enemy.WithLoot && !enemy.IsTarget)
             {
                 enemy.IsTarget = true;
-
+                _isEnemyFound = true;
                 return enemy.transform;
             }
             else return _transform;
@@ -135,11 +159,9 @@ public class WarriorController : MonoBehaviour
         {
             Vector2 direction = (target.position - _transform.position).normalized;
             _transform.position += (Vector3)(direction.normalized * _currentSpeed * Time.deltaTime);
-            if (_isCombat) return;
 
             await UniTask.Yield(cancellationToken);
         }
-        _isCombat = false;
     }
 
     private void GetDirection(Vector3 movement)
@@ -179,41 +201,54 @@ public class WarriorController : MonoBehaviour
 
         if (enemy != null)
         {
-            _isCombat = true;
-            col.enabled = false;
-            _currentSpeed = 0f;
+
+            StartBattle();
+
             float temp = enemy.Speed;
             enemy.Speed = 0;
 
             AnimationBattle();
             enemy.AnimationBattle();
 
+            await UniTask.Delay(500);
+
             CheckLife();
 
-            await UniTask.Delay(500);
-            col.enabled = true;
-            _currentSpeed = speed;
+            FinishBattle();
+
             enemy.Speed = temp;
-            _gameController.EnemyCount--;
+           
             enemy.gameObject.SetActive(false);
         }
     }
 
+    private void StartBattle()
+    {
+       _isEnemyFound = false;
+        col.enabled = false;
+        _currentSpeed = 0f;
+    }
+
+    private void FinishBattle()
+    {
+        col.enabled = true;
+        _currentSpeed = speed;
+        _gameController.EnemyCount--;
+    }
+
     private void CheckLife()
     {
+        _currentProfit--;
+
         if (_currentProfit >= 1)
         {
-            Debug.Log($"Combat{_indexLife} ");
-
             if (_indexLife <= 1)
             {
-                Debug.Log("com");
                 _lifeCount[_indexLife].SetActive(false);
                 _indexLife++;
             }
-            _currentProfit--;
-            _isCombat = false;
-            GetDirection(FindTargetPosition().position);
+           // _isCombat = false;
+           // GetDirection(FindTargetPosition().position);
         }
         else
         {
@@ -229,14 +264,18 @@ public class WarriorController : MonoBehaviour
         _animator.SetTrigger("Idle");
     }
 
+    private void CancelToken(CancellationTokenSource source)
+    {
+        if (source != null && !source.Token.IsCancellationRequested)
+        {
+            source.Cancel();
+        }
+    }
+
     private void OnDisable()
     {
-        if (_cancellationTokenSource != null &&
-            !_cancellationTokenSource.Token.IsCancellationRequested)
-        {
-            _cancellationTokenSource.Cancel();
-        }
-
+        CancelToken(_cancellationTokenSourceSearch);
+        CancelToken(_cancellationTokenSourcePatrol);
         _uIController.DisplayTopCount(_gameController.WarriorCount, typeUnit);
         col.enabled = true;
     }

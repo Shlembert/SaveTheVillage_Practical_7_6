@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,11 +6,14 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] private UIController uIController;
     [SerializeField] private InvasionController invasionController;
-
+    [SerializeField] private int grainCount;
     [SerializeField] private Transform gardien, outpost, lair, spawn, storage, pointStorage;
     [SerializeField] private SpriteRenderer boundsFarmer;
 
-    private List<GameObject> _farmers, _warriors, _enemies, _farmerPoints, _warriorsPoints, _enemiesPoints, _farmerTargets, _enemiesTargets;
+    private List<GameObject> _farmers, _warriors, _enemies;
+    private List<GameObject> _farmerPoints, _warriorsPoints, _enemiesPoints;
+    private List<GameObject> _farmerTargets, _enemiesTargets;
+
     private int _grainCount, _farmerCount, _warriorCount, _enemyCount;
     private bool _isPause, _isGame;
 
@@ -49,13 +53,14 @@ public class GameController : MonoBehaviour
         _warriorsPoints = new List<GameObject>();
         _enemiesPoints = new List<GameObject>();
 
-        _grainCount = 20;
+        _grainCount = grainCount;
         _isGame = true;
 
         InitListPoints(_farmerPoints, gardien);
         InitListPoints(_warriorsPoints, outpost);
         InitListPoints(_enemiesPoints, lair);
         SetDisplayCount();
+        invasionController.StartInvasion();
     }
 
     private void OnDisable()

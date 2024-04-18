@@ -108,6 +108,8 @@ public class InvasionController : MonoBehaviour
         // Сначала останавливаем предыдущий таймер, если он был запущен
         StopTimer();
 
+        if (!gameController.IsGame) return;
+
         indicator.DOMoveX(moveLeft, duration, false).SetEase(Ease.OutBack, 0.8f).OnComplete(() =>
          {
              // Снова запускаем таймер для новой волны

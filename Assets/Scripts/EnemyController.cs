@@ -114,12 +114,10 @@ public class EnemyController : MonoBehaviour
         _gameController.EnemyCount--;
 
         Debug.Log
-            (
-            $"Report Enemy {gameObject.name}:" +
-            $"\n Loot Farmer - {_hasLootFarmer}" +
-            $"\n Loot Grain - {_hasLootGrain}" +
-            $"\n Status - In Home"
-            );
+            ($"Report Enemy {gameObject.name}: " +
+            $"Loot Farmer - {_hasLootFarmer} " +
+            $"Loot Grain - {_hasLootGrain} " +
+            $"Status - In Home");
 
        
         _withLoot = false;
@@ -229,8 +227,12 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject == _target)
         {
-            collision.gameObject.gameObject.SetActive(false);
             _hasLootFarmer = true;
+            equips[6].SetActive(_hasLootFarmer);
+            collision.gameObject.gameObject.SetActive(false);
+
+            if(_target != null) _gameController.FarmerTargets.Remove(_target);
+
             _gameController.FarmerCount--;
             _uIController.DisplayTopCount(_gameController.FarmerCount, TypeUnit.Farmer);
             _gameController.SetDisplayCount();
@@ -253,7 +255,7 @@ public class EnemyController : MonoBehaviour
         }
 
         if(_gameController.EnemyCount==0) _gameController.FinishEnemyWave();
-
+        if (_target != null) _gameController.FarmerTargets.Remove(_target);
         _isLife = false;
         col.enabled = true;
     }
