@@ -1,0 +1,1148 @@
+fileFormatVersion: 2
+guid: 1a2da9dfd556a3c41a36917127bba028
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: warriorAtlasPen_0
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 2720
+        width: 138
+        height: 416
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a29b3ac8a888de84e822656d0923f841
+      internalID: 239113182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_1
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 2713
+        width: 137
+        height: 414
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeeb9d7f0a8ab7140806ac682380d90d
+      internalID: 1691062304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_2
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 2703
+        width: 139
+        height: 420
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5805ca34749afa54c83b71ca9969c591
+      internalID: 654127427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_3
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 2716
+        width: 146
+        height: 411
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060566c071f30ef4585f14e454a61e9f
+      internalID: -529735309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_4
+      rect:
+        serializedVersion: 2
+        x: 1862
+        y: 2727
+        width: 363
+        height: 385
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb7795f8be6aaef438b3dc12acd9442f
+      internalID: -347229656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_5
+      rect:
+        serializedVersion: 2
+        x: 2435
+        y: 2735
+        width: 234
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52d9890b3c7c0248a8edfde01148d1c
+      internalID: 1382180976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_6
+      rect:
+        serializedVersion: 2
+        x: 2926
+        y: 2727
+        width: 271
+        height: 371
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acaea313705e9e3449708b257b0683db
+      internalID: -80271962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_7
+      rect:
+        serializedVersion: 2
+        x: 3420
+        y: 2724
+        width: 289
+        height: 377
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4293bf3e68a75f0468106194baf28454
+      internalID: -1204655849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_8
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 2198
+        width: 148
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eb7f8a86ba8d864db0ec1595e585043
+      internalID: 1603393431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_9
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 2200
+        width: 142
+        height: 424
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d612d78df1fdf44e96571dc9887b4a6
+      internalID: 828277897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_10
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 2202
+        width: 138
+        height: 416
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a4c156698a2c5a46a324c81118d7594
+      internalID: 465365511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_11
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 2191
+        width: 137
+        height: 422
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 630846f5b5279a141bcf713bbaadf5e2
+      internalID: 1664090619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_12
+      rect:
+        serializedVersion: 2
+        x: 1925
+        y: 2210
+        width: 213
+        height: 386
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d846487508a0d7a45a44788ac3b1b687
+      internalID: 1611492940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_13
+      rect:
+        serializedVersion: 2
+        x: 2416
+        y: 2212
+        width: 237
+        height: 387
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 697a7aef37d384f4693e41a6cc049c72
+      internalID: -177877281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_14
+      rect:
+        serializedVersion: 2
+        x: 2913
+        y: 2212
+        width: 298
+        height: 382
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 921338b3c19a86840a7d4ea9735a8906
+      internalID: 462451046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_15
+      rect:
+        serializedVersion: 2
+        x: 3443
+        y: 2214
+        width: 254
+        height: 375
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf29625296508e43982cec8a7396839
+      internalID: 1278483258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_16
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 1683
+        width: 138
+        height: 420
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a87c9a7ab351a624c8db5cb5c62ffa31
+      internalID: 864318521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_17
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 1697
+        width: 137
+        height: 413
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddd21776013c07f409a20827cbe28bd8
+      internalID: -1113577219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_18
+      rect:
+        serializedVersion: 2
+        x: 1064
+        y: 1690
+        width: 142
+        height: 426
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e7b855010c3ea4d9d09836f6f789b8
+      internalID: -919130425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_19
+      rect:
+        serializedVersion: 2
+        x: 1916
+        y: 1713
+        width: 223
+        height: 366
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac12d022a2ee12a47a80a7062ab616bb
+      internalID: -1794436095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_20
+      rect:
+        serializedVersion: 2
+        x: 2459
+        y: 1714
+        width: 164
+        height: 374
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d44d2a67db683444ca1f3b45d33c8ffb
+      internalID: -2025311627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_21
+      rect:
+        serializedVersion: 2
+        x: 3008
+        y: 1707
+        width: 118
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5af36fd213aa2e4380d5f4e3208a777
+      internalID: 1737675477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_22
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 1214
+        width: 144
+        height: 380
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fd35b0997c19174786a865ddbb0c5e4
+      internalID: -1696015660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_23
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1214
+        width: 194
+        height: 373
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 350da0f474aada54db2d1b1600e7a8e9
+      internalID: -1564278615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_24
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 1216
+        width: 215
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39c5831a8d265474a88cd6e7ea3ab401
+      internalID: -523189125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_25
+      rect:
+        serializedVersion: 2
+        x: 1546
+        y: 1225
+        width: 183
+        height: 363
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1959c75b789c95e4793890a8be6dc6aa
+      internalID: -1373130454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_26
+      rect:
+        serializedVersion: 2
+        x: 1964
+        y: 1199
+        width: 137
+        height: 395
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03eddda1ce9ed194e85285de4fa78294
+      internalID: 1161712654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_27
+      rect:
+        serializedVersion: 2
+        x: 2474
+        y: 1181
+        width: 138
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b386036106d0b744c954ad76bb1ebc1c
+      internalID: 1019291000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_28
+      rect:
+        serializedVersion: 2
+        x: 2984
+        y: 1177
+        width: 135
+        height: 406
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b45d3075243cc1e4d81570b69b80d117
+      internalID: 1014767085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_29
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 1191
+        width: 135
+        height: 396
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 849bdbb6cd0ad14408039b424c07df42
+      internalID: 1461937872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_30
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 706
+        width: 117
+        height: 378
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec3ad32d2c73feb48be43075189a97bf
+      internalID: 2126719597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_31
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 705
+        width: 142
+        height: 379
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f81bf0eadcf39f4fb11f66118959b2c
+      internalID: 42859997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_32
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 714
+        width: 185
+        height: 365
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f83befbf768a41f41a39c2730b8447f3
+      internalID: 1910384705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_33
+      rect:
+        serializedVersion: 2
+        x: 1544
+        y: 707
+        width: 222
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f5d27dd501b2a14c87fab15140039ea
+      internalID: -634340471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_34
+      rect:
+        serializedVersion: 2
+        x: 1954
+        y: 716
+        width: 141
+        height: 366
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d22c7e3011c8464c84bc81cd72cd4ba
+      internalID: -1643703909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_35
+      rect:
+        serializedVersion: 2
+        x: 2470
+        y: 698
+        width: 139
+        height: 386
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89888dffa509f6343b537b67ac15a390
+      internalID: -536168833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_36
+      rect:
+        serializedVersion: 2
+        x: 2982
+        y: 679
+        width: 140
+        height: 400
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48730f1985a92384594cc7323bcb6240
+      internalID: -1548423066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_37
+      rect:
+        serializedVersion: 2
+        x: 3498
+        y: 666
+        width: 135
+        height: 409
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f3b0428627355247bbb0d75f5557e07
+      internalID: -1271745677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_38
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 190
+        width: 216
+        height: 373
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ddbf571cedd20419446bf21e263dd0
+      internalID: -372443855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_39
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 190
+        width: 152
+        height: 380
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee08906d831a333459c2b283c8c23bc7
+      internalID: -1200569877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_40
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 190
+        width: 117
+        height: 386
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b9c01a3a0b1db4abf7b4eb6b5d8489
+      internalID: -1020058941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_41
+      rect:
+        serializedVersion: 2
+        x: 1966
+        y: 164
+        width: 134
+        height: 399
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 765a31f2a84855946a71284420eb7987
+      internalID: 1718381341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_42
+      rect:
+        serializedVersion: 2
+        x: 2477
+        y: 191
+        width: 137
+        height: 379
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03f93029acd22464cb378f647d7d0790
+      internalID: 1180127649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_43
+      rect:
+        serializedVersion: 2
+        x: 2988
+        y: 195
+        width: 138
+        height: 380
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e1c9a974499524592b243a42452a72
+      internalID: -1199606542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_44
+      rect:
+        serializedVersion: 2
+        x: 3335
+        y: 164
+        width: 70
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff8b6aa7dc34e642b99293b5b6b9ff0
+      internalID: -1628389095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: warriorAtlasPen_45
+      rect:
+        serializedVersion: 2
+        x: 3505
+        y: 367
+        width: 61
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e292530949743b4459f1dffd07f9256f
+      internalID: -325819917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      warriorAtlasPen_0: 239113182
+      warriorAtlasPen_1: 1691062304
+      warriorAtlasPen_10: 465365511
+      warriorAtlasPen_11: 1664090619
+      warriorAtlasPen_12: 1611492940
+      warriorAtlasPen_13: -177877281
+      warriorAtlasPen_14: 462451046
+      warriorAtlasPen_15: 1278483258
+      warriorAtlasPen_16: 864318521
+      warriorAtlasPen_17: -1113577219
+      warriorAtlasPen_18: -919130425
+      warriorAtlasPen_19: -1794436095
+      warriorAtlasPen_2: 654127427
+      warriorAtlasPen_20: -2025311627
+      warriorAtlasPen_21: 1737675477
+      warriorAtlasPen_22: -1696015660
+      warriorAtlasPen_23: -1564278615
+      warriorAtlasPen_24: -523189125
+      warriorAtlasPen_25: -1373130454
+      warriorAtlasPen_26: 1161712654
+      warriorAtlasPen_27: 1019291000
+      warriorAtlasPen_28: 1014767085
+      warriorAtlasPen_29: 1461937872
+      warriorAtlasPen_3: -529735309
+      warriorAtlasPen_30: 2126719597
+      warriorAtlasPen_31: 42859997
+      warriorAtlasPen_32: 1910384705
+      warriorAtlasPen_33: -634340471
+      warriorAtlasPen_34: -1643703909
+      warriorAtlasPen_35: -536168833
+      warriorAtlasPen_36: -1548423066
+      warriorAtlasPen_37: -1271745677
+      warriorAtlasPen_38: -372443855
+      warriorAtlasPen_39: -1200569877
+      warriorAtlasPen_4: -347229656
+      warriorAtlasPen_40: -1020058941
+      warriorAtlasPen_41: 1718381341
+      warriorAtlasPen_42: 1180127649
+      warriorAtlasPen_43: -1199606542
+      warriorAtlasPen_44: -1628389095
+      warriorAtlasPen_45: -325819917
+      warriorAtlasPen_46: 722611299
+      warriorAtlasPen_5: 1382180976
+      warriorAtlasPen_6: -80271962
+      warriorAtlasPen_7: -1204655849
+      warriorAtlasPen_8: 1603393431
+      warriorAtlasPen_9: 828277897
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

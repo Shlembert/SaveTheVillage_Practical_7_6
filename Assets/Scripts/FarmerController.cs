@@ -58,10 +58,9 @@ public class FarmerController : MonoBehaviour
                 await MoveToTarget(targetPosition, cancellationToken);
                 _isWorking = true;
                 //Work!
-                _animator.SetTrigger("Idle");
                 equips[4].SetActive(true);
+                _animator.SetTrigger("Work");
                 await StartTimer(workingTime, cancellationToken);
-               
                 equips[4].SetActive(false);
                 _isWorking = false;
                 _isLaden = true;

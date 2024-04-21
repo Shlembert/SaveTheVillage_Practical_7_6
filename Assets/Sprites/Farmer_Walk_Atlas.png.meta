@@ -1,0 +1,2797 @@
+fileFormatVersion: 2
+guid: d25de50a9052ae347bcb068d38a2eccb
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_0
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 2220
+        width: 107
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de0b9f3b70073e644bf3d4a9d7a4116c
+      internalID: 1091961831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_1
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 2218
+        width: 108
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b19fea26931f8345af79f642858acdf
+      internalID: 349163968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_2
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 2208
+        width: 111
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12849fe9c2c7e2c449c056aea67b9f9a
+      internalID: 656990639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_3
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 2204
+        width: 108
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f06272ca7ced5544dab9debb349a762d
+      internalID: -1412038778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_4
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 2204
+        width: 111
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ff0067cf27f4444e9da9658682ebb12
+      internalID: 887491710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_5
+      rect:
+        serializedVersion: 2
+        x: 1579
+        y: 2204
+        width: 109
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056c94a85f8580146aedc73325baf8a0
+      internalID: -118971639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_6
+      rect:
+        serializedVersion: 2
+        x: 1878
+        y: 2204
+        width: 110
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc9b72cf5ed308940ac3c0d6c8ea6823
+      internalID: -730658931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_7
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 2197
+        width: 111
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18788da614c7ae849ae349013c776e4b
+      internalID: -1415625550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_8
+      rect:
+        serializedVersion: 2
+        x: 2449
+        y: 2218
+        width: 118
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa0723da62d30e4ca031c75d65bc100
+      internalID: 720116114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_9
+      rect:
+        serializedVersion: 2
+        x: 2747
+        y: 2213
+        width: 118
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54b5c6ed631ab734b9c68fc103133ad1
+      internalID: 925940640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_10
+      rect:
+        serializedVersion: 2
+        x: 3046
+        y: 2211
+        width: 115
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fb772bbd42c88f4295b57fa6441277b
+      internalID: 1097658560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_11
+      rect:
+        serializedVersion: 2
+        x: 3344
+        y: 2206
+        width: 116
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cffbc2fa64ce31b4f8923c7f6ac36cb2
+      internalID: -1318310897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_12
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 2204
+        width: 118
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca34948597d787e45ad3c6a8a57e7832
+      internalID: -1923153778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_13
+      rect:
+        serializedVersion: 2
+        x: 3939
+        y: 2199
+        width: 117
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ce350747e56f48458a6f48fb2d97c64
+      internalID: 1871000904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_14
+      rect:
+        serializedVersion: 2
+        x: 4237
+        y: 2195
+        width: 116
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ef84e492818644080924f112995fd7
+      internalID: -601454982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_15
+      rect:
+        serializedVersion: 2
+        x: 4536
+        y: 2192
+        width: 115
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 910c2becc78743b40b98721fdc8227f3
+      internalID: 1341711388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_16
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1894
+        width: 110
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85d4cddd70cf84e469ba7bad4ba8a7ba
+      internalID: -462708715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_17
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1894
+        width: 111
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39c9fdf19cf88f94e8667dc749b48f6c
+      internalID: -14984932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_18
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 1898
+        width: 109
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6f4a0b40b754f7478a90c34af2d6940
+      internalID: 241288293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_19
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 1901
+        width: 110
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0671fb229ae01741bced8f81710e191
+      internalID: -152138288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_20
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 1905
+        width: 111
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94506a190f4248649b615d4488030a24
+      internalID: 1312975696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_21
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 1910
+        width: 111
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 640d79a27b0ac1448b9ece6d514b7654
+      internalID: -126391380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_22
+      rect:
+        serializedVersion: 2
+        x: 1882
+        y: 1915
+        width: 111
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cb614c4914f3b24fa77209eab4af6cf
+      internalID: 1274085522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_23
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 1919
+        width: 109
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f64347cb68f6cb4e9754b5e3fc5c377
+      internalID: -315613905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_24
+      rect:
+        serializedVersion: 2
+        x: 2444
+        y: 1894
+        width: 115
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76527b30c35b4b54287c9d12fca6f25f
+      internalID: -809485494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_25
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 1896
+        width: 116
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 743c30d9b482ad34fb5199ad302c6e4a
+      internalID: -877523616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_26
+      rect:
+        serializedVersion: 2
+        x: 3039
+        y: 1901
+        width: 115
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a3111d467b343644b897ab9d0f9871e
+      internalID: 1472305391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_27
+      rect:
+        serializedVersion: 2
+        x: 3337
+        y: 1901
+        width: 116
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8bd5644742d86044ba271e66afcd68c
+      internalID: -1858653540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_28
+      rect:
+        serializedVersion: 2
+        x: 3636
+        y: 1908
+        width: 115
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11c67db04305c16448bc0d12d01e54f5
+      internalID: 1113709968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_29
+      rect:
+        serializedVersion: 2
+        x: 3934
+        y: 1915
+        width: 116
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a51b7471e0fc694cb25c73d46346f9c
+      internalID: -1746318119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_30
+      rect:
+        serializedVersion: 2
+        x: 4233
+        y: 1922
+        width: 116
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe0322cde3a5eb1419aacafc57103b5a
+      internalID: 174609853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_31
+      rect:
+        serializedVersion: 2
+        x: 4531
+        y: 1922
+        width: 118
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bce5c33a29d88146a46019449ce81b9
+      internalID: -2092931843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_32
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1623
+        width: 109
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49ddbb453a06a8d478364f4984dfed64
+      internalID: 605990532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_33
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1623
+        width: 106
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1792f41cec26b224a9d4ff7f24becf06
+      internalID: 729730347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_34
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 1614
+        width: 108
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75adbd20e508ea846adea6890986aa9f
+      internalID: 439768123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_35
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 1607
+        width: 106
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f7827e59fb11a84f95beaa550a6ac5d
+      internalID: -1759929966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_36
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 1605
+        width: 106
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec7b7d94db7485b42a5b9d71d64ba436
+      internalID: -210406556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_37
+      rect:
+        serializedVersion: 2
+        x: 1579
+        y: 1602
+        width: 104
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87993a64420fea84da8a71337dbc915a
+      internalID: -362108294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_38
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 1600
+        width: 106
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f87828e741f39384e8d79f55d4253edb
+      internalID: 330983020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_39
+      rect:
+        serializedVersion: 2
+        x: 2174
+        y: 1598
+        width: 106
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37010e4e8284d6847a22ca93e31a8388
+      internalID: 345700218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_40
+      rect:
+        serializedVersion: 2
+        x: 2442
+        y: 1621
+        width: 116
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbf81de5e0cce9043afabb10e7cddeef
+      internalID: 333600790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_41
+      rect:
+        serializedVersion: 2
+        x: 2740
+        y: 1616
+        width: 118
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0a2019c9abf82a479df9d282eafb3ac
+      internalID: 1120105356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_42
+      rect:
+        serializedVersion: 2
+        x: 3041
+        y: 1612
+        width: 118
+        height: 265
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4702c5a21c620764cab6aeb9ce256861
+      internalID: 1411373061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_43
+      rect:
+        serializedVersion: 2
+        x: 3340
+        y: 1609
+        width: 117
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f06755d46e7a4459da8535076c0db0
+      internalID: 992757119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_44
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 1605
+        width: 116
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ccdd58bf8cc86744a6af5f1ed3cd520
+      internalID: 2084413871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_45
+      rect:
+        serializedVersion: 2
+        x: 3941
+        y: 1602
+        width: 116
+        height: 271
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96411441a10a8946ad5737adf6f8b88
+      internalID: 1494519233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_46
+      rect:
+        serializedVersion: 2
+        x: 4240
+        y: 1598
+        width: 117
+        height: 275
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3385b7facaff79c4092cddfd8746a9dc
+      internalID: -120303781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_47
+      rect:
+        serializedVersion: 2
+        x: 4540
+        y: 1595
+        width: 116
+        height: 276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e582f8e42d1e17409510e3947a095f5
+      internalID: -948409570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_48
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1299
+        width: 104
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5dc9b2b2b56a6444b84ca16b8c91308
+      internalID: 920961281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_49
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 1300
+        width: 107
+        height: 272
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ccfc6305aa69044eb25e2072409d55f
+      internalID: -2001135457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_50
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 1304
+        width: 106
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce2aa35fb30cac4bb3db5b587702bf7
+      internalID: 714643547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_51
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 1308
+        width: 107
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ef243527fb015a4195fcea532f23e0f
+      internalID: -58325765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_52
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 1313
+        width: 106
+        height: 261
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 770e2b2863459e74b99fc5e5a53bf56e
+      internalID: -772746560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_53
+      rect:
+        serializedVersion: 2
+        x: 1574
+        y: 1318
+        width: 105
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c43bd512a9b8b47a3046cdcf41b288
+      internalID: 1647928618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_54
+      rect:
+        serializedVersion: 2
+        x: 2451
+        y: 1299
+        width: 116
+        height: 273
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a914320fe41b95941ad92e1a3650e17f
+      internalID: -1335457782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_55
+      rect:
+        serializedVersion: 2
+        x: 2751
+        y: 1302
+        width: 114
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc195c187d537e84190305841e381a99
+      internalID: -2040663766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_56
+      rect:
+        serializedVersion: 2
+        x: 3050
+        y: 1306
+        width: 116
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2cee30999f3a414eace7dae526e838e
+      internalID: 929315459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_57
+      rect:
+        serializedVersion: 2
+        x: 3349
+        y: 1308
+        width: 115
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7387e557fd334c4abea621a1d7ce971
+      internalID: 1655379771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_58
+      rect:
+        serializedVersion: 2
+        x: 3647
+        y: 1315
+        width: 116
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4f39d994f03a824eb09f374a1d4f100
+      internalID: -986238421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_59
+      rect:
+        serializedVersion: 2
+        x: 3946
+        y: 1322
+        width: 115
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 406f5c2ebe087164f8bb2a9f1d9915d8
+      internalID: 426497405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_60
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1015
+        width: 116
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6979744aa58d3674cb1ffdc899bfac48
+      internalID: 963922225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_61
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 1012
+        width: 115
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ccf30e539c7cc64c8bfd391052892a7
+      internalID: 966372036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_62
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 1012
+        width: 118
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8677b7ceebf47843a6883c6174659ae
+      internalID: 689930862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_63
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 1013
+        width: 117
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1bf87c10af7fb645b42b0d07ed92b00
+      internalID: 302715128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_64
+      rect:
+        serializedVersion: 2
+        x: 1278
+        y: 1013
+        width: 118
+        height: 254
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd17f311237e30740ada8a4124cced7b
+      internalID: 1978706593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_65
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 1012
+        width: 123
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00bc3dde955935e4c9e27f39241e254b
+      internalID: -2053532153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_66
+      rect:
+        serializedVersion: 2
+        x: 1870
+        y: 1012
+        width: 125
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db050a643d5e264b983dc920d5438d6
+      internalID: 873937663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_67
+      rect:
+        serializedVersion: 2
+        x: 2171
+        y: 1012
+        width: 127
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e09229f24930c468da2d57508cebfe
+      internalID: -109496412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_68
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1010
+        width: 114
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3259ff878617b6d4aae0ae91b705029b
+      internalID: -1020556978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_69
+      rect:
+        serializedVersion: 2
+        x: 2699
+        y: 1011
+        width: 113
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6e278c9ad030cc40bd3ba35c6fe14a3
+      internalID: 1170239504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_70
+      rect:
+        serializedVersion: 2
+        x: 2997
+        y: 1012
+        width: 111
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc7eb97161d6b194d94a706dd23694c4
+      internalID: -883034959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_71
+      rect:
+        serializedVersion: 2
+        x: 3296
+        y: 1012
+        width: 111
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e082ec571855ced409f181252e3b6b33
+      internalID: 275021437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_72
+      rect:
+        serializedVersion: 2
+        x: 3594
+        y: 1012
+        width: 109
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aab820e416b056248bb107f7a6eda563
+      internalID: -2011350087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_73
+      rect:
+        serializedVersion: 2
+        x: 3888
+        y: 1012
+        width: 118
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 450aea74a7c2e2f4c8e278e3d9eacdbc
+      internalID: -1933446849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_74
+      rect:
+        serializedVersion: 2
+        x: 4182
+        y: 1012
+        width: 122
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1ac5575f836054292d4172f9d95207
+      internalID: 1005002087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_75
+      rect:
+        serializedVersion: 2
+        x: 4475
+        y: 1012
+        width: 128
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24194adf2fac24544b32eb58cdd1eebd
+      internalID: 2017456848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_76
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 712
+        width: 130
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d1472607c389de40bb9094b466619dc
+      internalID: 1000143043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_77
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 711
+        width: 129
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db6f422843575049a48f6743e0277fa
+      internalID: -1554687887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_78
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 711
+        width: 125
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0187aefe05fec4c40a32750c96eb799f
+      internalID: -1498538551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_79
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 711
+        width: 120
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ff51659ac0eb744af515cdc7d21d36
+      internalID: -1260439625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_80
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 711
+        width: 118
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42fc51464a00f5949a2b5ff88cafcf58
+      internalID: -2143349491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_81
+      rect:
+        serializedVersion: 2
+        x: 1581
+        y: 711
+        width: 118
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b85a6372d96cdd4fbb9e3f4df7281d1
+      internalID: 441587353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_82
+      rect:
+        serializedVersion: 2
+        x: 1880
+        y: 711
+        width: 117
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cec52fe9760c6fb4098d4abffb82450c
+      internalID: 418816700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_83
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 711
+        width: 118
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c321bc2e676151b4d803f5d93f9369aa
+      internalID: -1766673472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_84
+      rect:
+        serializedVersion: 2
+        x: 2379
+        y: 714
+        width: 129
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d83ce9a4e66aee41a1bf26f1b1685a7
+      internalID: -2103986963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_85
+      rect:
+        serializedVersion: 2
+        x: 2676
+        y: 714
+        width: 127
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdbf481c0e7abc84391d18cfa2a5d789
+      internalID: -1959568994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_86
+      rect:
+        serializedVersion: 2
+        x: 2976
+        y: 714
+        width: 123
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec0215ce9fdbbd4c98c2232292a076c
+      internalID: -1907844391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_87
+      rect:
+        serializedVersion: 2
+        x: 3279
+        y: 716
+        width: 118
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27566cb0013c50c468daa86612369885
+      internalID: -776265307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_88
+      rect:
+        serializedVersion: 2
+        x: 3585
+        y: 716
+        width: 111
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 968c9606b590fb444a24ac54d208cea4
+      internalID: 749465415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_89
+      rect:
+        serializedVersion: 2
+        x: 3890
+        y: 716
+        width: 106
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b523dd96dde6ea14bb8671493a4bd039
+      internalID: 2150350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_90
+      rect:
+        serializedVersion: 2
+        x: 4189
+        y: 717
+        width: 106
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e351e07d4b59f94d9216a5b07426391
+      internalID: -564208478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_91
+      rect:
+        serializedVersion: 2
+        x: 4487
+        y: 718
+        width: 109
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55925fbbc25fe57428c00d535564a830
+      internalID: -2044196150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_92
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 413
+        width: 116
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1ed73de0d8abe84ca9e7d36ae090cd6
+      internalID: -1300599222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_93
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 413
+        width: 117
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 483effcb514304845be787dda10f5602
+      internalID: 1661277986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_94
+      rect:
+        serializedVersion: 2
+        x: 681
+        y: 413
+        width: 118
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a0a862f901a91a45842368587018e0e
+      internalID: 155915026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_95
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 413
+        width: 115
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e78e28b290b4ae54c8e2cab2852f180c
+      internalID: -1028875461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_96
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 413
+        width: 113
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a862180064909a34b85ba4ffa03713fb
+      internalID: 1055241593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_97
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 414
+        width: 118
+        height: 253
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f07ca92441227b479e8e2b82c931f48
+      internalID: 1715373551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_98
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 415
+        width: 123
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c141fcdae823dd48ac880ff63bf74cc
+      internalID: -106211744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_99
+      rect:
+        serializedVersion: 2
+        x: 2176
+        y: 415
+        width: 127
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54ce86d3543c9df49a70125affe8d192
+      internalID: -1942206906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_100
+      rect:
+        serializedVersion: 2
+        x: 2396
+        y: 420
+        width: 110
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3af6464133800240ad40eec513d4be2
+      internalID: -217035033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_101
+      rect:
+        serializedVersion: 2
+        x: 2694
+        y: 420
+        width: 111
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eebdb4c43ff2e4f41b1ed87a92128feb
+      internalID: 727698297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_102
+      rect:
+        serializedVersion: 2
+        x: 2993
+        y: 420
+        width: 113
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 650cd05b5061a3541bbb088a3bc9aaac
+      internalID: -1916789659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_103
+      rect:
+        serializedVersion: 2
+        x: 3293
+        y: 420
+        width: 111
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 792055bc9a4c9ea4a95281133f055f05
+      internalID: 328592627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_104
+      rect:
+        serializedVersion: 2
+        x: 3592
+        y: 418
+        width: 115
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e29b5bfe89918424da1f00dbe9babcff
+      internalID: -887895295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_105
+      rect:
+        serializedVersion: 2
+        x: 3890
+        y: 415
+        width: 118
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dcc3f70068a32a488d159aed3b89ac5
+      internalID: -1910437190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_106
+      rect:
+        serializedVersion: 2
+        x: 4184
+        y: 415
+        width: 123
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e129f62b4fb65c647b9a409957368b33
+      internalID: -1470532436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_107
+      rect:
+        serializedVersion: 2
+        x: 4478
+        y: 415
+        width: 125
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e1a434001243bd4d98a965f6d26e796
+      internalID: 659272311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_108
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 117
+        width: 132
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 971c7bef4471fa241a7dcedadf451ca7
+      internalID: 2011142433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_109
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 117
+        width: 132
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6222566859b1df4ea26db6d0bf5d308
+      internalID: -664961208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_110
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 119
+        width: 127
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6827ed611565b946963414b83c23603
+      internalID: 1812431787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_111
+      rect:
+        serializedVersion: 2
+        x: 982
+        y: 121
+        width: 120
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8707119f959f23459d9edd973576748
+      internalID: -1239053621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_112
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 121
+        width: 117
+        height: 248
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 981e5a2ad6d782249ae1a0b89d24b799
+      internalID: -987496188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_113
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 121
+        width: 113
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2adf5226a1410054aaeb46ffb5014e48
+      internalID: -1685454119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_114
+      rect:
+        serializedVersion: 2
+        x: 2382
+        y: 117
+        width: 129
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0ce355f3fca52d4fbcdc18e2c3038c5
+      internalID: -2127735147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_115
+      rect:
+        serializedVersion: 2
+        x: 2680
+        y: 117
+        width: 127
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 310f6bc2d78342240b05ecc6d1ea7d11
+      internalID: 57439127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_116
+      rect:
+        serializedVersion: 2
+        x: 2982
+        y: 117
+        width: 124
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1125e7b2266be1469476895075a2b42
+      internalID: 785880746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_117
+      rect:
+        serializedVersion: 2
+        x: 3286
+        y: 117
+        width: 120
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed5db383f38bdd142a7f5e692e9aa572
+      internalID: 1994589241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_118
+      rect:
+        serializedVersion: 2
+        x: 3589
+        y: 117
+        width: 116
+        height: 250
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde42978e8a46b94eb78713ed13ad39a
+      internalID: 328207430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_119
+      rect:
+        serializedVersion: 2
+        x: 3892
+        y: 117
+        width: 114
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 288230223d1e3364c93dd083ac57a84d
+      internalID: -1322916385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pencil_Farmer_Walk_Atlas_120
+      rect:
+        serializedVersion: 2
+        x: 4156
+        y: 117
+        width: 130
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 471a03ecdc5cae5488f3fa41cf42579b
+      internalID: -714728699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Pencil_Farmer_Walk_Atlas_0: 1091961831
+      Pencil_Farmer_Walk_Atlas_1: 349163968
+      Pencil_Farmer_Walk_Atlas_10: 1097658560
+      Pencil_Farmer_Walk_Atlas_100: -217035033
+      Pencil_Farmer_Walk_Atlas_101: 727698297
+      Pencil_Farmer_Walk_Atlas_102: -1916789659
+      Pencil_Farmer_Walk_Atlas_103: 328592627
+      Pencil_Farmer_Walk_Atlas_104: -887895295
+      Pencil_Farmer_Walk_Atlas_105: -1910437190
+      Pencil_Farmer_Walk_Atlas_106: -1470532436
+      Pencil_Farmer_Walk_Atlas_107: 659272311
+      Pencil_Farmer_Walk_Atlas_108: 2011142433
+      Pencil_Farmer_Walk_Atlas_109: -664961208
+      Pencil_Farmer_Walk_Atlas_11: -1318310897
+      Pencil_Farmer_Walk_Atlas_110: 1812431787
+      Pencil_Farmer_Walk_Atlas_111: -1239053621
+      Pencil_Farmer_Walk_Atlas_112: -987496188
+      Pencil_Farmer_Walk_Atlas_113: -1685454119
+      Pencil_Farmer_Walk_Atlas_114: -2127735147
+      Pencil_Farmer_Walk_Atlas_115: 57439127
+      Pencil_Farmer_Walk_Atlas_116: 785880746
+      Pencil_Farmer_Walk_Atlas_117: 1994589241
+      Pencil_Farmer_Walk_Atlas_118: 328207430
+      Pencil_Farmer_Walk_Atlas_119: -1322916385
+      Pencil_Farmer_Walk_Atlas_12: -1923153778
+      Pencil_Farmer_Walk_Atlas_120: -714728699
+      Pencil_Farmer_Walk_Atlas_13: 1871000904
+      Pencil_Farmer_Walk_Atlas_14: -601454982
+      Pencil_Farmer_Walk_Atlas_15: 1341711388
+      Pencil_Farmer_Walk_Atlas_16: -462708715
+      Pencil_Farmer_Walk_Atlas_17: -14984932
+      Pencil_Farmer_Walk_Atlas_18: 241288293
+      Pencil_Farmer_Walk_Atlas_19: -152138288
+      Pencil_Farmer_Walk_Atlas_2: 656990639
+      Pencil_Farmer_Walk_Atlas_20: 1312975696
+      Pencil_Farmer_Walk_Atlas_21: -126391380
+      Pencil_Farmer_Walk_Atlas_22: 1274085522
+      Pencil_Farmer_Walk_Atlas_23: -315613905
+      Pencil_Farmer_Walk_Atlas_24: -809485494
+      Pencil_Farmer_Walk_Atlas_25: -877523616
+      Pencil_Farmer_Walk_Atlas_26: 1472305391
+      Pencil_Farmer_Walk_Atlas_27: -1858653540
+      Pencil_Farmer_Walk_Atlas_28: 1113709968
+      Pencil_Farmer_Walk_Atlas_29: -1746318119
+      Pencil_Farmer_Walk_Atlas_3: -1412038778
+      Pencil_Farmer_Walk_Atlas_30: 174609853
+      Pencil_Farmer_Walk_Atlas_31: -2092931843
+      Pencil_Farmer_Walk_Atlas_32: 605990532
+      Pencil_Farmer_Walk_Atlas_33: 729730347
+      Pencil_Farmer_Walk_Atlas_34: 439768123
+      Pencil_Farmer_Walk_Atlas_35: -1759929966
+      Pencil_Farmer_Walk_Atlas_36: -210406556
+      Pencil_Farmer_Walk_Atlas_37: -362108294
+      Pencil_Farmer_Walk_Atlas_38: 330983020
+      Pencil_Farmer_Walk_Atlas_39: 345700218
+      Pencil_Farmer_Walk_Atlas_4: 887491710
+      Pencil_Farmer_Walk_Atlas_40: 333600790
+      Pencil_Farmer_Walk_Atlas_41: 1120105356
+      Pencil_Farmer_Walk_Atlas_42: 1411373061
+      Pencil_Farmer_Walk_Atlas_43: 992757119
+      Pencil_Farmer_Walk_Atlas_44: 2084413871
+      Pencil_Farmer_Walk_Atlas_45: 1494519233
+      Pencil_Farmer_Walk_Atlas_46: -120303781
+      Pencil_Farmer_Walk_Atlas_47: -948409570
+      Pencil_Farmer_Walk_Atlas_48: 920961281
+      Pencil_Farmer_Walk_Atlas_49: -2001135457
+      Pencil_Farmer_Walk_Atlas_5: -118971639
+      Pencil_Farmer_Walk_Atlas_50: 714643547
+      Pencil_Farmer_Walk_Atlas_51: -58325765
+      Pencil_Farmer_Walk_Atlas_52: -772746560
+      Pencil_Farmer_Walk_Atlas_53: 1647928618
+      Pencil_Farmer_Walk_Atlas_54: -1335457782
+      Pencil_Farmer_Walk_Atlas_55: -2040663766
+      Pencil_Farmer_Walk_Atlas_56: 929315459
+      Pencil_Farmer_Walk_Atlas_57: 1655379771
+      Pencil_Farmer_Walk_Atlas_58: -986238421
+      Pencil_Farmer_Walk_Atlas_59: 426497405
+      Pencil_Farmer_Walk_Atlas_6: -730658931
+      Pencil_Farmer_Walk_Atlas_60: 963922225
+      Pencil_Farmer_Walk_Atlas_61: 966372036
+      Pencil_Farmer_Walk_Atlas_62: 689930862
+      Pencil_Farmer_Walk_Atlas_63: 302715128
+      Pencil_Farmer_Walk_Atlas_64: 1978706593
+      Pencil_Farmer_Walk_Atlas_65: -2053532153
+      Pencil_Farmer_Walk_Atlas_66: 873937663
+      Pencil_Farmer_Walk_Atlas_67: -109496412
+      Pencil_Farmer_Walk_Atlas_68: -1020556978
+      Pencil_Farmer_Walk_Atlas_69: 1170239504
+      Pencil_Farmer_Walk_Atlas_7: -1415625550
+      Pencil_Farmer_Walk_Atlas_70: -883034959
+      Pencil_Farmer_Walk_Atlas_71: 275021437
+      Pencil_Farmer_Walk_Atlas_72: -2011350087
+      Pencil_Farmer_Walk_Atlas_73: -1933446849
+      Pencil_Farmer_Walk_Atlas_74: 1005002087
+      Pencil_Farmer_Walk_Atlas_75: 2017456848
+      Pencil_Farmer_Walk_Atlas_76: 1000143043
+      Pencil_Farmer_Walk_Atlas_77: -1554687887
+      Pencil_Farmer_Walk_Atlas_78: -1498538551
+      Pencil_Farmer_Walk_Atlas_79: -1260439625
+      Pencil_Farmer_Walk_Atlas_8: 720116114
+      Pencil_Farmer_Walk_Atlas_80: -2143349491
+      Pencil_Farmer_Walk_Atlas_81: 441587353
+      Pencil_Farmer_Walk_Atlas_82: 418816700
+      Pencil_Farmer_Walk_Atlas_83: -1766673472
+      Pencil_Farmer_Walk_Atlas_84: -2103986963
+      Pencil_Farmer_Walk_Atlas_85: -1959568994
+      Pencil_Farmer_Walk_Atlas_86: -1907844391
+      Pencil_Farmer_Walk_Atlas_87: -776265307
+      Pencil_Farmer_Walk_Atlas_88: 749465415
+      Pencil_Farmer_Walk_Atlas_89: 2150350
+      Pencil_Farmer_Walk_Atlas_9: 925940640
+      Pencil_Farmer_Walk_Atlas_90: -564208478
+      Pencil_Farmer_Walk_Atlas_91: -2044196150
+      Pencil_Farmer_Walk_Atlas_92: -1300599222
+      Pencil_Farmer_Walk_Atlas_93: 1661277986
+      Pencil_Farmer_Walk_Atlas_94: 155915026
+      Pencil_Farmer_Walk_Atlas_95: -1028875461
+      Pencil_Farmer_Walk_Atlas_96: 1055241593
+      Pencil_Farmer_Walk_Atlas_97: 1715373551
+      Pencil_Farmer_Walk_Atlas_98: -106211744
+      Pencil_Farmer_Walk_Atlas_99: -1942206906
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -36,7 +36,7 @@ public class WarriorController : MonoBehaviour
         _indexLife = 0;
         _currentSpeed = speed;
         _transform = transform;
-        InitListPoints(_lifeCount, _transform);
+       // InitListPoints(_lifeCount, _transform);
         _isLife = true;
         col.enabled = true;
 
@@ -198,7 +198,7 @@ public class WarriorController : MonoBehaviour
 
             await UniTask.Delay(500);
 
-            CheckLife();
+           // CheckLife();
 
             FinishBattle();
 

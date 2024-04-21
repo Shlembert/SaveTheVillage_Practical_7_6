@@ -1,0 +1,602 @@
+fileFormatVersion: 2
+guid: c10585922c163b345abd9da8eed9e698
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_0
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1162
+        width: 127
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e1372d713f96a042b353747a9f540df
+      internalID: 2050243228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_1
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 1162
+        width: 128
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69da6c0b34ff7264591bfcf59fce795e
+      internalID: 1132392901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_2
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 1162
+        width: 134
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ccfdc5c73ca8fd4fafefe6d009e22f7
+      internalID: 165458397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_3
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 1163
+        width: 141
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e76e020b979d22844831b515cc421951
+      internalID: 72302055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_4
+      rect:
+        serializedVersion: 2
+        x: 2231
+        y: 1163
+        width: 144
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdc6636702d60da49a74820e6b5bf775
+      internalID: -463734172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_5
+      rect:
+        serializedVersion: 2
+        x: 2741
+        y: 1160
+        width: 148
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f71f74ff9ba03374c8aacfac24eaca75
+      internalID: 1253247412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_6
+      rect:
+        serializedVersion: 2
+        x: 3252
+        y: 1160
+        width: 147
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 688e3cad96f15f341b89073289094b98
+      internalID: -1915311014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_7
+      rect:
+        serializedVersion: 2
+        x: 3769
+        y: 1164
+        width: 138
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 666b50e5a3c4408408e27e17ea62cd78
+      internalID: 250265370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_8
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 653
+        width: 130
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf4e746a52e0d33448f006f07b1ed7f4
+      internalID: 1110040490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_9
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 653
+        width: 130
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fe2596d692f4f740aa1f2a3fc8fd910
+      internalID: 1774838061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_10
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 653
+        width: 130
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2603487f04018314882d9c31ec7d03b4
+      internalID: 1326882684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_11
+      rect:
+        serializedVersion: 2
+        x: 1721
+        y: 653
+        width: 138
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd130f6e725ea6459ac3574a083dddc
+      internalID: -12745109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_12
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 653
+        width: 140
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6cf2390e49d03f4984817063829b345
+      internalID: -1717575165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_13
+      rect:
+        serializedVersion: 2
+        x: 2742
+        y: 653
+        width: 143
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80a3028d78aa41144bcf683b50752c05
+      internalID: -1246317906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_14
+      rect:
+        serializedVersion: 2
+        x: 3254
+        y: 653
+        width: 143
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df7c6949a3d4c1549a904a9e2d43e543
+      internalID: 395837828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_15
+      rect:
+        serializedVersion: 2
+        x: 3765
+        y: 653
+        width: 146
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b62ba53898433546ab0fdd8a522ca8e
+      internalID: 1764395527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_16
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 139
+        width: 147
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4cb4b668e5f2449bf433a2e4040c38
+      internalID: -1923171307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_17
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 138
+        width: 152
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a921a0ef09d0c7469b3bd84b1434f1d
+      internalID: -887387026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_18
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 141
+        width: 143
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1b9f357141a100448e3eeff531d3471
+      internalID: -1043091997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_19
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 141
+        width: 147
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a49771f51e9467c49933d05fd917b414
+      internalID: -1677579557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FadmerWorkAtlas_20
+      rect:
+        serializedVersion: 2
+        x: 2173
+        y: 139
+        width: 108
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5eb0dc965421b3a4da1192601add3c68
+      internalID: 830298472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      FadmerWorkAtlas_0: 2050243228
+      FadmerWorkAtlas_1: 1132392901
+      FadmerWorkAtlas_10: 1326882684
+      FadmerWorkAtlas_11: -12745109
+      FadmerWorkAtlas_12: -1717575165
+      FadmerWorkAtlas_13: -1246317906
+      FadmerWorkAtlas_14: 395837828
+      FadmerWorkAtlas_15: 1764395527
+      FadmerWorkAtlas_16: -1923171307
+      FadmerWorkAtlas_17: -887387026
+      FadmerWorkAtlas_18: -1043091997
+      FadmerWorkAtlas_19: -1677579557
+      FadmerWorkAtlas_2: 165458397
+      FadmerWorkAtlas_20: 830298472
+      FadmerWorkAtlas_21: -195439902
+      FadmerWorkAtlas_22: -1169732344
+      FadmerWorkAtlas_23: -1747845723
+      FadmerWorkAtlas_24: 839845550
+      FadmerWorkAtlas_25: 2021263305
+      FadmerWorkAtlas_3: 72302055
+      FadmerWorkAtlas_4: -463734172
+      FadmerWorkAtlas_5: 1253247412
+      FadmerWorkAtlas_6: -1915311014
+      FadmerWorkAtlas_7: 250265370
+      FadmerWorkAtlas_8: 1110040490
+      FadmerWorkAtlas_9: 1774838061
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

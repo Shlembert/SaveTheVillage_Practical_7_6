@@ -192,7 +192,7 @@ public class EnemyController : MonoBehaviour
             {
                 foreach (var item in equips) item.SetActive(false);
                 equips[3].SetActive(_hasLootGrain);
-                equips[7].SetActive(_hasLootFarmer);
+                equips[4].SetActive(_hasLootFarmer);
                 _animator.SetTrigger("MoveRight");
             }
             else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f)
@@ -200,7 +200,7 @@ public class EnemyController : MonoBehaviour
                 _animator.SetTrigger("MoveLeft");
                 foreach (var item in equips) item.SetActive(false);
                 equips[2].SetActive(_hasLootGrain);
-                equips[6].SetActive(_hasLootFarmer);
+                equips[4].SetActive(_hasLootFarmer);
             }
         }
         else
@@ -210,14 +210,12 @@ public class EnemyController : MonoBehaviour
             {
                 foreach (var item in equips) item.SetActive(false);
                 equips[1].SetActive(_hasLootGrain);
-                equips[5].SetActive(_hasLootFarmer);
                 _animator.SetTrigger("MoveUp");
             }
             else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f)
             {
                 foreach (var item in equips) item.SetActive(false);
                 equips[0].SetActive(_hasLootGrain);
-                equips[4].SetActive(_hasLootFarmer);
                 _animator.SetTrigger("MoveDown");
             }
         }
@@ -228,7 +226,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject == _target)
         {
             _hasLootFarmer = true;
-            equips[6].SetActive(_hasLootFarmer);
+            equips[4].SetActive(_hasLootFarmer);
             collision.gameObject.gameObject.SetActive(false);
 
             if(_target != null) _gameController.FarmerTargets.Remove(_target);
@@ -254,8 +252,8 @@ public class EnemyController : MonoBehaviour
             _cancellationTokenSource.Cancel();
         }
 
-        if(_gameController.EnemyCount==0) _gameController.FinishEnemyWave();
-        if (_target != null) _gameController.FarmerTargets.Remove(_target);
+        //if(_gameController.EnemyCount==0) _gameController.FinishEnemyWave();
+        //if (_target != null) _gameController.FarmerTargets.Remove(_target);
         _isLife = false;
         col.enabled = true;
     }

@@ -3,23 +3,20 @@ using UnityEngine;
 
 public class StorageAnimController : MonoBehaviour
 {
-    [SerializeField] private Transform rotor;
+    [SerializeField] private Animator rotor;
     [SerializeField] private float duration;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         FarmerController farmer = collision.GetComponent<FarmerController>();
 
-        if (farmer) PlayAnimRotor();
+        if(farmer)rotor.SetBool("Rotate", farmer);
     }
 
-    private void PlayAnimRotor()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-       // Debug.Log("Rotate");
-        rotor.DOKill();
-        rotor.DORotate(new Vector3(0f, 0f, -360f), duration, RotateMode.FastBeyond360)
-            //.SetLoops(-1, LoopType.Restart)
-            .SetRelative()
-            .SetEase(Ease.OutQuad);
+        FarmerController farmer = collision.GetComponent<FarmerController>();
+
+        if (farmer) rotor.SetBool("Rotate", !farmer);
     }
 }
