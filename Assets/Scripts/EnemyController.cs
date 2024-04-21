@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private bool _isLife, _hungry, _withLoot, _isTarget;
     private bool _hasLootFarmer, _hasLootGrain;
+    private float _currentSpeed;
 
     private CancellationTokenSource _cancellationTokenSource;
 
@@ -36,6 +37,7 @@ public class EnemyController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _storage = gameController.Storage;
+        _currentSpeed = speed;
         _isLife = true;
         _hungry = true;
         _withLoot = false;
@@ -176,7 +178,7 @@ public class EnemyController : MonoBehaviour
         {
             Vector2 direction = (target.position - _transform.position).normalized;
 
-            _transform.position += (Vector3)(direction * Speed * Time.deltaTime);
+            _transform.position += (Vector3)(direction * _currentSpeed * Time.deltaTime);
 
             await UniTask.Yield(cancellationToken);
         }
@@ -241,7 +243,24 @@ public class EnemyController : MonoBehaviour
 
     public void AnimationBattle()
     {
-        _animator.SetTrigger("Idle");
+        _spriteRenderer.enabled = false;
+        col.enabled = false;
+        _currentSpeed = 0;
+    }
+
+    public async void FinishBattle()
+    {
+        if (_cancellationTokenSource != null &&
+           !_cancellationTokenSource.Token.IsCancellationRequested)
+        {
+            _cancellationTokenSource.Cancel();
+        }
+
+        _cancellationTokenSource = new CancellationTokenSource();
+        _spriteRenderer.enabled = true;
+        _currentSpeed = speed;
+        // TODO GO HOME
+        await MoveToHome(_cancellationTokenSource.Token);
     }
 
     private void OnDisable()

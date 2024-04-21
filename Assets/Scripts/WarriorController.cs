@@ -8,9 +8,10 @@ public class WarriorController : MonoBehaviour
 {
     [SerializeField] private TypeUnit typeUnit;
     [SerializeField] private float speed;
-    [SerializeField] private int profit;
+    [SerializeField] private int profit, durationConflict;
     [SerializeField] private Collider2D col;
     [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject conflict;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private Transform _transform;
@@ -22,7 +23,6 @@ public class WarriorController : MonoBehaviour
     private List<GameObject> _lifeCount;
 
     private CancellationTokenSource _cancellationTokenSourceSearch;
-   // private CancellationTokenSource _cancellationTokenSourcePatrol;
 
     public GameController GameController { get => _gameController; set => _gameController = value; }
 
@@ -76,7 +76,7 @@ public class WarriorController : MonoBehaviour
         _animator.SetTrigger("Idle");
 
         // Скучаем случайное время
-        int random = UnityEngine.Random.Range(5, 10) * 1000;
+        int random = UnityEngine.Random.Range(1, 5) * 1000;
         await UniTask.Delay(random);
     }
 
@@ -123,7 +123,6 @@ public class WarriorController : MonoBehaviour
             if (enemy != null && enemy.Hungry && !enemy.WithLoot /*&& !enemy.IsTarget*/)
             {
                 enemy.IsTarget = true;
-               // _isEnemyFound = true;
                 return enemy.transform;
             }
             else return _transform;
@@ -187,39 +186,46 @@ public class WarriorController : MonoBehaviour
 
         if (enemy != null)
         {
-
             StartBattle();
 
-            float temp = enemy.Speed;
-            enemy.Speed = 0;
-
-            AnimationBattle();
             enemy.AnimationBattle();
-
-            await UniTask.Delay(500);
-
-           // CheckLife();
-
+           AnimationBattle();
+            await UniTask.Delay(durationConflict);
             FinishBattle();
-
-            enemy.Speed = temp;
-
-            enemy.gameObject.SetActive(false);
+            enemy.FinishBattle();
         }
     }
 
     private void StartBattle()
     {
-       // _isEnemyFound = false;
         col.enabled = false;
+        _spriteRenderer.enabled = false;
         _currentSpeed = 0f;
+        conflict.transform.position = _transform.position;
+        conflict.SetActive(true);
     }
 
-    private void FinishBattle()
+    private async void FinishBattle()
     {
-        col.enabled = true;
+        // CheckLife();
+        conflict.SetActive(false);
+       
+        _spriteRenderer.enabled = true;
+        CancelToken(_cancellationTokenSourceSearch);
+        await UniTask.Delay(1000);
+
+        _cancellationTokenSourceSearch = new CancellationTokenSource();
+
+        try
+        {
+            await SearchTarget(_cancellationTokenSourceSearch.Token);
+        }
+        catch (OperationCanceledException)
+        {
+            // Обработка отмены операции
+        }
+        // col.enabled = true;
         _currentSpeed = speed;
-        _gameController.EnemyCount--;
     }
 
     private void CheckLife()
@@ -237,9 +243,11 @@ public class WarriorController : MonoBehaviour
         else
         {
             Debug.Log("Last combat");
-            _isLife = false;
-            _gameController.WarriorCount--;
-            gameObject.SetActive(false);
+           // _isLife = false;
+           // _gameController.WarriorCount--;
+            //gameObject.SetActive(false);
+
+            //TODO GO TO SPAWN
         }
     }
 

@@ -1,0 +1,909 @@
+fileFormatVersion: 2
+guid: 5840a0a3cff3e3846b6d70ed08f46518
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ConflictAtlas_1
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 846
+        width: 246
+        height: 177
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 442cd62e6352e8a478e6eb4cad6a4fd7
+      internalID: -2116440477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_2
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 815
+        width: 249
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb788efda3d36b4f93f9ee82e2b1e0a
+      internalID: 1927010770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_4
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 848
+        width: 240
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1952f31b1401ec44fadbe5cabab7acb0
+      internalID: 1331955020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_5
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 831
+        width: 213
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07c44fe0f6b5f0e4095605cd26f6c238
+      internalID: -1125451131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_7
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 846
+        width: 218
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11258a4fefdbd4c4084371717a9ccfc3
+      internalID: 1706440380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_8
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 822
+        width: 230
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b251f2557f9de3e4d8d9e48cb0e53726
+      internalID: -1420429062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_11
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 838
+        width: 238
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a943d69a5aaa1e4f95aa976a0702122
+      internalID: -60347926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_12
+      rect:
+        serializedVersion: 2
+        x: 1454
+        y: 843
+        width: 212
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 992f719824d319c4c9af2ad563c62c86
+      internalID: -311164883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 630
+        width: 217
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcc323e75bd8b4d4bacc33a19a47390e
+      internalID: -1318161992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_18
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 607
+        width: 250
+        height: 202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0089b25f55f345945b41fbe8c8a5201b
+      internalID: 500402072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_19
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 609
+        width: 247
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38abd116608dc744595a529297cf8610
+      internalID: 921839137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_20
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 643
+        width: 228
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b509e715579d86042bfb8319092a4f53
+      internalID: -1285595392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_22
+      rect:
+        serializedVersion: 2
+        x: 949
+        y: 587
+        width: 260
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecfcefdea7040784e80229f9f469569c
+      internalID: 1359094181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_24
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 587
+        width: 259
+        height: 222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7f4ad8149b5f9d4e9035204d2a9a271
+      internalID: 1986201040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_34
+      rect:
+        serializedVersion: 2
+        x: 1467
+        y: 579
+        width: 269
+        height: 234
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d929c01f134e91847bda1b72afab99e2
+      internalID: 383250409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_40
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 578
+        width: 272
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80b315f35c0ebb84c910939efe955535
+      internalID: -1090673218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_42
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 335
+        width: 274
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 120dbb267af208b40a1a2d70d4b279d8
+      internalID: -1054901897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_45
+      rect:
+        serializedVersion: 2
+        x: 1124
+        y: 336
+        width: 281
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dff0317141a659b47afc1ae56e4f5713
+      internalID: 394484368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_46
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 337
+        width: 282
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb044fa9c36ae3242b8d49162ac6780a
+      internalID: -1391342605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_48
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 382
+        width: 203
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32bf27736a6ef9048bd080e2e7bc2ea3
+      internalID: -1232502097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_107
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 340
+        width: 281
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed4463fd6675a3b43967df354c2c5428
+      internalID: -1902493741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_125
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 336
+        width: 283
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc1e12f63bd5ac4a9d190ed72c7d9e7
+      internalID: 188107972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_128
+      rect:
+        serializedVersion: 2
+        x: 841
+        y: 332
+        width: 282
+        height: 251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b701584614184c4991109ff4bc837a7
+      internalID: -2023989426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_156
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 91
+        width: 249
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76ef4e2f9a487be46b3bbc0df72946ce
+      internalID: -477626413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_157
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 91
+        width: 229
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 161a1ec549a0ecb4e8a083ab94b8aeaf
+      internalID: -130832026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_158
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 118
+        width: 265
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78e5c9f4463525043a437f8c621193b6
+      internalID: -36924170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_159
+      rect:
+        serializedVersion: 2
+        x: 775
+        y: 141
+        width: 231
+        height: 189
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c3541f611b62c4d977d251cb365827
+      internalID: -7908279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_160
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 130
+        width: 221
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6813749a0377cd4d958be7f81a3e7e9
+      internalID: 1799067028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ConflictAtlas_161
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 189
+        width: 239
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caaebd336b72de145ae87507c8e374c8
+      internalID: -110005513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ConflictAtlas_0: 508103223
+      ConflictAtlas_1: -2116440477
+      ConflictAtlas_10: 144375647
+      ConflictAtlas_100: 1789161093
+      ConflictAtlas_101: 881963940
+      ConflictAtlas_102: -847755024
+      ConflictAtlas_103: -299783665
+      ConflictAtlas_104: -1717810218
+      ConflictAtlas_105: -687132727
+      ConflictAtlas_106: -1176168005
+      ConflictAtlas_107: -1902493741
+      ConflictAtlas_108: -1148690841
+      ConflictAtlas_109: 1003253086
+      ConflictAtlas_11: -60347926
+      ConflictAtlas_110: -1937312954
+      ConflictAtlas_111: -77668268
+      ConflictAtlas_112: -584669845
+      ConflictAtlas_113: -1894896536
+      ConflictAtlas_114: -177781456
+      ConflictAtlas_115: 2142245553
+      ConflictAtlas_116: 67056693
+      ConflictAtlas_117: 343805635
+      ConflictAtlas_118: -1615632055
+      ConflictAtlas_119: -536131643
+      ConflictAtlas_12: -311164883
+      ConflictAtlas_120: 33258085
+      ConflictAtlas_121: -333127180
+      ConflictAtlas_122: 1570620969
+      ConflictAtlas_123: -281529451
+      ConflictAtlas_124: -362578336
+      ConflictAtlas_125: 188107972
+      ConflictAtlas_126: 2099706614
+      ConflictAtlas_127: -1162994970
+      ConflictAtlas_128: -2023989426
+      ConflictAtlas_129: -777570471
+      ConflictAtlas_13: 1981077940
+      ConflictAtlas_130: -98272241
+      ConflictAtlas_131: -1761646056
+      ConflictAtlas_132: 1784460809
+      ConflictAtlas_133: -574111261
+      ConflictAtlas_134: -2058278620
+      ConflictAtlas_135: 1285289164
+      ConflictAtlas_136: -856559572
+      ConflictAtlas_137: 1169711382
+      ConflictAtlas_138: -988419085
+      ConflictAtlas_139: -1062652131
+      ConflictAtlas_14: 2101562966
+      ConflictAtlas_140: 489935285
+      ConflictAtlas_141: 439066051
+      ConflictAtlas_142: 1171525180
+      ConflictAtlas_143: -1583567555
+      ConflictAtlas_144: 327931707
+      ConflictAtlas_145: 998684620
+      ConflictAtlas_146: -1095899498
+      ConflictAtlas_147: 1622714116
+      ConflictAtlas_148: 301463834
+      ConflictAtlas_149: 1829821168
+      ConflictAtlas_15: 1634772363
+      ConflictAtlas_150: 512788769
+      ConflictAtlas_151: 909473066
+      ConflictAtlas_152: -81634700
+      ConflictAtlas_153: 160059510
+      ConflictAtlas_154: 1888467709
+      ConflictAtlas_155: 1444596644
+      ConflictAtlas_156: -477626413
+      ConflictAtlas_157: -130832026
+      ConflictAtlas_158: -36924170
+      ConflictAtlas_159: -7908279
+      ConflictAtlas_16: 874486442
+      ConflictAtlas_160: 1799067028
+      ConflictAtlas_161: -110005513
+      ConflictAtlas_162: -1480446714
+      ConflictAtlas_163: 550759249
+      ConflictAtlas_164: 597091824
+      ConflictAtlas_17: -1318161992
+      ConflictAtlas_18: 500402072
+      ConflictAtlas_19: 921839137
+      ConflictAtlas_2: 1927010770
+      ConflictAtlas_20: -1285595392
+      ConflictAtlas_21: 1353702550
+      ConflictAtlas_22: 1359094181
+      ConflictAtlas_23: 1812871274
+      ConflictAtlas_24: 1986201040
+      ConflictAtlas_25: 471671925
+      ConflictAtlas_26: -268425624
+      ConflictAtlas_27: 286550767
+      ConflictAtlas_28: 651403794
+      ConflictAtlas_29: -1834971975
+      ConflictAtlas_3: -1554679517
+      ConflictAtlas_30: -1335270155
+      ConflictAtlas_31: -315855935
+      ConflictAtlas_32: -214273415
+      ConflictAtlas_33: -1187453992
+      ConflictAtlas_34: 383250409
+      ConflictAtlas_35: -2137224272
+      ConflictAtlas_36: 1297565982
+      ConflictAtlas_37: -1283286748
+      ConflictAtlas_38: -1898090329
+      ConflictAtlas_39: -949807518
+      ConflictAtlas_4: 1331955020
+      ConflictAtlas_40: -1090673218
+      ConflictAtlas_41: 818772746
+      ConflictAtlas_42: -1054901897
+      ConflictAtlas_43: 1518082359
+      ConflictAtlas_44: -140111888
+      ConflictAtlas_45: 394484368
+      ConflictAtlas_46: -1391342605
+      ConflictAtlas_47: -1791336250
+      ConflictAtlas_48: -1232502097
+      ConflictAtlas_49: -1913695846
+      ConflictAtlas_5: -1125451131
+      ConflictAtlas_50: 11086571
+      ConflictAtlas_51: -2064939694
+      ConflictAtlas_52: -1411673513
+      ConflictAtlas_53: 1451273644
+      ConflictAtlas_54: -997332453
+      ConflictAtlas_55: 1036930117
+      ConflictAtlas_56: -200442076
+      ConflictAtlas_57: -300808359
+      ConflictAtlas_58: -1767222327
+      ConflictAtlas_59: -157047707
+      ConflictAtlas_6: 1879341617
+      ConflictAtlas_60: 1287851878
+      ConflictAtlas_61: -51628748
+      ConflictAtlas_62: 678875537
+      ConflictAtlas_63: 1714892544
+      ConflictAtlas_64: 866787500
+      ConflictAtlas_65: 130001429
+      ConflictAtlas_66: 638725064
+      ConflictAtlas_67: -1989817638
+      ConflictAtlas_68: -1840561734
+      ConflictAtlas_69: -697974207
+      ConflictAtlas_7: 1706440380
+      ConflictAtlas_70: -254988930
+      ConflictAtlas_71: -147897027
+      ConflictAtlas_72: -1610708991
+      ConflictAtlas_73: 1376043813
+      ConflictAtlas_74: -315519227
+      ConflictAtlas_75: -164414188
+      ConflictAtlas_76: -1913333384
+      ConflictAtlas_77: 1219495024
+      ConflictAtlas_78: -664961737
+      ConflictAtlas_79: 1600611180
+      ConflictAtlas_8: -1420429062
+      ConflictAtlas_80: -880941307
+      ConflictAtlas_81: 2089474139
+      ConflictAtlas_82: 659834341
+      ConflictAtlas_83: -704176985
+      ConflictAtlas_84: 1434491037
+      ConflictAtlas_85: -1396022639
+      ConflictAtlas_86: -432139474
+      ConflictAtlas_87: -1717865398
+      ConflictAtlas_88: -51700904
+      ConflictAtlas_89: 1819806877
+      ConflictAtlas_9: 1997195956
+      ConflictAtlas_90: 1910909685
+      ConflictAtlas_91: 83710882
+      ConflictAtlas_92: -70963726
+      ConflictAtlas_93: -536181026
+      ConflictAtlas_94: -848848261
+      ConflictAtlas_95: 1107925809
+      ConflictAtlas_96: -1690816930
+      ConflictAtlas_97: 1095386225
+      ConflictAtlas_98: 1292735936
+      ConflictAtlas_99: 1114436512
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
