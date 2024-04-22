@@ -165,7 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeUnit: 2
   speed: 1.5
-  profit: 1
+  profit: 3
   col: {fileID: 5065948906650649580}
   equips:
   - {fileID: 5549043614922037743}
