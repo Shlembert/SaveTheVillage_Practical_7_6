@@ -246,6 +246,7 @@ public class EnemyController : MonoBehaviour
 
     public void AnimationBattle()
     {
+        _gameController.FarmerTargets.Remove(_target);
         _spriteRenderer.enabled = false;
         col.enabled = false;
         _currentSpeed = 0;

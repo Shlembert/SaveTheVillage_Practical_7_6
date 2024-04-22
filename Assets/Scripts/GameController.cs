@@ -40,7 +40,7 @@ public class GameController : MonoBehaviour
     public bool IsPause { get => _isPause; set => _isPause = value; }
     public bool IsGame { get => _isGame; set => _isGame = value; }
 
-    private void Start() { StartGame(); }
+    //private void Start() { StartGame(); }
 
     public void StartGame()
     {
