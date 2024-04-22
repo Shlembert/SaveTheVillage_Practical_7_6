@@ -40,7 +40,9 @@ public class WarriorFactory : MonoBehaviour
         goList.Add(go);
         _count++;
         go.transform.parent = _transform;
-        go.GetComponent<WarriorController>().ActiveUnit(gameController, uiController);
+        WarriorController warrior = go.GetComponent<WarriorController>();
+        warrior.ActiveUnit(gameController, uiController);
+        warrior.Spawn = gameController.Spawn;
 
         return;
     }

@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour
     {
         if (_gameController.GrainCount >= 5)
         {
-            Debug.Log("Go Storage");
+           // Debug.Log("Go Storage");
             await MoveToTarget(_storage, cancellationToken); // Идем к хранилищу
             await StealingGrain(cancellationToken); // Зашли в хранилище
         }
@@ -99,33 +99,34 @@ public class EnemyController : MonoBehaviour
         Transform home = _gameController.EnemiesPoints[randomIndex].transform;
 
         _hungry = false;
+        if (_target != null) _gameController.FarmerTargets.Remove(_target);
 
         await MoveToTarget(home, cancellationToken);
 
-        if (_gameController.EnemyCount <= 1)
-        {
-           // _gameController.FinishEnemyWave();
+       if(_gameController.EnemyCount >= 0) _gameController.EnemyCount--;
 
+        Debug.Log($" Enemy: {gameObject.name} |||  Count: {_gameController.EnemyCount}");
+
+        if (_gameController.EnemyCount == 0)
+        {
             if (_gameController.GrainCount <= 4 && _gameController.FarmerCount <= 0)
             {
                 _gameController.IsGame = false;
                 Debug.Log("Game Over!");
             }
+            else
+            {
+                _gameController.FinishEnemyWave();
+            }
         }
 
-        _gameController.EnemyCount--;
-
-        Debug.Log
-            ($"Report Enemy {gameObject.name}: " +
-            $"Loot Farmer - {_hasLootFarmer} " +
-            $"Loot Grain - {_hasLootGrain} " +
-            $"Status - In Home");
-
-       
         _withLoot = false;
         _isLife = false;
         Hungry = true;
         await UniTask.Delay(100);
+        _cancellationTokenSource?.Cancel();
+        col.enabled = true;
+        _isLife = false;
         gameObject.SetActive(false);
     }
 
@@ -135,18 +136,20 @@ public class EnemyController : MonoBehaviour
         {
             Transform targetPosition = FindTargetPosition();
 
-            if (targetPosition.position != _transform.position)
-            {
-                await MoveToTarget(targetPosition, cancellationToken);
-            }
+            if (!Hungry) await MoveToHome(cancellationToken);
             else
             {
-                if (_gameController.GrainCount > 0) await MoveToStorage(cancellationToken);
-                else await MoveToHome(cancellationToken);
+                if (targetPosition.position != _transform.position)
+                {
+                    await MoveToTarget(targetPosition, cancellationToken);
+                }
+                else
+                {
+                    if (_gameController.GrainCount > 0) await MoveToStorage(cancellationToken);
+                    else await MoveToHome(cancellationToken);
+                }
             }
-
-            if (!Hungry) await MoveToHome(cancellationToken);
-
+         
             await UniTask.Yield(cancellationToken); // Добавим задержку между проверками
         }
     }
@@ -258,7 +261,7 @@ public class EnemyController : MonoBehaviour
 
         _cancellationTokenSource = new CancellationTokenSource();
         _spriteRenderer.enabled = true;
-        _currentSpeed = speed;
+        _currentSpeed = speed * 2;
         // TODO GO HOME
         await MoveToHome(_cancellationTokenSource.Token);
     }
@@ -270,10 +273,5 @@ public class EnemyController : MonoBehaviour
         {
             _cancellationTokenSource.Cancel();
         }
-
-        //if(_gameController.EnemyCount==0) _gameController.FinishEnemyWave();
-        //if (_target != null) _gameController.FarmerTargets.Remove(_target);
-        _isLife = false;
-        col.enabled = true;
     }
 }

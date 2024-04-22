@@ -500,8 +500,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeUnit: 0
-  speed: 1.6
-  workingTime: 5
+  speed: 1.4
+  workingTime: 10
   profit: 2
   equips:
   - {fileID: 2892229887438870341}

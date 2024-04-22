@@ -13,30 +13,30 @@ public class WarriorController : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private GameObject conflict;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private List<GameObject> lifeCount;
 
-    private Transform _transform;
+    private Transform _transform, _spawn;
     private GameController _gameController;
     private UIController _uIController;
     private bool _isLife/*, _isEnemyFound*/;
-    private int _currentProfit, _indexLife;
+    private int _currentProfit;
     private float _currentSpeed;
-    private List<GameObject> _lifeCount;
+   
 
     private CancellationTokenSource _cancellationTokenSourceSearch;
 
     public GameController GameController { get => _gameController; set => _gameController = value; }
+    public Transform Spawn { get => _spawn; set => _spawn = value; }
 
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
-        _lifeCount = new List<GameObject>();
-
+        foreach (var t in lifeCount) t.SetActive(true);
+        
         _gameController = gameController;
         _uIController = uIController;
         _currentProfit = profit;
-        _indexLife = 0;
         _currentSpeed = speed;
         _transform = transform;
-       // InitListPoints(_lifeCount, _transform);
         _isLife = true;
         col.enabled = true;
 
@@ -49,18 +49,6 @@ public class WarriorController : MonoBehaviour
         catch (OperationCanceledException)
         {
             // Обработка отмены операции
-        }
-    }
-
-    private void InitListPoints(List<GameObject> list, Transform parentPoints)
-    {
-        list.Clear();
-
-        for (int i = 0; i < parentPoints.childCount; i++)
-        {
-            Transform childTransform = parentPoints.GetChild(i);
-            childTransform.gameObject.SetActive(true);
-            list.Add(childTransform.gameObject);
         }
     }
 
@@ -187,9 +175,9 @@ public class WarriorController : MonoBehaviour
         if (enemy != null)
         {
             StartBattle();
-
             enemy.AnimationBattle();
-           AnimationBattle();
+            conflict.transform.position = enemy.transform.position;
+            conflict.SetActive(true);
             await UniTask.Delay(durationConflict);
             FinishBattle();
             enemy.FinishBattle();
@@ -198,62 +186,54 @@ public class WarriorController : MonoBehaviour
 
     private void StartBattle()
     {
+        CancelToken(_cancellationTokenSourceSearch);
         col.enabled = false;
         _spriteRenderer.enabled = false;
         _currentSpeed = 0f;
-        conflict.transform.position = _transform.position;
-        conflict.SetActive(true);
+        _currentProfit--;
+        lifeCount[_currentProfit].SetActive(false);
     }
 
     private async void FinishBattle()
     {
-        // CheckLife();
         conflict.SetActive(false);
        
+        _animator.SetTrigger("Idle");
         _spriteRenderer.enabled = true;
-        CancelToken(_cancellationTokenSourceSearch);
-        await UniTask.Delay(1000);
+       
+        await UniTask.Delay(100);
+       
+        CheckLife();
+    }
+
+    private async void CheckLife()
+    {
+       
+        _currentSpeed = speed;
 
         _cancellationTokenSourceSearch = new CancellationTokenSource();
 
-        try
+        if (_currentProfit <= 0)
         {
-            await SearchTarget(_cancellationTokenSourceSearch.Token);
-        }
-        catch (OperationCanceledException)
-        {
-            // Обработка отмены операции
-        }
-        // col.enabled = true;
-        _currentSpeed = speed;
-    }
-
-    private void CheckLife()
-    {
-        _currentProfit--;
-
-        if (_currentProfit >= 1)
-        {
-            if (_indexLife <= 1)
-            {
-                _lifeCount[_indexLife].SetActive(false);
-                _indexLife++;
-            }
+            _gameController.WarriorCount--;
+            _gameController.Warriors.Remove(gameObject);
+            _gameController.SetDisplayCount();
+            await MoveToTarget(Spawn, _cancellationTokenSourceSearch.Token);
+            gameObject.SetActive(false);
         }
         else
         {
-            Debug.Log("Last combat");
-           // _isLife = false;
-           // _gameController.WarriorCount--;
-            //gameObject.SetActive(false);
+            col.enabled = true;
 
-            //TODO GO TO SPAWN
+            try
+            {
+                await SearchTarget(_cancellationTokenSourceSearch.Token);
+            }
+            catch (OperationCanceledException)
+            {
+                // Обработка отмены операции
+            }
         }
-    }
-
-    private void AnimationBattle()
-    {
-        _animator.SetTrigger("Idle");
     }
 
     private void CancelToken(CancellationTokenSource source)
@@ -267,7 +247,5 @@ public class WarriorController : MonoBehaviour
     private void OnDisable()
     {
         CancelToken(_cancellationTokenSourceSearch);
-        _uIController.DisplayTopCount(_gameController.WarriorCount, typeUnit);
-        col.enabled = true;
     }
 }

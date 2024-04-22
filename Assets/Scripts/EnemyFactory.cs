@@ -36,6 +36,9 @@ public class EnemyFactory : MonoBehaviour
     {
         List<GameObject> goList = gameController.Enemies;
 
+        _count++;
+        gameController.EnemyCount++;
+
         if (goList != null && goList.Count > 0)
         {
             for (int i = 0; i < goList.Count; i++)
@@ -53,8 +56,7 @@ public class EnemyFactory : MonoBehaviour
         GameObject go = Instantiate(prefab, SetRandomPosition(), Quaternion.identity);
         go.name = _count.ToString();
         goList.Add(go);
-        _count++;
-        gameController.EnemyCount = _count;
+
         go.transform.parent = _transform;
         go.GetComponent<EnemyController>().ActiveUnit(gameController, uiController);
     }

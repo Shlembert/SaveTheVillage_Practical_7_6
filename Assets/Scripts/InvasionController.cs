@@ -66,9 +66,6 @@ public class InvasionController : MonoBehaviour
 
     public async UniTask StartTimer(float duration, CancellationToken cancellationToken)
     {
-        uIController.EnemyesCount.text = waveSettings[_currentIndexWave].Count.ToString();
-        uIController.WaveNumber.text = (_currentIndexWave + 1).ToString();
-
         float currentTime = 0f;
 
         while (currentTime < duration)
@@ -109,6 +106,9 @@ public class InvasionController : MonoBehaviour
         StopTimer();
 
         if (!gameController.IsGame) return;
+
+        uIController.EnemyesCount.text = waveSettings[_currentIndexWave].Count.ToString();
+        uIController.WaveNumber.text = (_currentIndexWave + 1).ToString();
 
         indicator.DOMoveX(moveLeft, duration, false).SetEase(Ease.OutBack, 0.8f).OnComplete(() =>
          {

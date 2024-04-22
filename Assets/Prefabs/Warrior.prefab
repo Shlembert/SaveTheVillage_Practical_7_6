@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3266028229797704034}
   - component: {fileID: 6142245162246431608}
+  - component: {fileID: 1111756339159283771}
   m_Layer: 4
   m_Name: Triangle (1)
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -346652209, guid: 9819bf1d6fc20b549be8c87116d0a450, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.37254903}
+  m_Color: {r: 0.047169805, g: 0.045167312, b: 0.045167312, a: 0.37254903}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,6 +85,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1111756339159283771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221547672761273991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3461036921826338549
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +174,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -346652209, guid: 9819bf1d6fc20b549be8c87116d0a450, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.37254903}
+  m_Color: {r: 0.047169805, g: 0.045167312, b: 0.045167312, a: 0.37254903}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -346,6 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3289881128689031702}
   - component: {fileID: 6478375522045508649}
+  - component: {fileID: 4767063704485099472}
   m_Layer: 4
   m_Name: Triangle
   m_TagString: Untagged
@@ -410,7 +427,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -346652209, guid: 9819bf1d6fc20b549be8c87116d0a450, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.37254903}
+  m_Color: {r: 0.047169805, g: 0.045167312, b: 0.045167312, a: 0.37254903}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -420,6 +437,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4767063704485099472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4833710825201628112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &5426646427482202666
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,13 +665,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeUnit: 1
-  speed: 2.2
+  speed: 2.5
   profit: 3
   durationConflict: 900
   col: {fileID: 74770769928950598}
   _animator: {fileID: 3531790309956236787}
   conflict: {fileID: 1584937050066295184}
   _spriteRenderer: {fileID: 7606709151958934755}
+  lifeCount:
+  - {fileID: 5426646427482202666}
+  - {fileID: 3801632534233153141}
+  - {fileID: 4235236596346781936}
 --- !u!95 &3531790309956236787
 Animator:
   serializedVersion: 5
