@@ -81,6 +81,7 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
             currentTime += Time.deltaTime;
         }
 
+        // Время истекло
         readiness.text = "Готов!";
         ReadyMove();
     }

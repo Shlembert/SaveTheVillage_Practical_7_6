@@ -96,12 +96,11 @@ public class GameController : MonoBehaviour
 
     public void StockUp(int food)
     {
-        // warriorButton.ReadyMove();
-       
         if (_grainCount < 500)
         {
             _grainCount += food;
             farmerButton.CheckCanBuy();
+            warriorButton.CheckCanBuy();
             uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
         }
         else Debug.Log("You Win!");
@@ -109,12 +108,11 @@ public class GameController : MonoBehaviour
 
     public void StockDown(int food)
     {
-       // warriorButton.ReadyMove();
-       // farmerButton.ReadyMove();
-
         if (_grainCount > 0)
         {
             _grainCount -= food;
+            farmerButton.CheckCanBuy();
+            warriorButton.CheckCanBuy();
             uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
         }
     }

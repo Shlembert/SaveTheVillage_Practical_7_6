@@ -37,6 +37,8 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
     public void AddWarrior()
     {
         if (!_isReady) return;
+
+        TweenKill();
         if (price <= gameController.GrainCount)
         {
             gameController.WarriorCount++;
@@ -87,12 +89,9 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
         readiness.text = $"{percentReady:0}%";
     }
 
-    public void ReadyMove()
+    private void ReadyMove()
     {
-        if (_tween != null && _tween.IsActive()) // Проверяем, активен ли твин
-        {
-            _tween.Kill(); // Если твин активен, прерываем его
-        }
+        TweenKill();
 
         if (price <= gameController.GrainCount)
         {
@@ -102,6 +101,32 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
         else
         {
             _transform.localScale = _normalSize;
+        }
+    }
+
+    public void CheckCanBuy()
+    {
+        if (_isReady && gameController.GrainCount >= price)
+        {
+            Debug.Log("Can buy");
+            TweenKill();
+            ReadyMove();
+        }
+        else
+        {
+            Debug.Log("Can't buy!!!");
+            TweenKill();
+        }
+    }
+
+    private void TweenKill()
+    {
+        _transform.DOKill();
+        _transform.localScale = _normalSize;
+
+        if (_tween != null && _tween.IsActive()) // Проверяем, активен ли твин
+        {
+            _tween.Kill(); // Если твин активен, прерываем его
         }
     }
 
