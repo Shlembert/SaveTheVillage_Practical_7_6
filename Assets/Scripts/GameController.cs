@@ -9,6 +9,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private int grainCount;
     [SerializeField] private Transform gardien, outpost, lair, spawn, storage, pointStorage;
     [SerializeField] private SpriteRenderer boundsFarmer;
+    [SerializeField] private FarmerButton farmerButton;
+    [SerializeField] private WarriorButton warriorButton;
+    [SerializeField] private bool invasion;
 
     private List<GameObject> _farmers, _warriors, _enemies;
     private List<GameObject> _farmerPoints, _warriorsPoints, _enemiesPoints;
@@ -42,7 +45,7 @@ public class GameController : MonoBehaviour
 
     //private void Start() { StartGame(); }
 
-    public void StartGame()
+    public async void StartGame()
     {
         _farmers = new List<GameObject>();
         _warriors = new List<GameObject>();
@@ -60,7 +63,11 @@ public class GameController : MonoBehaviour
         InitListPoints(_warriorsPoints, outpost);
         InitListPoints(_enemiesPoints, lair);
         SetDisplayCount();
-        invasionController.StartInvasion();
+       if(invasion) invasionController.StartInvasion();
+
+        await UniTask.Delay(200);
+        farmerButton.AddFarmer();
+        warriorButton.AddWarrior();
     }
 
     private void OnDisable()
@@ -89,9 +96,12 @@ public class GameController : MonoBehaviour
 
     public void StockUp(int food)
     {
+        // warriorButton.ReadyMove();
+       
         if (_grainCount < 500)
         {
             _grainCount += food;
+            farmerButton.CheckCanBuy();
             uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
         }
         else Debug.Log("You Win!");
@@ -99,6 +109,9 @@ public class GameController : MonoBehaviour
 
     public void StockDown(int food)
     {
+       // warriorButton.ReadyMove();
+       // farmerButton.ReadyMove();
+
         if (_grainCount > 0)
         {
             _grainCount -= food;

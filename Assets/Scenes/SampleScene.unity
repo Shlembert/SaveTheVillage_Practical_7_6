@@ -655,7 +655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uIController: {fileID: 1225573713}
   invasionController: {fileID: 219476105}
-  grainCount: 25
+  grainCount: 20
   gardien: {fileID: 495049927}
   outpost: {fileID: 187091973}
   lair: {fileID: 1064582048}
@@ -663,6 +663,8 @@ MonoBehaviour:
   storage: {fileID: 179382892}
   pointStorage: {fileID: 1874695782}
   boundsFarmer: {fileID: 696255040}
+  farmerButton: {fileID: 1752875002}
+  warriorButton: {fileID: 975805398}
 --- !u!4 &219476104
 Transform:
   m_ObjectHideFlags: 0
@@ -3078,7 +3080,7 @@ GameObject:
   - component: {fileID: 975805398}
   - component: {fileID: 975805399}
   m_Layer: 0
-  m_Name: Button
+  m_Name: wButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3164,6 +3166,7 @@ MonoBehaviour:
   unitFactory: {fileID: 1056452746}
   type: 1
   readiness: {fileID: 1846859959}
+  priceTxt: {fileID: 1130842508}
   filled: {fileID: 1011902347}
   cooldown: 20
   price: 10
@@ -5315,7 +5318,7 @@ GameObject:
   - component: {fileID: 1752875002}
   - component: {fileID: 1752875003}
   m_Layer: 0
-  m_Name: Button
+  m_Name: fButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5401,6 +5404,7 @@ MonoBehaviour:
   unitFactory: {fileID: 1163678883}
   type: 0
   readiness: {fileID: 466917002}
+  priceTxt: {fileID: 1595778490}
   filled: {fileID: 1266528610}
   cooldown: 10
   price: 5
