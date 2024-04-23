@@ -37,15 +37,15 @@ public class InvasionController : MonoBehaviour
         _filled = uIController.InvasionFilled;
 
         //_cancellationTokenSource = new CancellationTokenSource();
-        try
-        {
+       // try
+      //  {
             await UniTask.Delay(3000);
             ShowWave();
-        }
-        catch (OperationCanceledException)
-        {
+      //  }
+       // catch (OperationCanceledException)
+       // {
             // Обработка отмены операции
-        }
+       // }
     }
 
     private async UniTask Invasion(CancellationToken cancellationToken)

@@ -120,17 +120,8 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
 
     public void CheckCanBuy()
     {
-        if (_isReady && gameController.GrainCount >= price)
-        {
-            Debug.Log("Can buy");
-            TweenKill();
-            ReadyMove();
-        }
-        else
-        {
-            Debug.Log("Can't buy!!!");
-            TweenKill();
-        }
+        TweenKill();
+        if (_isReady && gameController.GrainCount >= price) ReadyMove();
     }
 
     private void NoGrainMove()

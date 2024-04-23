@@ -67,7 +67,7 @@ public class GameController : MonoBehaviour
 
         await UniTask.Delay(200);
         farmerButton.AddFarmer();
-        warriorButton.AddWarrior();
+       // warriorButton.AddWarrior();
     }
 
     private void OnDisable()

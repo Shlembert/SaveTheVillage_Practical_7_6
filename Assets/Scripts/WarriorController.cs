@@ -64,7 +64,7 @@ public class WarriorController : MonoBehaviour
         _animator.SetTrigger("Idle");
 
         // Скучаем случайное время
-        int random = UnityEngine.Random.Range(1, 5) * 1000;
+        int random = UnityEngine.Random.Range(1, 5) * 100;
         await UniTask.Delay(random);
     }
 
