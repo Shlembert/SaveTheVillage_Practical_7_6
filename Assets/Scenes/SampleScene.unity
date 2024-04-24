@@ -949,7 +949,7 @@ MonoBehaviour:
   boundsFarmer: {fileID: 696255040}
   farmerButton: {fileID: 1752875002}
   warriorButton: {fileID: 975805398}
-  invasion: 0
+  invasion: 1
   _farmers:
   - {fileID: 33047456}
   - {fileID: 262646782}
@@ -1024,9 +1024,9 @@ MonoBehaviour:
   - Cooldown: 30
     Count: 3
   - Cooldown: 20
-    Count: 1
+    Count: 2
   - Cooldown: 30
-    Count: 7
+    Count: 3
   - Cooldown: 60
     Count: 5
   - Cooldown: 20

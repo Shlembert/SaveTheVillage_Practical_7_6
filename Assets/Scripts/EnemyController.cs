@@ -136,7 +136,7 @@ public class EnemyController : MonoBehaviour
         {
             Transform targetPosition = FindTargetPosition();
 
-            if (!Hungry) await MoveToHome(cancellationToken);
+            if (!_hungry) await MoveToHome(cancellationToken);
             else
             {
                 if (targetPosition.position != _transform.position)
@@ -145,7 +145,10 @@ public class EnemyController : MonoBehaviour
                 }
                 else
                 {
-                    if (_gameController.GrainCount > 0) await MoveToStorage(cancellationToken);
+                    if (_gameController.GrainCount > 0)
+                    {
+                        await MoveToStorage(cancellationToken);
+                    } 
                     else await MoveToHome(cancellationToken);
                 }
             }
@@ -158,7 +161,7 @@ public class EnemyController : MonoBehaviour
     {
         List<GameObject> activeFarmers = _gameController.FarmerTargets;
 
-        if (Hungry)
+        if (_hungry)
         {
             if (activeFarmers.Count > 0) // Ќайден фермер, возвращаем его позицию
             {
@@ -174,8 +177,8 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask MoveToTarget(Transform target, CancellationToken cancellationToken)
     {
-        Vector2 direction1 = (target.position - _transform.position);
-        GetDirection(direction1);
+        Vector2 animDirection = (target.position - _transform.position);
+        GetDirection(animDirection);
 
         while (_gameController.IsGame && Vector2.Distance(_transform.position, target.position) > 0.1f)
         {
@@ -228,7 +231,7 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == _target)
+        if (collision.gameObject == _target && _hungry)
         {
             _hasLootFarmer = true;
             equips[4].SetActive(_hasLootFarmer);

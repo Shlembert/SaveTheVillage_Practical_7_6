@@ -15,10 +15,9 @@ public class WarriorController : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private List<GameObject> lifeCount;
 
-    private Transform _transform, _spawn;
+    private Transform _transform, _spawn, _enemyTarget;
     private GameController _gameController;
-    private UIController _uIController;
-    private bool _isLife/*, _isEnemyFound*/;
+    private bool _isLife;
     private int _currentProfit;
     private float _currentSpeed;
    
@@ -33,7 +32,6 @@ public class WarriorController : MonoBehaviour
         foreach (var t in lifeCount) t.SetActive(true);
         
         _gameController = gameController;
-        _uIController = uIController;
         _currentProfit = profit;
         _currentSpeed = speed;
         _transform = transform;
@@ -57,14 +55,12 @@ public class WarriorController : MonoBehaviour
         int randomIndex = UnityEngine.Random.Range(0, _gameController.WarriorsPoints.Count);
         Transform home = _gameController.WarriorsPoints[randomIndex].transform;
 
+        _currentSpeed = speed / 2;
         await MoveToTarget(home, cancellationToken);
 
         // Встали на пост
         col.enabled = true;
-        _animator.SetTrigger("Idle");
-
-        // Скучаем случайное время
-        int random = UnityEngine.Random.Range(1, 5) * 100;
+        int random = UnityEngine.Random.Range(1, 5) * 10;
         await UniTask.Delay(random);
     }
 
@@ -76,7 +72,9 @@ public class WarriorController : MonoBehaviour
 
             if (targetPosition.position != _transform.position)
             {
+                _currentSpeed = speed;
                 await MoveToTarget(targetPosition, cancellationToken);
+               
             }
             else
             {
@@ -108,10 +106,12 @@ public class WarriorController : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, activeEnemies.Count);
             EnemyController enemy = activeEnemies[randomIndex].GetComponent<EnemyController>();
 
-            if (enemy != null && enemy.Hungry && !enemy.WithLoot /*&& !enemy.IsTarget*/)
+            if (enemy != null && enemy.Hungry && !enemy.WithLoot)
             {
                 enemy.IsTarget = true;
-                return enemy.transform;
+                _enemyTarget = enemy.transform;
+
+                return _enemyTarget;
             }
             else return _transform;
         }
@@ -124,15 +124,13 @@ public class WarriorController : MonoBehaviour
 
     private async UniTask MoveToTarget(Transform target, CancellationToken cancellationToken)
     {
-        Vector2 direction1 = (target.position - _transform.position).normalized;
-
-        GetDirection(direction1);
+        Vector2 animDirection = (target.position - _transform.position);
+        GetDirection(animDirection);
 
         while (_gameController.IsGame && Vector2.Distance(_transform.position, target.position) > 0.1f)
         {
             Vector2 direction = (target.position - _transform.position).normalized;
             _transform.position += (Vector3)(direction.normalized * _currentSpeed * Time.deltaTime);
-
             await UniTask.Yield(cancellationToken);
         }
     }
@@ -172,7 +170,7 @@ public class WarriorController : MonoBehaviour
     {
         EnemyController enemy = collider.gameObject.GetComponent<EnemyController>();
 
-        if (enemy != null)
+        if (enemy != null /*&& _enemyTarget*/ && enemy.transform == _enemyTarget )
         {
             StartBattle();
             enemy.AnimationBattle();
@@ -198,7 +196,6 @@ public class WarriorController : MonoBehaviour
     {
         conflict.SetActive(false);
        
-        _animator.SetTrigger("Idle");
         _spriteRenderer.enabled = true;
        
         await UniTask.Delay(100);
@@ -208,7 +205,6 @@ public class WarriorController : MonoBehaviour
 
     private async void CheckLife()
     {
-       
         _currentSpeed = speed;
 
         _cancellationTokenSourceSearch = new CancellationTokenSource();
@@ -216,9 +212,8 @@ public class WarriorController : MonoBehaviour
         if (_currentProfit <= 0)
         {
             _gameController.WarriorCount--;
-            _gameController.Warriors.Remove(gameObject);
             _gameController.SetDisplayCount();
-            await MoveToTarget(Spawn, _cancellationTokenSourceSearch.Token);
+            await MoveToTarget(_gameController.Spawn, _cancellationTokenSourceSearch.Token);
             gameObject.SetActive(false);
         }
         else

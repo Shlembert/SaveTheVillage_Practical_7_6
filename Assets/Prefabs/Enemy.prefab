@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5065948906650649580}
   - component: {fileID: 8176236799057595043}
   - component: {fileID: 4595612977864408592}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7482151275593622586}
   - component: {fileID: 3819915642259202215}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LootRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3253906457744194531}
   - component: {fileID: 3360072797708982514}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LootDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4525885926570392690}
   - component: {fileID: 3627743922090761484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LootUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   m_Component:
   - component: {fileID: 334991749348727638}
   - component: {fileID: 7448323996701578142}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Farmer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5739968233910825912}
   - component: {fileID: 6255407492320447154}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LootLift
   m_TagString: Untagged
   m_Icon: {fileID: 0}

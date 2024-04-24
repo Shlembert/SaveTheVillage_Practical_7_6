@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2892229887438870342}
   - component: {fileID: 2892229887438870343}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: LootDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2892229887689294403}
   - component: {fileID: 2892229887689294404}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: LootRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2892229887867594210}
   - component: {fileID: 2892229887867594211}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: LootLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2892229887898508134}
   - component: {fileID: 2892229887898508135}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: LootUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -350,7 +350,7 @@ GameObject:
   - component: {fileID: 6969980246710106876}
   - component: {fileID: 3185209565303267924}
   - component: {fileID: 8168140685457274528}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Farmer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6903083008672457415}
   - component: {fileID: 2670295471013483618}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Scythe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
