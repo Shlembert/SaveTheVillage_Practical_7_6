@@ -10,6 +10,7 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
     [SerializeField] private GameController gameController;
     [SerializeField] private UIController uIController;
     [SerializeField] private FarmerFactory unitFactory;
+    [SerializeField] private WarriorButton warriorButton;
     [SerializeField] private TypeUnit type;
     [SerializeField] private TMP_Text readiness, priceTxt;
     [SerializeField] private Image filled;
@@ -43,12 +44,14 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
         {
             _isReady = false;
             gameController.FarmerCount++;
-            Debug.Log(gameController.FarmerCount);
+            warriorButton.CheckCanBuy();
+
             if (gameController.FarmerCount < 10) Cooldown();
             else readiness.text = "Макс";
-           
+
             uIController.DisplayTopCount(gameController.FarmerCount, type);
             gameController.StockDown(price);
+            warriorButton.CheckCanBuy();
             unitFactory.SpawnUnit();
         }
         else
@@ -119,7 +122,10 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
     public void CheckCanBuy()
     {
         TweenKill();
-        if (_isReady && gameController.GrainCount >= price) ReadyMove();
+        if (_isReady &&
+            gameController.GrainCount >= price &&
+            gameController.FarmerCount < 10) 
+            ReadyMove();
     }
 
     private void NoGrainMove()

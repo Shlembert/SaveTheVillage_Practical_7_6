@@ -36,16 +36,16 @@ public class InvasionController : MonoBehaviour
         _currentIndexWave = 0;
         _filled = uIController.InvasionFilled;
 
-        //_cancellationTokenSource = new CancellationTokenSource();
-       // try
-      //  {
+        _cancellationTokenSource = new CancellationTokenSource();
+        try
+        {
             await UniTask.Delay(3000);
             ShowWave();
-      //  }
-       // catch (OperationCanceledException)
-       // {
+        }
+        catch (OperationCanceledException)
+        {
             // Обработка отмены операции
-       // }
+        }
     }
 
     private async UniTask Invasion(CancellationToken cancellationToken)
@@ -90,8 +90,15 @@ public class InvasionController : MonoBehaviour
         // Время истекло
         StopWave();
         enemyFactory.SetCountSpawnUnit(waveSettings[_currentIndexWave].Count);
-        if (_currentIndexWave < waveSettings.Count - 1) _currentIndexWave++;
-        else _currentIndexWave = 0;
+
+        if (_currentIndexWave < waveSettings.Count - 1)
+        {
+            _currentIndexWave++;
+        }
+        else
+        {
+            _currentIndexWave = 0;
+        }
     }
 
     private void UpdateReadiness()

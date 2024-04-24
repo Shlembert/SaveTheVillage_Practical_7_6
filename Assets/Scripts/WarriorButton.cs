@@ -10,6 +10,7 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
     [SerializeField] private GameController gameController;
     [SerializeField] private UIController uIController;
     [SerializeField] private WarriorFactory unitFactory;
+    [SerializeField] private FarmerButton farmerButton;
     [SerializeField] private TypeUnit type;
     [SerializeField] private TMP_Text readiness, priceTxt;
     [SerializeField] private Image filled;
@@ -39,6 +40,7 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
         if (!_isReady) return;
         TweenKill();
 
+
         if (price <= gameController.GrainCount)
         {
             _isReady = false;
@@ -49,6 +51,7 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
 
             uIController.DisplayTopCount(gameController.WarriorCount, type);
             gameController.StockDown(price);
+            farmerButton.CheckCanBuy();
             unitFactory.SpawnUnit();
         }
         else
@@ -110,7 +113,11 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
     public void CheckCanBuy()
     {
         TweenKill();
-        if (_isReady && gameController.GrainCount >= price) ReadyMove();
+
+        if (_isReady &&
+            gameController.GrainCount >= price &&
+            gameController.WarriorCount < 10)
+            ReadyMove();
     }
 
     private void TweenKill()

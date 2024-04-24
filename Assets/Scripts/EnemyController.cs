@@ -100,9 +100,9 @@ public class EnemyController : MonoBehaviour
         if (_target != null) _gameController.FarmerTargets.Remove(_target);
 
         await MoveToTarget(home, cancellationToken);
+        _gameController.EnemyCount--;
 
-        if (_gameController.EnemyCount >= 1) _gameController.EnemyCount--;
-        else 
+        if (_gameController.EnemyCount < 1) 
         {
             if (_gameController.GrainCount <= 4 && _gameController.FarmerCount <= 0)
             {
