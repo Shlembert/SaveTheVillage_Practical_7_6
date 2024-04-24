@@ -43,7 +43,7 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
         {
             _isReady = false;
             gameController.FarmerCount++;
-
+            Debug.Log(gameController.FarmerCount);
             if (gameController.FarmerCount < 10) Cooldown();
             else readiness.text = "Макс";
            

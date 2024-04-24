@@ -102,11 +102,12 @@ public class GameController : MonoBehaviour
 
     public void StockDown(int food)
     {
+        farmerButton.CheckCanBuy();
+        warriorButton.CheckCanBuy();
+
         if (_grainCount > 0)
         {
             _grainCount -= food;
-            farmerButton.CheckCanBuy();
-            warriorButton.CheckCanBuy();
             uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
         }
     }

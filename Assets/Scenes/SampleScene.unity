@@ -1024,11 +1024,11 @@ MonoBehaviour:
   - Cooldown: 30
     Count: 3
   - Cooldown: 20
-    Count: 2
-  - Cooldown: 30
-    Count: 3
-  - Cooldown: 60
     Count: 5
+  - Cooldown: 30
+    Count: 7
+  - Cooldown: 60
+    Count: 9
   - Cooldown: 20
     Count: 7
   - Cooldown: 30
@@ -4106,8 +4106,8 @@ MonoBehaviour:
   readiness: {fileID: 1846859959}
   priceTxt: {fileID: 1130842508}
   filled: {fileID: 1011902347}
-  cooldown: 20
-  price: 10
+  cooldown: 15
+  price: 7
 --- !u!114 &975805399
 MonoBehaviour:
   m_ObjectHideFlags: 0

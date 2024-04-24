@@ -62,14 +62,9 @@ public class EnemyController : MonoBehaviour
     {
         if (_gameController.GrainCount >= 5)
         {
-           // Debug.Log("Go Storage");
+            // Debug.Log("Go Storage");
             await MoveToTarget(_storage, cancellationToken); // Идем к хранилищу
             await StealingGrain(cancellationToken); // Зашли в хранилище
-        }
-        else if (_gameController.FarmerCount >= 0 && _gameController.GrainCount <= 4)
-        {
-            Debug.Log("Search Farmers");
-            await SearchTarget(cancellationToken);
         }
         else
         {
@@ -83,12 +78,14 @@ public class EnemyController : MonoBehaviour
         col.enabled = false;
         _spriteRenderer.enabled = false;
         _gameController.StockDown(profit);
-       
+
         await UniTask.Delay(2000);
 
         _hasLootGrain = true;
         _withLoot = true;
         _spriteRenderer.enabled = true;
+        _hungry = false;
+        _hasLootFarmer = false;
 
         await MoveToHome(cancellationToken);
     }
@@ -99,15 +96,13 @@ public class EnemyController : MonoBehaviour
         Transform home = _gameController.EnemiesPoints[randomIndex].transform;
 
         _hungry = false;
+
         if (_target != null) _gameController.FarmerTargets.Remove(_target);
 
         await MoveToTarget(home, cancellationToken);
 
-       if(_gameController.EnemyCount >= 0) _gameController.EnemyCount--;
-
-        Debug.Log($" Enemy: {gameObject.name} |||  Count: {_gameController.EnemyCount}");
-
-        if (_gameController.EnemyCount == 0)
+        if (_gameController.EnemyCount >= 1) _gameController.EnemyCount--;
+        else 
         {
             if (_gameController.GrainCount <= 4 && _gameController.FarmerCount <= 0)
             {
@@ -122,9 +117,9 @@ public class EnemyController : MonoBehaviour
 
         _withLoot = false;
         _isLife = false;
-        Hungry = true;
+        _hungry = true;
         await UniTask.Delay(100);
-        _cancellationTokenSource?.Cancel();
+        CancelToken(_cancellationTokenSource);
         col.enabled = true;
         _isLife = false;
         gameObject.SetActive(false);
@@ -148,11 +143,11 @@ public class EnemyController : MonoBehaviour
                     if (_gameController.GrainCount > 0)
                     {
                         await MoveToStorage(cancellationToken);
-                    } 
+                    }
                     else await MoveToHome(cancellationToken);
                 }
             }
-         
+
             await UniTask.Yield(cancellationToken); // Добавим задержку между проверками
         }
     }
@@ -237,7 +232,7 @@ public class EnemyController : MonoBehaviour
             equips[4].SetActive(_hasLootFarmer);
             collision.gameObject.gameObject.SetActive(false);
 
-            if(_target != null) _gameController.FarmerTargets.Remove(_target);
+            if (_target != null) _gameController.FarmerTargets.Remove(_target);
 
             _gameController.FarmerCount--;
             _uIController.DisplayTopCount(_gameController.FarmerCount, TypeUnit.Farmer);
@@ -257,11 +252,7 @@ public class EnemyController : MonoBehaviour
 
     public async void FinishBattle()
     {
-        if (_cancellationTokenSource != null &&
-           !_cancellationTokenSource.Token.IsCancellationRequested)
-        {
-            _cancellationTokenSource.Cancel();
-        }
+        CancelToken(_cancellationTokenSource);
 
         _cancellationTokenSource = new CancellationTokenSource();
         _spriteRenderer.enabled = true;
@@ -270,12 +261,16 @@ public class EnemyController : MonoBehaviour
         await MoveToHome(_cancellationTokenSource.Token);
     }
 
+    private void CancelToken(CancellationTokenSource source)
+    {
+        if (source != null && !source.Token.IsCancellationRequested)
+        {
+            source.Cancel();
+        }
+    }
+
     private void OnDisable()
     {
-        if (_cancellationTokenSource != null &&
-            !_cancellationTokenSource.Token.IsCancellationRequested)
-        {
-            _cancellationTokenSource.Cancel();
-        }
+        CancelToken(_cancellationTokenSource);
     }
 }
