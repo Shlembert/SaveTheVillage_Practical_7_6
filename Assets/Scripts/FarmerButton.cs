@@ -37,22 +37,22 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
     public void AddFarmer()
     {
         if (!_isReady) return;
-
         TweenKill();
 
         if (price <= gameController.GrainCount)
         {
             _isReady = false;
             gameController.FarmerCount++;
+
+            if (gameController.FarmerCount < 10) Cooldown();
+            else readiness.text = "Макс";
+           
             uIController.DisplayTopCount(gameController.FarmerCount, type);
             gameController.StockDown(price);
             unitFactory.SpawnUnit();
-            Cooldown();
         }
         else
         {
-            // readiness.text = "Не хватает еды!";
-            Debug.Log("No grain!");
             NoGrainMove();
         }
     }
@@ -105,8 +105,6 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
 
     private void ReadyMove()
     {
-       // TweenKill();
-
         if (gameController.GrainCount >= price)
         {
             _transform.localScale = _normalSize;

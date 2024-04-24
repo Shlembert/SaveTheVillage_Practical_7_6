@@ -37,19 +37,22 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
     public void AddWarrior()
     {
         if (!_isReady) return;
-
         TweenKill();
+
         if (price <= gameController.GrainCount)
         {
+            _isReady = false;
             gameController.WarriorCount++;
+
+            if (gameController.WarriorCount < 10) Cooldown();
+            else readiness.text = "Макс";
+
             uIController.DisplayTopCount(gameController.WarriorCount, type);
             gameController.StockDown(price);
             unitFactory.SpawnUnit();
-            Cooldown();
         }
         else
         {
-            //readiness.text = "Не хватает еды!";
             NoGrainMove();
         }
     }

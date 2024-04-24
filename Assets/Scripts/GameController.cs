@@ -12,8 +12,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private FarmerButton farmerButton;
     [SerializeField] private WarriorButton warriorButton;
     [SerializeField] private bool invasion;
+    [SerializeField] private List<GameObject> _farmers, _warriors, _enemies;
 
-    private List<GameObject> _farmers, _warriors, _enemies;
     private List<GameObject> _farmerPoints, _warriorsPoints, _enemiesPoints;
     private List<GameObject> _farmerTargets, _enemiesTargets;
 
@@ -43,13 +43,8 @@ public class GameController : MonoBehaviour
     public bool IsPause { get => _isPause; set => _isPause = value; }
     public bool IsGame { get => _isGame; set => _isGame = value; }
 
-    //private void Start() { StartGame(); }
-
     public async void StartGame()
     {
-        _farmers = new List<GameObject>();
-        _warriors = new List<GameObject>();
-        _enemies = new List<GameObject>();
         _farmerTargets = new List<GameObject>();
         _enemiesTargets = new List<GameObject>();
         _farmerPoints = new List<GameObject>();
@@ -67,7 +62,6 @@ public class GameController : MonoBehaviour
 
         await UniTask.Delay(200);
         farmerButton.AddFarmer();
-       // warriorButton.AddWarrior();
     }
 
     private void OnDisable()
