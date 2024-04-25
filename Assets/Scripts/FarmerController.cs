@@ -19,11 +19,15 @@ public class FarmerController : MonoBehaviour
     private float _currentSpeed;
     private bool _isLaden;
     private bool _isWorking;
+    private bool _isPanic;
 
     private CancellationTokenSource _cancellationTokenSource;
 
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
+        InvasionController.EnemySpawned += CheckPanic;
+        GameController.EnemyEscape += ReturnToFarm;
+
         _gameController = gameController;
         _transform = transform;
         _animator = GetComponent<Animator>();
@@ -32,9 +36,10 @@ public class FarmerController : MonoBehaviour
         _currentSpeed = speed;
         _isLaden = false;
         _isWorking = false;
+        _isPanic = false;
 
         foreach (var item in equips) item.SetActive(false);
-       
+
         _cancellationTokenSource = new CancellationTokenSource();
         try
         {
@@ -43,6 +48,43 @@ public class FarmerController : MonoBehaviour
         catch (OperationCanceledException)
         {
             // Обработка отмены операции
+        }
+    }
+
+    private async void CheckPanic()
+    {
+        if (_gameController.WarriorCount == 0)
+        {
+            CancelToken(_cancellationTokenSource);
+            _cancellationTokenSource = new CancellationTokenSource();
+
+            _isLaden = false;
+            _isPanic = true;
+
+            _currentSpeed = speed * 1.5f;
+
+            while (_isPanic)
+            {
+                Vector2 targetPosition = GetRandomPositionAroundCurrent();
+                GetDirection(targetPosition);
+               if(_isPanic) await MoveToTarget(targetPosition, _cancellationTokenSource.Token);
+            }
+        }
+        else _isPanic = false;
+    }
+
+    private async void ReturnToFarm()
+    {
+        if (_isPanic)
+        {
+            _isPanic = false;
+            _currentSpeed = speed;
+
+            CancelToken(_cancellationTokenSource);
+
+            _cancellationTokenSource = new CancellationTokenSource();
+
+            await StatusCheck(_cancellationTokenSource.Token);
         }
     }
 
@@ -138,7 +180,7 @@ public class FarmerController : MonoBehaviour
         Vector2 randomPosition = new Vector2(clampedX, clampedY);
 
         // Возвращаем случайные координаты в пределах размеров спрайта
-        _currentSpeed = speed * 0.2f;
+       if(!_isPanic) _currentSpeed = speed * 0.2f;
 
         return randomPosition;
     }
@@ -234,16 +276,31 @@ public class FarmerController : MonoBehaviour
         }
     }
 
+    private void CancelToken(CancellationTokenSource source)
+    {
+        if (source != null && !source.Token.IsCancellationRequested)
+        {
+            source.Cancel();
+        }
+    }
+
     private void OnDisable()
     {
-        if (_cancellationTokenSource != null && !_cancellationTokenSource.Token.IsCancellationRequested)
-        {
-            _cancellationTokenSource.Cancel();
-        }
+        InvasionController.EnemySpawned -= CheckPanic;
+        GameController.EnemyEscape -= ReturnToFarm;
+        _isPanic = false;
+        CancelToken(_cancellationTokenSource);
 
-        if (_point != null)
-        {
-            _point.SetActive(true);
-        }
+        if (_point != null) _point.SetActive(true);
+    }
+
+    private void OnDestroy()
+    {
+        InvasionController.EnemySpawned -= CheckPanic;
+        GameController.EnemyEscape -= ReturnToFarm;
+        _isPanic = false;
+        CancelToken(_cancellationTokenSource);
+
+        if (_point != null) _point.SetActive(true);
     }
 }

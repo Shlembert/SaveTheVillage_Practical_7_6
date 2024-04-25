@@ -150,11 +150,7 @@ public class EnemyController : MonoBehaviour
                 }
                 else
                 {
-                    if (_gameController.GrainCount > 0)
-                    {
-                        await MoveToStorage(cancellationToken);
-                    }
-                    else await MoveToHome(cancellationToken);
+                    await MoveToStorage(cancellationToken);
                 }
             }
 
@@ -245,7 +241,7 @@ public class EnemyController : MonoBehaviour
             equips[4].SetActive(_hasLootFarmer);
 
             collision.gameObject.gameObject.SetActive(false);
-           
+
             if (_target != null) _gameController.FarmerTargets.Remove(_target);
 
             if (_hasLootFarmer)

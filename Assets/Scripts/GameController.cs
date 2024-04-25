@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour
     private int _grainCount, _farmerCount, _warriorCount, _enemyCount;
     private bool _isPause, _isGame, _lastWave;
 
+    public delegate void EnemyEscapedEventHandler();
+    public static event EnemyEscapedEventHandler EnemyEscape;
+
     public List<GameObject> Farmers { get => _farmers; set => _farmers = value; }
     public List<GameObject> Warriors { get => _warriors; set => _warriors = value; }
     public List<GameObject> Enemies { get => _enemies; set => _enemies = value; }
@@ -60,7 +63,7 @@ public class GameController : MonoBehaviour
         InitListPoints(_warriorsPoints, outpost);
         InitListPoints(_enemiesPoints, lair);
         SetDisplayCount();
-       if(invasion) invasionController.StartInvasion();
+        if (invasion) invasionController.StartInvasion();
 
         await UniTask.Delay(200);
         farmerButton.AddFarmer();
@@ -92,14 +95,10 @@ public class GameController : MonoBehaviour
 
     public void StockUp(int food)
     {
-        if (_grainCount < 500)
-        {
-            _grainCount += food;
-            farmerButton.CheckCanBuy();
-            warriorButton.CheckCanBuy();
-            uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
-        }
-        else Debug.Log("You Win!");
+        _grainCount += food;
+        farmerButton.CheckCanBuy();
+        warriorButton.CheckCanBuy();
+        uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
     }
 
     public void StockDown(int food)
@@ -107,7 +106,7 @@ public class GameController : MonoBehaviour
         farmerButton.CheckCanBuy();
         warriorButton.CheckCanBuy();
 
-        if (_grainCount > 0)
+        if (_grainCount >= 3)
         {
             _grainCount -= food;
             uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
@@ -128,6 +127,7 @@ public class GameController : MonoBehaviour
 
     public void FinishEnemyWave()
     {
+        EnemyEscape();
         invasionController.ShowWave();
     }
 }
