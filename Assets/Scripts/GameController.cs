@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     private List<GameObject> _farmerTargets, _enemiesTargets;
 
     private int _grainCount, _farmerCount, _warriorCount, _enemyCount;
-    private bool _isPause, _isGame;
+    private bool _isPause, _isGame, _lastWave;
 
     public List<GameObject> Farmers { get => _farmers; set => _farmers = value; }
     public List<GameObject> Warriors { get => _warriors; set => _warriors = value; }
@@ -42,6 +42,7 @@ public class GameController : MonoBehaviour
 
     public bool IsPause { get => _isPause; set => _isPause = value; }
     public bool IsGame { get => _isGame; set => _isGame = value; }
+    public bool LastWave { get => _lastWave; set => _lastWave = value; }
 
     public async void StartGame()
     {
@@ -53,6 +54,7 @@ public class GameController : MonoBehaviour
 
         _grainCount = grainCount;
         _isGame = true;
+        _lastWave = false;
 
         InitListPoints(_farmerPoints, gardien);
         InitListPoints(_warriorsPoints, outpost);

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Cysharp.Threading.Tasks.Triggers;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -106,7 +107,7 @@ public class WarriorController : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, activeEnemies.Count);
             EnemyController enemy = activeEnemies[randomIndex].GetComponent<EnemyController>();
 
-            if (enemy != null && enemy.Hungry && !enemy.WithLoot)
+            if (enemy != null && enemy.Hungry && !enemy.WithLoot && enemy.Col.enabled)
             {
                 enemy.IsTarget = true;
                 _enemyTarget = enemy.transform;

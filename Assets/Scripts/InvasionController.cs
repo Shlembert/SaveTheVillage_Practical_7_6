@@ -28,11 +28,13 @@ public class InvasionController : MonoBehaviour
     private CancellationTokenSource _cancellationTokenSource;
 
     private int _currentIndexWave;
-    private bool _isReady, _shouldStopWave;
+    private bool _isReady, _shouldStopWave, _lastWave;
 
     public async void StartInvasion()
     {
         _isReady = true;
+        _lastWave = false;
+
         _currentIndexWave = 0;
         _filled = uIController.InvasionFilled;
 
@@ -89,22 +91,25 @@ public class InvasionController : MonoBehaviour
 
         // Время истекло
         StopWave();
+
         enemyFactory.SetCountSpawnUnit(waveSettings[_currentIndexWave].Count);
 
-        if (_currentIndexWave < waveSettings.Count - 1)
+        if (_currentIndexWave < waveSettings.Count -1)
         {
             _currentIndexWave++;
+            Debug.Log(_currentIndexWave);
         }
         else
         {
-            _currentIndexWave = 0;
+            gameController.LastWave = true;
+            _lastWave = true;
+            Debug.Log("Last Wave!");
         }
     }
 
     private void UpdateReadiness()
     {
         float percentReady = _isReady ? 100f : _filled.fillAmount * 100f;
-        // readiness.text = $"{percentReady:0}%";
     }
 
     public void ShowWave()
@@ -112,7 +117,7 @@ public class InvasionController : MonoBehaviour
         // Сначала останавливаем предыдущий таймер, если он был запущен
         StopTimer();
 
-        if (!gameController.IsGame) return;
+        if (_lastWave) return;
 
         uIController.EnemyesCount.text = waveSettings[_currentIndexWave].Count.ToString();
         uIController.WaveNumber.text = (_currentIndexWave + 1).ToString();
@@ -125,6 +130,7 @@ public class InvasionController : MonoBehaviour
              _shouldStopWave = false; // Сбрасываем флаг остановки таймера
 
              // Запускаем новую инвазию
+
              _ = Invasion(_cancellationTokenSource.Token);
          });
     }
@@ -147,6 +153,7 @@ public class InvasionController : MonoBehaviour
             _cancellationTokenSource.Cancel();
         }
     }
+
     private void OnDisable()
     {
         StopTimer();

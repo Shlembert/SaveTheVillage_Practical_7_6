@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private bool _isLife, _hungry, _withLoot, _isTarget;
-    private bool _hasLootFarmer, _hasLootGrain;
+    private bool _hasLootFarmer, _hasLootGrain, _moveToStorage;
     private float _currentSpeed;
 
     private CancellationTokenSource _cancellationTokenSource;
@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviour
     public float Speed { get => speed; set => speed = value; }
     public bool WithLoot { get => _withLoot; set => _withLoot = value; }
     public bool IsTarget { get => _isTarget; set => _isTarget = value; }
+    public bool MoveToStorage1 { get => _moveToStorage; set => _moveToStorage = value; }
+    public Collider2D Col { get => col; set => col = value; }
 
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
@@ -44,6 +46,7 @@ public class EnemyController : MonoBehaviour
         _isTarget = false;
         _hasLootFarmer = false;
         _hasLootGrain = false;
+        _moveToStorage = false;
 
         foreach (var item in equips) item.SetActive(false);
 
@@ -62,7 +65,7 @@ public class EnemyController : MonoBehaviour
     {
         if (_gameController.GrainCount >= 5)
         {
-            // Debug.Log("Go Storage");
+            _moveToStorage = true;
             await MoveToTarget(_storage, cancellationToken); // Идем к хранилищу
             await StealingGrain(cancellationToken); // Зашли в хранилище
         }
@@ -75,7 +78,7 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask StealingGrain(CancellationToken cancellationToken)
     {
-        col.enabled = false;
+        Col.enabled = false;
         _spriteRenderer.enabled = false;
         _gameController.StockDown(profit);
 
@@ -102,7 +105,7 @@ public class EnemyController : MonoBehaviour
         await MoveToTarget(home, cancellationToken);
         _gameController.EnemyCount--;
 
-        if (_gameController.EnemyCount < 1) 
+        if (_gameController.EnemyCount < 1)
         {
             if (_gameController.GrainCount <= 4 && _gameController.FarmerCount <= 0)
             {
@@ -111,7 +114,14 @@ public class EnemyController : MonoBehaviour
             }
             else
             {
-                _gameController.FinishEnemyWave();
+                if (!_gameController.LastWave)
+                {
+                    _gameController.FinishEnemyWave();
+                }
+                else
+                {
+                    Debug.Log("You Win!");
+                }
             }
         }
 
@@ -120,7 +130,7 @@ public class EnemyController : MonoBehaviour
         _hungry = true;
         await UniTask.Delay(100);
         CancelToken(_cancellationTokenSource);
-        col.enabled = true;
+        Col.enabled = true;
         _isLife = false;
         gameObject.SetActive(false);
     }
@@ -226,34 +236,39 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == _target && _hungry)
+        if (collision.gameObject == _target && _hungry && !_moveToStorage)
         {
+            Col.enabled = false;
+            _hungry = false;
             _hasLootFarmer = true;
-            equips[4].SetActive(_hasLootFarmer);
-            collision.gameObject.gameObject.SetActive(false);
 
+            equips[4].SetActive(_hasLootFarmer);
+
+            collision.gameObject.gameObject.SetActive(false);
+           
             if (_target != null) _gameController.FarmerTargets.Remove(_target);
 
-            _gameController.FarmerCount--;
-            _uIController.DisplayTopCount(_gameController.FarmerCount, TypeUnit.Farmer);
-            _gameController.SetDisplayCount();
-            col.enabled = false;
-            _hungry = false;
+            if (_hasLootFarmer)
+            {
+                _gameController.FarmerCount--;
+                _gameController.StockDown(0);
+                _uIController.DisplayTopCount(_gameController.FarmerCount, TypeUnit.Farmer);
+                return;
+            }
         }
     }
 
     public void AnimationBattle()
     {
+        CancelToken(_cancellationTokenSource);
         _gameController.FarmerTargets.Remove(_target);
         _spriteRenderer.enabled = false;
-        col.enabled = false;
+        Col.enabled = false;
         _currentSpeed = 0;
     }
 
     public async void FinishBattle()
     {
-        CancelToken(_cancellationTokenSource);
-
         _cancellationTokenSource = new CancellationTokenSource();
         _spriteRenderer.enabled = true;
         _currentSpeed = speed * 2;
