@@ -237,7 +237,8 @@ public class EnemyController : MonoBehaviour
             Col.enabled = false;
             _hungry = false;
             _hasLootFarmer = true;
-
+            collision.GetComponent<FarmerController>().IsPanic = false;
+            collision.GetComponent<FarmerController>().EscapeToken();
             equips[4].SetActive(_hasLootFarmer);
 
             collision.gameObject.gameObject.SetActive(false);
