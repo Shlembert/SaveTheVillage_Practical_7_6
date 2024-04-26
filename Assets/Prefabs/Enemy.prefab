@@ -160,19 +160,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1501645182285539913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf419f63b9b54ae468bf1360496f5405, type: 3}
+  m_Script: {fileID: 11500000, guid: 248ce583104d522488c5163cd6da112d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeUnit: 2
-  speed: 1.5
-  profit: 3
+  typeUnit: 0
+  speed: 0
+  profit: 0
   col: {fileID: 5065948906650649580}
-  equips:
-  - {fileID: 5549043614922037743}
-  - {fileID: 5859198994620358122}
-  - {fileID: 8668123290013710515}
-  - {fileID: 2535510946190868670}
-  - {fileID: 6535956447776323412}
+  equips: []
 --- !u!1 &2535510946190868670
 GameObject:
   m_ObjectHideFlags: 0

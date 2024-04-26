@@ -144,7 +144,7 @@ public class EnemyController : MonoBehaviour
             if (!_hungry) await MoveToHome(cancellationToken);
             else
             {
-                if (targetPosition.position != _transform.position && _gameController.WarriorCount > 0)
+                if (targetPosition.position != _transform.position)
                 {
                     await MoveToTarget(targetPosition, cancellationToken);
                 }
@@ -169,7 +169,6 @@ public class EnemyController : MonoBehaviour
                 int randomIndex = UnityEngine.Random.Range(0, activeFarmers.Count);
                 _target = activeFarmers[randomIndex];
                 _gameController.FarmerTargets.Remove(_target);
-
                 return _target.transform;
             }
             else return _transform; // Списки фермеров пусты, возвращаем позицию хранилища
@@ -239,6 +238,7 @@ public class EnemyController : MonoBehaviour
             _hungry = false;
             _hasLootFarmer = true;
             collision.GetComponent<FarmerController>().IsPanic = false;
+            collision.GetComponent<FarmerController>().EscapeToken();
             equips[4].SetActive(_hasLootFarmer);
 
             collision.gameObject.gameObject.SetActive(false);

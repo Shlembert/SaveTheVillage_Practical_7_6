@@ -808,6 +808,7 @@ Transform:
   m_Children:
   - {fileID: 2096210238}
   - {fileID: 1874695782}
+  - {fileID: 854069845}
   - {fileID: 937095813}
   - {fileID: 1907164710}
   m_Father: {fileID: 1497591822}
@@ -1017,6 +1018,7 @@ MonoBehaviour:
   spawn: {fileID: 1211162665}
   storage: {fileID: 179382892}
   pointStorage: {fileID: 1874695782}
+  pointEscapeStorage: {fileID: 854069845}
   boundsFarmer: {fileID: 696255040}
   farmerButton: {fileID: 1752875002}
   warriorButton: {fileID: 975805398}
@@ -3621,6 +3623,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a963c7ab29553a409128f39d3c0463e, type: 3}
+--- !u!1 &854069844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 854069845}
+  m_Layer: 0
+  m_Name: PointEscape
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &854069845
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854069844}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.48, y: -0.42, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 179382892}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &893720912
 GameObject:
   m_ObjectHideFlags: 0
@@ -3966,7 +3999,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 179382892}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &937095814
 Animator:
@@ -8223,7 +8256,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 179382892}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1907164711
 SpriteRenderer:

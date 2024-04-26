@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private UIController uIController;
     [SerializeField] private InvasionController invasionController;
     [SerializeField] private int grainCount;
-    [SerializeField] private Transform gardien, outpost, lair, spawn, storage, pointStorage;
+    [SerializeField] private Transform gardien, outpost, lair, spawn, storage, pointStorage, pointEscapeStorage;
     [SerializeField] private SpriteRenderer boundsFarmer;
     [SerializeField] private FarmerButton farmerButton;
     [SerializeField] private WarriorButton warriorButton;
@@ -19,9 +19,6 @@ public class GameController : MonoBehaviour
 
     private int _grainCount, _farmerCount, _warriorCount, _enemyCount;
     private bool _isPause, _isGame, _lastWave;
-
-    public delegate void EnemyEscapedEventHandler();
-    public static event EnemyEscapedEventHandler EnemyEscape;
 
     public List<GameObject> Farmers { get => _farmers; set => _farmers = value; }
     public List<GameObject> Warriors { get => _warriors; set => _warriors = value; }
@@ -35,6 +32,7 @@ public class GameController : MonoBehaviour
     public Transform Spawn { get => spawn; set => spawn = value; }
     public Transform Storage { get => storage; set => storage = value; }
     public Transform PointStorage { get => pointStorage; set => pointStorage = value; }
+    public Transform PointEscapeStorage { get => pointEscapeStorage; set => pointEscapeStorage = value; }
 
     public SpriteRenderer BoundsFarmer { get => boundsFarmer; set => boundsFarmer = value; }
 
@@ -46,6 +44,7 @@ public class GameController : MonoBehaviour
     public bool IsPause { get => _isPause; set => _isPause = value; }
     public bool IsGame { get => _isGame; set => _isGame = value; }
     public bool LastWave { get => _lastWave; set => _lastWave = value; }
+    
 
     public async void StartGame()
     {
@@ -127,7 +126,6 @@ public class GameController : MonoBehaviour
 
     public void FinishEnemyWave()
     {
-        EnemyEscape();
         invasionController.ShowWave();
     }
 }

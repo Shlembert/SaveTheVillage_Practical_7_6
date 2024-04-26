@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using Cysharp.Threading.Tasks.Triggers;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -21,7 +20,7 @@ public class WarriorController : MonoBehaviour
     private bool _isLife;
     private int _currentProfit;
     private float _currentSpeed;
-   
+
 
     private CancellationTokenSource _cancellationTokenSourceSearch;
 
@@ -31,7 +30,7 @@ public class WarriorController : MonoBehaviour
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
         foreach (var t in lifeCount) t.SetActive(true);
-        
+
         _gameController = gameController;
         _currentProfit = profit;
         _currentSpeed = speed;
@@ -75,7 +74,7 @@ public class WarriorController : MonoBehaviour
             {
                 _currentSpeed = speed;
                 await MoveToTarget(targetPosition, cancellationToken);
-               
+
             }
             else
             {
@@ -171,7 +170,7 @@ public class WarriorController : MonoBehaviour
     {
         EnemyController enemy = collider.gameObject.GetComponent<EnemyController>();
 
-        if (enemy != null /*&& _enemyTarget*/ && enemy.transform == _enemyTarget )
+        if (enemy != null /*&& _enemyTarget*/ && enemy.transform == _enemyTarget)
         {
             StartBattle();
             enemy.AnimationBattle();
@@ -196,11 +195,11 @@ public class WarriorController : MonoBehaviour
     private async void FinishBattle()
     {
         conflict.SetActive(false);
-       
+
         _spriteRenderer.enabled = true;
-       
+
         await UniTask.Delay(100);
-       
+
         CheckLife();
     }
 

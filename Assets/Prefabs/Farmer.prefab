@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 6969980246710106876}
   - component: {fileID: 3185209565303267924}
   - component: {fileID: 8168140685457274528}
+  - component: {fileID: 5838233771559075507}
   m_Layer: 4
   m_Name: Farmer
   m_TagString: Untagged
@@ -499,10 +500,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 545f87baeb75768409d4ec634f760f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 5838233771559075507}
   typeUnit: 0
   speed: 1.4
   workingTime: 10
   profit: 2
+--- !u!114 &5838233771559075507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2892229888041699852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 792824db4f63a3c41934aac4f8911fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 2892229888041699853}
   equips:
   - {fileID: 2892229887438870341}
   - {fileID: 2892229887898508133}
