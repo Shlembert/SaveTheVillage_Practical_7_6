@@ -549,6 +549,7 @@ GameObject:
   - component: {fileID: 6820518814096688607}
   - component: {fileID: 3531790309956236787}
   - component: {fileID: 74770769928950598}
+  - component: {fileID: 2162600248629405248}
   m_Layer: 4
   m_Name: Warrior
   m_TagString: Untagged
@@ -688,6 +689,30 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.22603035}
   m_Size: {x: 1.4202209, y: 3.276291}
   m_Direction: 0
+--- !u!114 &2162600248629405248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606709151958934753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84eae73f78e3cc41b3bce740575a27d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeUnit: 1
+  speed: 2.2
+  profit: 3
+  durationConflict: 900
+  col: {fileID: 74770769928950598}
+  _animator: {fileID: 3531790309956236787}
+  conflict: {fileID: 1584937050066295184}
+  _spriteRenderer: {fileID: 7606709151958934755}
+  lifeCount:
+  - {fileID: 5426646427482202666}
+  - {fileID: 3801632534233153141}
+  - {fileID: 4235236596346781936}
 --- !u!1001 &5089946699421648003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -761,6 +786,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb873b4f107f33c4e84b77a2cce4bb2e, type: 3}
+--- !u!1 &1584937050066295184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6007182155040267539, guid: fb873b4f107f33c4e84b77a2cce4bb2e, type: 3}
+  m_PrefabInstance: {fileID: 5089946699421648003}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1584937050066295191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6007182155040267540, guid: fb873b4f107f33c4e84b77a2cce4bb2e, type: 3}

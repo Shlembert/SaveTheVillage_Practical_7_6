@@ -4372,7 +4372,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 975805393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea4d104581efaf4c9eee620143d5125, type: 3}
+  m_Script: {fileID: 11500000, guid: 889674bf4ac6d4b4ea1e011ed7761f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 219476103}
@@ -4808,13 +4808,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1056452744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 342a8ea37e2142a4cb8b164917a3d1d4, type: 3}
+  m_Script: {fileID: 11500000, guid: b4849a0e8e5a30d448b851315bcff316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 219476103}
   uiController: {fileID: 1225573713}
   unitType: 1
-  prefab: {fileID: 7606709151958934753, guid: 2ac9ba9db9976d74cbcf24e3d2e10040, type: 3}
+  prefab: {fileID: 1367605199}
 --- !u!1 &1064582047
 GameObject:
   m_ObjectHideFlags: 0
@@ -5295,13 +5295,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1163678881}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa519fefbf2537b4f9134d8bcb85037e, type: 3}
+  m_Script: {fileID: 11500000, guid: fdb8c52d225c9854fbdc194b2f972de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 219476103}
   uiController: {fileID: 1225573713}
   unitType: 0
-  prefab: {fileID: 2892229888041699852, guid: 0b157530fe6f7cd4daf4986e47cb7d3a, type: 3}
+  prefab: {fileID: 2003679223}
 --- !u!1 &1174104948
 GameObject:
   m_ObjectHideFlags: 0
@@ -7629,7 +7629,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1752874997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c5375a71e57a25459c50a3c3d0732ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b200b036ab7435429890a5db89938c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 219476103}
@@ -8219,13 +8219,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1893759217}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 817a68cc38cc5424ea09e304c7cda93a, type: 3}
+  m_Script: {fileID: 11500000, guid: bb4572796c7740c459853bf082c0f0a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameController: {fileID: 219476103}
   uiController: {fileID: 1225573713}
   unitType: 2
-  prefab: {fileID: 1501645182285539913, guid: 5a963c7ab29553a409128f39d3c0463e, type: 3}
+  prefab: {fileID: 1971516538}
 --- !u!1 &1907164709
 GameObject:
   m_ObjectHideFlags: 0

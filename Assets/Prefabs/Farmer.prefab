@@ -497,12 +497,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2892229888041699852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 545f87baeb75768409d4ec634f760f58, type: 3}
+  m_Script: {fileID: 11500000, guid: c282e17271a95de478d47f4335d25fa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 5838233771559075507}
   typeUnit: 0
-  speed: 1.4
+  speed: 1.5
   workingTime: 10
   profit: 2
 --- !u!114 &5838233771559075507
