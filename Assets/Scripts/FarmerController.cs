@@ -80,9 +80,10 @@ public class FarmerController : MonoBehaviour
                 if (IsPanic) break; 
                 // ≈сли есть активные точки, двигаемс€ к ним
                 _currentSpeed = speed;
-                targetPosition = CommonTools.GetActivePointPosition(_gameController.FarmerPoints, _transform).position;
-                await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed, targetPosition, cancellationToken);
                 _point = CommonTools.GetActivePointPosition(_gameController.FarmerPoints, _transform).gameObject;
+                targetPosition = _point.transform.position;
+                await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed, targetPosition, cancellationToken);
+               
                 _point.SetActive(false);
                 _isWorking = true;
 

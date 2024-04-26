@@ -164,14 +164,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeUnit: 2
-  speed: 1.8
+  speed: 1.2
   profit: 1
   col: {fileID: 5065948906650649580}
   equips:
-  - {fileID: 5859198994620358122}
-  - {fileID: 2535510946190868670}
-  - {fileID: 8668123290013710515}
   - {fileID: 5549043614922037743}
+  - {fileID: 5859198994620358122}
+  - {fileID: 8668123290013710515}
+  - {fileID: 2535510946190868670}
   - {fileID: 6535956447776323412}
 --- !u!1 &2535510946190868670
 GameObject:
