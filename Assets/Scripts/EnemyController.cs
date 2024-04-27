@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] private EnemyMovement movement;
     [SerializeField] private TypeUnit typeUnit;
     [SerializeField] private float speed;
     [SerializeField] private int profit;
@@ -24,12 +25,16 @@ public class EnemyController : MonoBehaviour
 
     private CancellationTokenSource _cancellationTokenSource;
 
+    public Collider2D Col { get => col; set => col = value; }
+
     public bool Hungry { get => _hungry; set => _hungry = value; }
-    public float Speed { get => speed; set => speed = value; }
     public bool WithLoot { get => _withLoot; set => _withLoot = value; }
     public bool IsTarget { get => _isTarget; set => _isTarget = value; }
-    public bool MoveToStorage1 { get => _moveToStorage; set => _moveToStorage = value; }
-    public Collider2D Col { get => col; set => col = value; }
+    public bool MoveToStorage1 { get => MoveToStorage2; set => MoveToStorage2 = value; }
+    public bool HasLootFarmer { get => _hasLootFarmer; set => _hasLootFarmer = value; }
+    public bool HasLootGrain { get => _hasLootGrain; set => _hasLootGrain = value; }
+    public bool MoveToStorage2 { get => _moveToStorage; set => _moveToStorage = value; }
+    public List<GameObject> Equips { get => equips; set => equips = value; }
 
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
@@ -44,11 +49,11 @@ public class EnemyController : MonoBehaviour
         _hungry = true;
         _withLoot = false;
         _isTarget = false;
-        _hasLootFarmer = false;
-        _hasLootGrain = false;
-        _moveToStorage = false;
+        HasLootFarmer = false;
+        HasLootGrain = false;
+        MoveToStorage2 = false;
 
-        foreach (var item in equips) item.SetActive(false);
+        foreach (var item in Equips) item.SetActive(false);
 
         _cancellationTokenSource = new CancellationTokenSource();
         try
@@ -65,8 +70,9 @@ public class EnemyController : MonoBehaviour
     {
         if (_gameController.GrainCount >= 5)
         {
-            _moveToStorage = true;
-            await MoveToTarget(_storage, cancellationToken); // Идем к хранилищу
+            MoveToStorage2 = true;
+            await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed,
+                _storage.position, cancellationToken); // Идем к хранилищу
             await StealingGrain(cancellationToken); // Зашли в хранилище
         }
         else
@@ -84,11 +90,11 @@ public class EnemyController : MonoBehaviour
 
         await UniTask.Delay(2000);
 
-        _hasLootGrain = true;
+        HasLootGrain = true;
         _withLoot = true;
         _spriteRenderer.enabled = true;
         _hungry = false;
-        _hasLootFarmer = false;
+        HasLootFarmer = false;
 
         await MoveToHome(cancellationToken);
     }
@@ -102,7 +108,9 @@ public class EnemyController : MonoBehaviour
 
         if (_target != null) _gameController.FarmerTargets.Remove(_target);
 
-        await MoveToTarget(home, cancellationToken);
+        await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed,
+                home.position, cancellationToken);
+
         _gameController.EnemyCount--;
 
         if (_gameController.EnemyCount < 1)
@@ -129,7 +137,7 @@ public class EnemyController : MonoBehaviour
         _isLife = false;
         _hungry = true;
         await UniTask.Delay(100);
-        CancelToken(_cancellationTokenSource);
+        CommonTools.CancelToken(_cancellationTokenSource);
         Col.enabled = true;
         _isLife = false;
         gameObject.SetActive(false);
@@ -146,7 +154,8 @@ public class EnemyController : MonoBehaviour
             {
                 if (targetPosition.position != _transform.position && _gameController.WarriorCount > 0)
                 {
-                    await MoveToTarget(targetPosition, cancellationToken);
+                    await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed,
+                   targetPosition.position, cancellationToken);
                 }
                 else
                 {
@@ -177,75 +186,21 @@ public class EnemyController : MonoBehaviour
         else return _transform; // Схватили фермера, тактически отступаем в логово
     }
 
-    private async UniTask MoveToTarget(Transform target, CancellationToken cancellationToken)
-    {
-        Vector2 animDirection = (target.position - _transform.position);
-        GetDirection(animDirection);
-
-        while (_gameController.IsGame && Vector2.Distance(_transform.position, target.position) > 0.1f)
-        {
-            Vector2 direction = (target.position - _transform.position).normalized;
-
-            _transform.position += (Vector3)(direction * _currentSpeed * Time.deltaTime);
-
-            await UniTask.Yield(cancellationToken);
-        }
-    }
-
-    private void GetDirection(Vector3 movement)
-    {
-        // Проверяем, в каком направлении движется объект
-        if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
-        {
-            // Движение горизонтально
-            if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f)
-            {
-                foreach (var item in equips) item.SetActive(false);
-                equips[3].SetActive(_hasLootGrain);
-                equips[4].SetActive(_hasLootFarmer);
-                _animator.SetTrigger("MoveRight");
-            }
-            else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f)
-            {
-                _animator.SetTrigger("MoveLeft");
-                foreach (var item in equips) item.SetActive(false);
-                equips[2].SetActive(_hasLootGrain);
-                equips[4].SetActive(_hasLootFarmer);
-            }
-        }
-        else
-        {
-            // Движение вертикально
-            if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f)
-            {
-                foreach (var item in equips) item.SetActive(false);
-                equips[1].SetActive(_hasLootGrain);
-                _animator.SetTrigger("MoveUp");
-            }
-            else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f)
-            {
-                foreach (var item in equips) item.SetActive(false);
-                equips[0].SetActive(_hasLootGrain);
-                _animator.SetTrigger("MoveDown");
-            }
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == _target && _hungry && !_moveToStorage)
+        if (collision.gameObject == _target && _hungry && !MoveToStorage2)
         {
             Col.enabled = false;
             _hungry = false;
-            _hasLootFarmer = true;
+            HasLootFarmer = true;
             collision.GetComponent<FarmerController>().IsPanic = false;
-            equips[4].SetActive(_hasLootFarmer);
+            Equips[4].SetActive(HasLootFarmer);
 
             collision.gameObject.gameObject.SetActive(false);
 
             if (_target != null) _gameController.FarmerTargets.Remove(_target);
 
-            if (_hasLootFarmer)
+            if (HasLootFarmer)
             {
                 _gameController.FarmerCount--;
                 _gameController.StockDown(0);
@@ -257,7 +212,7 @@ public class EnemyController : MonoBehaviour
 
     public void AnimationBattle()
     {
-        CancelToken(_cancellationTokenSource);
+        CommonTools.CancelToken(_cancellationTokenSource);
         _gameController.FarmerTargets.Remove(_target);
         _spriteRenderer.enabled = false;
         Col.enabled = false;
@@ -273,16 +228,8 @@ public class EnemyController : MonoBehaviour
         await MoveToHome(_cancellationTokenSource.Token);
     }
 
-    private void CancelToken(CancellationTokenSource source)
-    {
-        if (source != null && !source.Token.IsCancellationRequested)
-        {
-            source.Cancel();
-        }
-    }
-
     private void OnDisable()
     {
-        CancelToken(_cancellationTokenSource);
+        CommonTools.CancelToken(_cancellationTokenSource);
     }
 }

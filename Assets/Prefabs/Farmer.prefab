@@ -503,7 +503,7 @@ MonoBehaviour:
   movement: {fileID: 5838233771559075507}
   typeUnit: 0
   speed: 1.5
-  workingTime: 10
+  workingTime: 20
   profit: 2
 --- !u!114 &5838233771559075507
 MonoBehaviour:

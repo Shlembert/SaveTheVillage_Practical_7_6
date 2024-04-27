@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class WarriorController : MonoBehaviour
 {
+    [SerializeField] private WarriorMovement movement;
     [SerializeField] private TypeUnit typeUnit;
     [SerializeField] private float speed;
     [SerializeField] private int profit, durationConflict;
     [SerializeField] private Collider2D col;
-    [SerializeField] private Animator _animator;
     [SerializeField] private GameObject conflict;
     [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private List<GameObject> lifeCount;
@@ -20,7 +20,6 @@ public class WarriorController : MonoBehaviour
     private bool _isLife;
     private int _currentProfit;
     private float _currentSpeed;
-
 
     private CancellationTokenSource _cancellationTokenSourceSearch;
 
@@ -32,6 +31,7 @@ public class WarriorController : MonoBehaviour
         foreach (var t in lifeCount) t.SetActive(true);
 
         _gameController = gameController;
+        _spawn = _gameController.Spawn;
         _currentProfit = profit;
         _currentSpeed = speed;
         _transform = transform;
@@ -56,7 +56,8 @@ public class WarriorController : MonoBehaviour
         Transform home = _gameController.WarriorsPoints[randomIndex].transform;
 
         _currentSpeed = speed / 2;
-        await MoveToTarget(home, cancellationToken);
+        await movement.MoveToTarget(_gameController.IsGame, _transform,_currentSpeed,
+            home.position, cancellationToken);
 
         // Встали на пост
         col.enabled = true;
@@ -73,7 +74,8 @@ public class WarriorController : MonoBehaviour
             if (targetPosition.position != _transform.position)
             {
                 _currentSpeed = speed;
-                await MoveToTarget(targetPosition, cancellationToken);
+                await movement.MoveToTarget(_gameController.IsGame, _transform,
+                    _currentSpeed, targetPosition.position, cancellationToken);
 
             }
             else
@@ -122,55 +124,13 @@ public class WarriorController : MonoBehaviour
         }
     }
 
-    private async UniTask MoveToTarget(Transform target, CancellationToken cancellationToken)
-    {
-        Vector2 animDirection = (target.position - _transform.position);
-        GetDirection(animDirection);
-
-        while (_gameController.IsGame && Vector2.Distance(_transform.position, target.position) > 0.1f)
-        {
-            Vector2 direction = (target.position - _transform.position).normalized;
-            _transform.position += (Vector3)(direction.normalized * _currentSpeed * Time.deltaTime);
-            await UniTask.Yield(cancellationToken);
-        }
-    }
-
-    private void GetDirection(Vector3 movement)
-    {
-        // Проверяем, в каком направлении движется объект
-        if (Mathf.Abs(movement.x) > Mathf.Abs(movement.y))
-        {
-            // Движение горизонтально
-            if (movement.x > 0 && Mathf.Abs(movement.x) > 0.1f)
-            {
-                _animator.SetTrigger("MoveRight");
-            }
-            else if (movement.x < 0 && Mathf.Abs(movement.x) > 0.1f)
-            {
-                _animator.SetTrigger("MoveLeft");
-            }
-        }
-        else
-        {
-            // Движение вертикально
-            if (movement.y > 0 && Mathf.Abs(movement.y) > 0.1f)
-            {
-                _animator.SetTrigger("MoveUp");
-            }
-            else if (movement.y < 0 && Mathf.Abs(movement.y) > 0.1f)
-            {
-                _animator.SetTrigger("MoveDown");
-            }
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collision) { Battle(collision); }
 
     private async void Battle(Collider2D collider)
     {
         EnemyController enemy = collider.gameObject.GetComponent<EnemyController>();
 
-        if (enemy != null /*&& _enemyTarget*/ && enemy.transform == _enemyTarget)
+        if (enemy != null && enemy.transform == _enemyTarget)
         {
             StartBattle();
             enemy.AnimationBattle();
@@ -184,7 +144,7 @@ public class WarriorController : MonoBehaviour
 
     private void StartBattle()
     {
-        CancelToken(_cancellationTokenSourceSearch);
+        CommonTools.CancelToken(_cancellationTokenSourceSearch);
         col.enabled = false;
         _spriteRenderer.enabled = false;
         _currentSpeed = 0f;
@@ -213,7 +173,8 @@ public class WarriorController : MonoBehaviour
         {
             _gameController.WarriorCount--;
             _gameController.SetDisplayCount();
-            await MoveToTarget(_gameController.Spawn, _cancellationTokenSourceSearch.Token);
+            await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed,
+           _spawn.position, _cancellationTokenSourceSearch.Token);
             gameObject.SetActive(false);
         }
         else
@@ -231,16 +192,8 @@ public class WarriorController : MonoBehaviour
         }
     }
 
-    private void CancelToken(CancellationTokenSource source)
-    {
-        if (source != null && !source.Token.IsCancellationRequested)
-        {
-            source.Cancel();
-        }
-    }
-
     private void OnDisable()
     {
-        CancelToken(_cancellationTokenSourceSearch);
+        CommonTools.CancelToken(_cancellationTokenSourceSearch);
     }
 }

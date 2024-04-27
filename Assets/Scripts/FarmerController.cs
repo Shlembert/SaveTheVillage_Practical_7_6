@@ -82,18 +82,19 @@ public class FarmerController : MonoBehaviour
                 _currentSpeed = speed;
                 _point = CommonTools.GetActivePointPosition(_gameController.FarmerPoints, _transform).gameObject;
                 targetPosition = _point.transform.position;
-                await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed, targetPosition, cancellationToken);
-               
                 _point.SetActive(false);
-                _isWorking = true;
+
+                await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed, targetPosition, cancellationToken);
 
                 // Собираем урожай
+                _isWorking = true;
                 movement.Equips[4].SetActive(true);
                 movement.Animator.SetTrigger("Work");
                 await CommonTools.StartTimer(workingTime, cancellationToken);
                 movement.Equips[4].SetActive(false);
                 _isWorking = false;
                 movement.IsLaden = true;
+                _point.SetActive(true);
                 await MoveToStorage(cancellationToken);
             }
             else
