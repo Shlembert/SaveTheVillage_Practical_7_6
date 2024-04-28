@@ -23,9 +23,6 @@ public class InvasionController : MonoBehaviour
     [SerializeField] private Transform indicator;
     [SerializeField] private float duration, moveRight, moveLeft;
 
-    public delegate void EnemySpawnedEventHandler();
-    public static event EnemySpawnedEventHandler EnemySpawned;
-
     private Image _filled;
 
     private CancellationTokenSource _cancellationTokenSource;
@@ -96,8 +93,6 @@ public class InvasionController : MonoBehaviour
         StopWave();
 
         enemyFactory.SetCountSpawnUnit(waveSettings[_currentIndexWave].Count);
-        // Вот тут нужно создать Событие Attack
-        EnemySpawned();
 
         if (_currentIndexWave < waveSettings.Count -1)
         {

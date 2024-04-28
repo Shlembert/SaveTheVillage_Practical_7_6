@@ -1,4 +1,3 @@
-using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,24 +39,31 @@ public class UIController : MonoBehaviour
 
         switch (typeUnit)
         {
-            case TypeUnit.Farmer: currentTMP = farmersCount;
+            case TypeUnit.Farmer:
+                currentTMP = farmersCount;
                 break;
-            case TypeUnit.Warrior: currentTMP = warriorsCount;
+            case TypeUnit.Warrior:
+                currentTMP = warriorsCount;
                 break;
-            case TypeUnit.Food: currentTMP = foodCount;
+            case TypeUnit.Food:
+                currentTMP = foodCount;
                 break;
             default:
                 break;
         }
 
         currentTMP.text = value.ToString();
-       // AnimChangeCount(currentTMP.transform);
     }
 
-    private void AnimChangeCount(Transform textTransform)
+    public void PauseOn()
     {
-       
-        textTransform.DOKill();
-        textTransform.DOScale(textTransform.localScale * 2, 0.3f).SetEase(Ease.InBack).From();
+        pausePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void PauseOff()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
     }
 }

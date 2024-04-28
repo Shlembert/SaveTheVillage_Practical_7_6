@@ -44,7 +44,6 @@ public class GameController : MonoBehaviour
     public bool IsPause { get => _isPause; set => _isPause = value; }
     public bool IsGame { get => _isGame; set => _isGame = value; }
     public bool LastWave { get => _lastWave; set => _lastWave = value; }
-    
 
     public async void StartGame()
     {

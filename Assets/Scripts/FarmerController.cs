@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
-using TMPro;
 using UnityEngine;
 
 public class FarmerController : MonoBehaviour
@@ -18,16 +17,11 @@ public class FarmerController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private float _currentSpeed;
     private bool _isWorking;
-    private bool _isPanic;
 
     private CancellationTokenSource _cancellationTokenSource;
 
-    public bool IsPanic { get => _isPanic; set => _isPanic = value; }
-
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
-        InvasionController.EnemySpawned += CheckPanic;
-
         _gameController = gameController;
         _transform = transform;
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -35,7 +29,6 @@ public class FarmerController : MonoBehaviour
         _currentSpeed = speed;
         movement.IsLaden = false;
         _isWorking = false;
-        IsPanic = false;
 
         _cancellationTokenSource = new CancellationTokenSource();
         try
@@ -48,40 +41,16 @@ public class FarmerController : MonoBehaviour
         }
     }
 
-    private async void CheckPanic()
-    {
-        if (_gameController.WarriorCount == 0)
-        { 
-            IsPanic = true;
-            _currentSpeed = speed * 2f;
-            movement.HoldEquips();
-
-            CommonTools.CancelToken(_cancellationTokenSource);
-            _cancellationTokenSource = new CancellationTokenSource();
-           
-            await movement.MoveToTarget(_gameController.IsGame,
-                _transform, _currentSpeed, _gameController.Spawn.position,
-                _cancellationTokenSource.Token);
-            _gameController.FarmerCount--;
-            _gameController.SetDisplayCount();
-           gameObject.SetActive(false);
-        }
-        else IsPanic = false;
-    }
-
     private async UniTask StatusCheck(CancellationToken cancellationToken)
     {
-        Vector2 targetPosition = Vector2.zero;
-
         while (!movement.IsLaden && !_isWorking)
         {
             if (CommonTools.HasActivePoints(_gameController.FarmerPoints))
             {
-                if (IsPanic) break; 
                 // ≈сли есть активные точки, двигаемс€ к ним
                 _currentSpeed = speed;
                 _point = CommonTools.GetActivePointPosition(_gameController.FarmerPoints, _transform).gameObject;
-                targetPosition = _point.transform.position;
+                Vector2 targetPosition = _point.transform.position;
                 _point.SetActive(false);
 
                 await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed, targetPosition, cancellationToken);
@@ -100,13 +69,13 @@ public class FarmerController : MonoBehaviour
             else
             {
                 // ≈сли нет активных точек, двигаемс€ к случайной точке
-                targetPosition = CommonTools.GetRandomPositionAroundCurrent(_transform, _gameController.BoundsFarmer);
+                Vector2 targetPosition = CommonTools.GetRandomPositionAroundCurrent(_transform, _gameController.BoundsFarmer);
                 _currentSpeed = speed / 2;
                 await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed, targetPosition, cancellationToken);
             }
         }
     }
-
+  
     private async UniTask MoveToStorage(CancellationToken cancellationToken)
     {
         movement.IsLaden = true;
@@ -135,10 +104,8 @@ public class FarmerController : MonoBehaviour
 
     private void OnDisable()
     {
-        InvasionController.EnemySpawned -= CheckPanic;
         CommonTools.CancelToken(_cancellationTokenSource);
 
-        if(IsPanic) IsPanic = false;
         if (_point != null) _point.SetActive(true);
     }
 }

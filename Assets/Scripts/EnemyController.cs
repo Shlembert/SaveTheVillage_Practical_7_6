@@ -68,7 +68,7 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask MoveToStorage(CancellationToken cancellationToken)
     {
-        if (_gameController.GrainCount >= 5)
+        if (_gameController.GrainCount >= 0)
         {
             MoveToStorage2 = true;
             await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed,
@@ -152,7 +152,7 @@ public class EnemyController : MonoBehaviour
             if (!_hungry) await MoveToHome(cancellationToken);
             else
             {
-                if (targetPosition.position != _transform.position && _gameController.WarriorCount > 0)
+                if (targetPosition.position != _transform.position)
                 {
                     await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed,
                    targetPosition.position, cancellationToken);
@@ -186,17 +186,17 @@ public class EnemyController : MonoBehaviour
         else return _transform; // —хватили фермера, тактически отступаем в логово
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private async void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == _target && _hungry && !MoveToStorage2)
         {
             Col.enabled = false;
             _hungry = false;
             HasLootFarmer = true;
-            collision.GetComponent<FarmerController>().IsPanic = false;
+
             Equips[4].SetActive(HasLootFarmer);
 
-            collision.gameObject.gameObject.SetActive(false);
+            collision.gameObject.SetActive(false);
 
             if (_target != null) _gameController.FarmerTargets.Remove(_target);
 
@@ -205,6 +205,10 @@ public class EnemyController : MonoBehaviour
                 _gameController.FarmerCount--;
                 _gameController.StockDown(0);
                 _uIController.DisplayTopCount(_gameController.FarmerCount, TypeUnit.Farmer);
+               
+                CommonTools.CancelToken(_cancellationTokenSource);
+                _cancellationTokenSource = new CancellationTokenSource();
+                await MoveToHome(_cancellationTokenSource.Token);
                 return;
             }
         }
