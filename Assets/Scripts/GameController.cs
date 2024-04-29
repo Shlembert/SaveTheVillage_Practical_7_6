@@ -47,13 +47,14 @@ public class GameController : MonoBehaviour
 
     public async void StartGame()
     {
+        ResetGame();
+
         _farmerTargets = new List<GameObject>();
         _enemiesTargets = new List<GameObject>();
         _farmerPoints = new List<GameObject>();
         _warriorsPoints = new List<GameObject>();
         _enemiesPoints = new List<GameObject>();
 
-        _grainCount = grainCount;
         _isGame = true;
         _lastWave = false;
 
@@ -63,8 +64,25 @@ public class GameController : MonoBehaviour
         SetDisplayCount();
         if (invasion) invasionController.StartInvasion();
 
-        await UniTask.Delay(200);
+        
+        await UniTask.Delay(500);
+        SoundController.soundController.PlayGame();
         farmerButton.AddFarmer();
+    }
+
+    public void ResetGame()
+    {
+        FarmerCount = 0;
+        WarriorCount = 0;
+        EnemyCount = 0;
+        SetDisplayCount();
+        foreach (var item in Farmers) item.SetActive(false);
+        foreach (var item in Warriors) item.SetActive(false);
+        foreach (var item in Enemies) item.SetActive(false);
+        _grainCount = grainCount;
+        invasionController.CurrentIndexWave = 0;
+        invasionController.StopWave();
+        Time.timeScale = 1;
     }
 
     private void OnDisable()
@@ -86,8 +104,8 @@ public class GameController : MonoBehaviour
 
     public void SetDisplayCount()
     {
-        uIController.DisplayTopCount(GetActiveUnitsCount(_farmers), TypeUnit.Farmer);
-        uIController.DisplayTopCount(GetActiveUnitsCount(_warriors), TypeUnit.Warrior);
+        uIController.DisplayTopCount(FarmerCount, TypeUnit.Farmer);
+        uIController.DisplayTopCount(WarriorCount, TypeUnit.Warrior);
         uIController.DisplayTopCount(_grainCount, TypeUnit.Food);
     }
 
@@ -111,20 +129,18 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private int GetActiveUnitsCount(List<GameObject> units)
-    {
-        int count = 0;
-
-        foreach (var unit in units)
-        {
-            if (unit.activeInHierarchy) count++;
-        }
-
-        return count;
-    }
-
     public void FinishEnemyWave()
     {
         invasionController.ShowWave();
+    }
+
+    public void GameOver()
+    {
+        uIController.GameOver();
+    }
+
+    public void YouWin()
+    {
+        uIController.YouWin();
     }
 }

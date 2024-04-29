@@ -6,6 +6,7 @@ public class EnemyFactory : MonoBehaviour
 {
     [SerializeField] private GameController gameController;
     [SerializeField] private UIController uiController;
+    [SerializeField] private FarmerButton farmerButton;
     [SerializeField] private TypeUnit unitType;
     [SerializeField] private GameObject prefab;
 
@@ -35,7 +36,7 @@ public class EnemyFactory : MonoBehaviour
     private void SpawnUnit()
     {
         List<GameObject> goList = gameController.Enemies;
-
+       
         _count++;
         gameController.EnemyCount++;
 
@@ -47,7 +48,7 @@ public class EnemyFactory : MonoBehaviour
                 {
                     goList[i].SetActive(true);
                     goList[i].transform.position = SetRandomPosition();
-                    goList[i].GetComponent<EnemyController>().ActiveUnit(gameController, uiController);
+                    goList[i].GetComponent<EnemyController>().ActiveUnit(gameController, uiController, farmerButton);
                     return;
                 }
             }
@@ -58,7 +59,7 @@ public class EnemyFactory : MonoBehaviour
         goList.Add(go);
 
         go.transform.parent = _transform;
-        go.GetComponent<EnemyController>().ActiveUnit(gameController, uiController);
+        go.GetComponent<EnemyController>().ActiveUnit(gameController, uiController, farmerButton);
     }
 
     private void SetActiveTarget(List<GameObject> targets, List<GameObject> units)

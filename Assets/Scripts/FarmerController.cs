@@ -22,6 +22,7 @@ public class FarmerController : MonoBehaviour
 
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
+        SoundController.soundController.PlayFarmerSpawn();
         _gameController = gameController;
         _transform = transform;
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -72,6 +73,7 @@ public class FarmerController : MonoBehaviour
                 Vector2 targetPosition = CommonTools.GetRandomPositionAroundCurrent(_transform, _gameController.BoundsFarmer);
                 _currentSpeed = speed / 2;
                 await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed, targetPosition, cancellationToken);
+                _currentSpeed = speed;
             }
         }
     }
@@ -91,6 +93,7 @@ public class FarmerController : MonoBehaviour
         // Завалились в хранилище
         movement.HoldEquips();
         _spriteRenderer.enabled = false;
+        SoundController.soundController.PlayDrop();
         _gameController.StockUp(profit);
         movement.IsLaden = false;
         // Ждем 2 сек

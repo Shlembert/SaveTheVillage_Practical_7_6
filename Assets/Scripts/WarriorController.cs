@@ -29,7 +29,7 @@ public class WarriorController : MonoBehaviour
     public async void ActiveUnit(GameController gameController, UIController uIController)
     {
         foreach (var t in lifeCount) t.SetActive(true);
-
+        SoundController.soundController.PlayWarriorSpawn();
         _gameController = gameController;
         _spawn = _gameController.Spawn;
         _currentProfit = profit;
@@ -144,6 +144,7 @@ public class WarriorController : MonoBehaviour
 
     private void StartBattle()
     {
+        SoundController.soundController.PlayBattle();
         CommonTools.CancelToken(_cancellationTokenSourceSearch);
         col.enabled = false;
         _spriteRenderer.enabled = false;
@@ -175,6 +176,10 @@ public class WarriorController : MonoBehaviour
             _gameController.SetDisplayCount();
             await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed,
            _spawn.position, _cancellationTokenSourceSearch.Token);
+            SoundController.soundController.PlayEscape();
+            await UniTask.Delay(300);
+            SoundController.soundController.PlayDoor();
+           
             gameObject.SetActive(false);
         }
         else

@@ -23,6 +23,8 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
     private Vector2 _normalPosition;
     private bool _isReady = true;
 
+    public bool IsReady { get => _isReady; set => _isReady = value; }
+
     private void Start()
     {
         _transform = transform;
@@ -37,17 +39,25 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
 
     public void AddWarrior()
     {
-        if (!_isReady) return;
+        if (!IsReady) return;
         TweenKill();
 
 
         if (price <= gameController.GrainCount)
         {
-            _isReady = false;
+            IsReady = false;
             gameController.WarriorCount++;
 
-            if (gameController.WarriorCount < 10) Cooldown();
-            else readiness.text = "Макс";
+            if (gameController.WarriorCount < 10)
+            {
+                Cooldown();
+                SoundController.soundController.PlayBuy();
+            }
+            else
+            {
+                readiness.text = "Макс";
+                _isReady = true;
+            }
 
             uIController.DisplayTopCount(gameController.WarriorCount, type);
             gameController.StockDown(price);
@@ -56,15 +66,16 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
         }
         else
         {
+            SoundController.soundController.PlayError();
             NoGrainMove();
         }
     }
 
     private async void Cooldown()
     {
-        _isReady = false;
+        IsReady = false;
         await StartTimer(cooldown);
-        _isReady = true;
+        IsReady = true;
     }
 
     public async UniTask StartTimer(float duration)
@@ -91,7 +102,7 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
 
     private void UpdateReadiness()
     {
-        float percentReady = _isReady ? 100f : filled.fillAmount * 100f;
+        float percentReady = IsReady ? 100f : filled.fillAmount * 100f;
         readiness.text = $"{percentReady:0}%";
     }
 
@@ -114,10 +125,12 @@ public class WarriorButton : MonoBehaviour, IPointerDownHandler
     {
         TweenKill();
 
-        if (_isReady &&
+        if (IsReady &&
             gameController.GrainCount >= price &&
-            gameController.WarriorCount < 10)
+            gameController.WarriorCount <= 9)
+        {
             ReadyMove();
+        }
     }
 
     private void TweenKill()

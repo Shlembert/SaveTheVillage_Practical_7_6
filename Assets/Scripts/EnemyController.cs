@@ -15,9 +15,9 @@ public class EnemyController : MonoBehaviour
 
     private GameObject _target;
     private Transform _transform, _storage;
+    private FarmerButton _farmerButton;
     private GameController _gameController;
     private UIController _uIController;
-    private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private bool _isLife, _hungry, _withLoot, _isTarget;
     private bool _hasLootFarmer, _hasLootGrain, _moveToStorage;
@@ -30,18 +30,16 @@ public class EnemyController : MonoBehaviour
     public bool Hungry { get => _hungry; set => _hungry = value; }
     public bool WithLoot { get => _withLoot; set => _withLoot = value; }
     public bool IsTarget { get => _isTarget; set => _isTarget = value; }
-    public bool MoveToStorage1 { get => MoveToStorage2; set => MoveToStorage2 = value; }
     public bool HasLootFarmer { get => _hasLootFarmer; set => _hasLootFarmer = value; }
     public bool HasLootGrain { get => _hasLootGrain; set => _hasLootGrain = value; }
-    public bool MoveToStorage2 { get => _moveToStorage; set => _moveToStorage = value; }
     public List<GameObject> Equips { get => equips; set => equips = value; }
 
-    public async void ActiveUnit(GameController gameController, UIController uIController)
+    public async void ActiveUnit(GameController gameController, UIController uIController, FarmerButton farmerButton)
     {
         _gameController = gameController;
         _uIController = uIController;
+        _farmerButton = farmerButton;
         _transform = transform;
-        _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _storage = gameController.Storage;
         _currentSpeed = speed;
@@ -51,7 +49,6 @@ public class EnemyController : MonoBehaviour
         _isTarget = false;
         HasLootFarmer = false;
         HasLootGrain = false;
-        MoveToStorage2 = false;
 
         foreach (var item in Equips) item.SetActive(false);
 
@@ -68,18 +65,11 @@ public class EnemyController : MonoBehaviour
 
     private async UniTask MoveToStorage(CancellationToken cancellationToken)
     {
-        if (_gameController.GrainCount >= 0)
-        {
-            MoveToStorage2 = true;
             await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed,
                 _storage.position, cancellationToken); // Идем к хранилищу
             await StealingGrain(cancellationToken); // Зашли в хранилище
-        }
-        else
-        {
-            Debug.Log("No Grain & No Farmers");
-            await MoveToHome(cancellationToken);
-        }
+            await MoveToHome(cancellationToken); // Валим домой
+            gameObject.SetActive(false);         // Зтрахуемся от залипания.
     }
 
     private async UniTask StealingGrain(CancellationToken cancellationToken)
@@ -87,18 +77,16 @@ public class EnemyController : MonoBehaviour
         Col.enabled = false;
         _spriteRenderer.enabled = false;
         _gameController.StockDown(profit);
-
+        SoundController.soundController.PlayDrop();
         await UniTask.Delay(2000);
-
+        SoundController.soundController.PlayHaha();
         HasLootGrain = true;
         _withLoot = true;
         _spriteRenderer.enabled = true;
         _hungry = false;
         HasLootFarmer = false;
-
-        await MoveToHome(cancellationToken);
     }
-
+      
     private async UniTask MoveToHome(CancellationToken cancellationToken)
     {
         int randomIndex = UnityEngine.Random.Range(0, _gameController.EnemiesPoints.Count);
@@ -107,7 +95,6 @@ public class EnemyController : MonoBehaviour
         _hungry = false;
 
         if (_target != null) _gameController.FarmerTargets.Remove(_target);
-
         await movement.MoveToTarget(_gameController.IsGame, _transform, _currentSpeed,
                 home.position, cancellationToken);
 
@@ -118,7 +105,7 @@ public class EnemyController : MonoBehaviour
             if (_gameController.GrainCount <= 4 && _gameController.FarmerCount <= 0)
             {
                 _gameController.IsGame = false;
-                Debug.Log("Game Over!");
+                _gameController.GameOver();
             }
             else
             {
@@ -128,7 +115,7 @@ public class EnemyController : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("You Win!");
+                    _gameController.YouWin();
                 }
             }
         }
@@ -188,14 +175,14 @@ public class EnemyController : MonoBehaviour
 
     private async void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject == _target && _hungry && !MoveToStorage2)
+        if (collision.gameObject == _target && _hungry)
         {
             Col.enabled = false;
             _hungry = false;
             HasLootFarmer = true;
-
+            SoundController.soundController.PlayCrim();
             Equips[4].SetActive(HasLootFarmer);
-
+            
             collision.gameObject.SetActive(false);
 
             if (_target != null) _gameController.FarmerTargets.Remove(_target);
@@ -205,7 +192,7 @@ public class EnemyController : MonoBehaviour
                 _gameController.FarmerCount--;
                 _gameController.StockDown(0);
                 _uIController.DisplayTopCount(_gameController.FarmerCount, TypeUnit.Farmer);
-               
+                _farmerButton.CheckCanBuy();
                 CommonTools.CancelToken(_cancellationTokenSource);
                 _cancellationTokenSource = new CancellationTokenSource();
                 await MoveToHome(_cancellationTokenSource.Token);

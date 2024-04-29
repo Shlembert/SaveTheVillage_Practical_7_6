@@ -46,8 +46,16 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
             gameController.FarmerCount++;
             warriorButton.CheckCanBuy();
 
-            if (gameController.FarmerCount < 10) Cooldown();
-            else readiness.text = "Макс";
+            if (gameController.FarmerCount < 10)
+            {
+                Cooldown();
+                SoundController.soundController.PlayBuy();
+            }
+            else 
+            {
+                readiness.text = "Макс";
+                _isReady = true;
+            } 
 
             uIController.DisplayTopCount(gameController.FarmerCount, type);
             gameController.StockDown(price);
@@ -56,6 +64,7 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
         }
         else
         {
+            SoundController.soundController.PlayError();
             NoGrainMove();
         }
     }
@@ -124,8 +133,10 @@ public class FarmerButton : MonoBehaviour, IPointerDownHandler
         TweenKill();
         if (_isReady &&
             gameController.GrainCount >= price &&
-            gameController.FarmerCount < 10) 
+            gameController.FarmerCount <= 9)
+        {
             ReadyMove();
+        }
     }
 
     private void NoGrainMove()

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,6 +29,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text foodStorage;
     [SerializeField] private TMP_Text foodLost;
     [SerializeField] private Image invasionFilled;
+    [SerializeField] private Image hold;
 
     public Image InvasionFilled { get => invasionFilled; set => invasionFilled = value; }
     public TMP_Text EnemyesCount { get => enemyesCount; set => enemyesCount = value; }
@@ -57,13 +59,59 @@ public class UIController : MonoBehaviour
 
     public void PauseOn()
     {
+        SoundController.soundController.PlayMenu();
         pausePanel.SetActive(true);
-        Time.timeScale = 0;
+        pausePanel.transform.DOScale(Vector2.zero, 0.5f).SetEase(Ease.OutBack).From().OnComplete(()=> 
+        {
+            Time.timeScale = 0;
+        });
     }
 
     public void PauseOff()
     {
-        pausePanel.SetActive(false);
+        Vector2 normalSize = pausePanel.transform.localScale;
         Time.timeScale = 1;
+        pausePanel.transform.DOScale(Vector2.zero, 0.5f).SetEase(Ease.InBack).OnComplete(() =>
+        {
+            SoundController.soundController.PlayGame();
+            pausePanel.SetActive(false);
+            pausePanel.transform.localScale = normalSize;
+        });
+    }
+
+    public void HoldScreen()
+    {
+        hold.gameObject.SetActive(true);
+
+        hold.DOFade(0, 3f).OnComplete(() => 
+        {
+            hold.gameObject.SetActive(false);
+            gameController.StartGame();
+        });
+    }
+
+    public void ToMainMenu()
+    {
+        gameController.ResetGame();
+        gameObject.SetActive(false);
+    }
+
+    public void GameOver()
+    {
+        SoundController.soundController.PlayMenu();
+        Time.timeScale = 0;
+        gameOverPanel.SetActive(true);
+    }
+
+    public void YouWin()
+    {
+        SoundController.soundController.PlayMenu();
+        Time.timeScale = 0;
+        gameWinPanel.SetActive(true);
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
